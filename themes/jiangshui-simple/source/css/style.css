@@ -1079,6 +1079,12 @@ input {
   text-decoration: none;
 }
 
+.highlight table {
+  table-layout: fixed;
+  width: 100%;
+  text-align: left;
+}
+
 /*section-main*/
 /***********************************************************************************/
 /*                                  Media Queries                                  */
