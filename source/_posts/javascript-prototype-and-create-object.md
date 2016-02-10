@@ -144,9 +144,9 @@ Function 类型有一个属性 prototype，直接翻译过来就是原型。这�
     person2 = new Person();
     
 
-person1 和 person2 都是通过 Person 这个 Function 类型实例，再次生成的实例，它们俩都有共同的属性 country 和方法 sayName，因为它们都有某个指针（__proto__），直接指向 Person.prototype 所指向的对象。不过要注意 __proto__ 这个指针是不标准的，只有 Chrome 和 Firefox 等浏览器自己定义的，实际中，也不会用到这个属性，只是作为理解 prototype 来用：
+person1 和 person2 都是通过 Person 这个 Function 类型实例，再次生成的实例，它们俩都有共同的属性 country 和方法 sayName，因为它们都有某个指针（`__proto__`），直接指向 Person.prototype 所指向的对象。不过要注意 `__proto__` 这个指针是不标准的，只有 Chrome 和 Firefox 等浏览器自己定义的，实际中，也不会用到这个属性，只是作为理解 prototype 来用：
 
-![__proto__  指针效果](http://jiangshui.b0.upaiyun.com/blog/2014/06/prototype4.png)
+![`__proto__`  指针效果](http://jiangshui.b0.upaiyun.com/blog/2014/06/prototype4.png)
 
 关于原型等用法，后面会更具体的讲到。
 
@@ -237,7 +237,7 @@ Person 是 Function 类型的对象，new 之后，会继续产生一个**对象
 
 ### 原型模式
 
-前面已经介绍了一部分关于原型的基础知识。简单的说，就是每个函数都有一个 prototype 属性，指向一个对象（原型对象），这个对象里面可以放一些属性或者方法。然后这个函数生成的实例，会有一个不规范的属性（__proto__）指向原型。
+前面已经介绍了一部分关于原型的基础知识。简单的说，就是每个函数都有一个 prototype 属性，指向一个对象（原型对象），这个对象里面可以放一些属性或者方法。然后这个函数生成的实例，会有一个不规范的属性（`__proto__`）指向原型。
 
 由此来看，你应该可以理解：**prototype 产生的属性和方法是所有实例共享的**。
 
@@ -273,7 +273,7 @@ Person 是 Function 类型的对象，new 之后，会继续产生一个**对象
 *   Person.prototype －》 原型对象，可以定义一些属性或者参数，被所有实例共用。
 *   Person.prototype.constructor == Person —》 原型对象有个默认的属性 constructor 指向该原型对象所属的构造函数（注意另一种写法会覆盖掉这个属性，需要重新指定）。
 *   person1 = new Person() －》构造函数生成实例，实例包含了构造函数的内容和原型对象的内容。
-*   person1.__proto__ －》指向创建这个实例的原型对象（不规范，不要用）。
+*   `person1.__proto__` －》指向创建这个实例的原型对象（不规范，不要用）。
 
 使用 isPrototypeOf() 可以确定对象之间的关系。例如：
 
