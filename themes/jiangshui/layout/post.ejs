@@ -1,0 +1,47 @@
+<div class="section-wrap section-main">
+	<div class="section">
+		<div class="typo blog-wrap">
+			<h1><%= page.title %></h1>
+			<div class="blog-meta">
+				<time><%= date(page.date, 'YYYY/M/D') %></time>
+				<div class="blog-cats"><% page.categories.each(function(cat){ %>
+					<a href="<%= cat.permalink %>"><%= cat.slug %></a>
+				<% }) %></div>
+				<div class="blog-tags"><% page.tags.each(function(tag){ %>
+					<a href="<%= tag.permalink %>"><%= tag.slug %></a>
+				<% }) %></div>
+			</div>
+			<%- page.content %>
+		</div>
+		<script>
+			// share functions
+			share = new SimpleShare();
+		</script>
+		<div class="blog-share">
+			<ul class="share-list">
+				<li><a class="icon icon-weibo" href="javascript:share.weibo();"><span>weibo</span></a></li>
+				<li><a class="icon icon-twitter" href="javascript:share.twitter();"><span>twitter</span></a></li>
+				<li><a class="icon icon-douban" href="javascript:share.douban();"><span>douban</span></a></li>
+				<li><a class="icon icon-qzone" href="javascript:share.qzone();"><span>qzone</span></a></li>
+			</ul>
+		</div>
+		<div class="comments-wrap">
+			<!-- 多说评论框 start -->
+			<div class="ds-thread" data-thread-key="<%= page.id %>" data-title="<%= page.title %>" data-url="<%= page.permalink %>"></div>
+			<!-- 多说评论框 end -->
+			<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+			<script type="text/javascript">
+			var duoshuoQuery = {short_name:"jiangshui"};
+				(function() {
+					var ds = document.createElement('script');
+					ds.type = 'text/javascript';ds.async = true;
+					ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+					ds.charset = 'UTF-8';
+					(document.getElementsByTagName('head')[0]
+					 || document.getElementsByTagName('body')[0]).appendChild(ds);
+				})();
+				</script>
+			<!-- 多说公共JS代码 end -->
+		</div>
+	</div>
+</div>

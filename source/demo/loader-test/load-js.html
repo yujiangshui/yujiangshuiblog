@@ -1,0 +1,54 @@
+layout: false
+-----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<div id="info"></div>
+
+<script>
+(function() {
+
+  var url = "http://jiangshui.b0.upaiyun.com/com/blog/loader/load-test.js",
+      head = document.getElementsByTagName('head')[0];
+      link = document.createElement('script');
+
+  link.src = url;
+
+  head.appendChild(link);
+
+
+  var info = document.getElementById('info');
+  function output (str) {
+    info.innerHTML += str + '<br>';
+  }
+
+  // 监听资源加载
+  // #1
+  link.onload = function () {
+    output('onload 【有效】');
+  }
+  // #2
+  if (link.addEventListener) {
+    link.addEventListener('load', function() {
+      output("addEventListener 监听 load 事件【有效】");
+    }, false);
+  }
+  // #3
+  link.onreadystatechange = function() {
+    var state = link.readyState;
+    if (state === 'loaded' || state === 'complete') {
+      link.onreadystatechange = null;
+      output("onreadystatechange 监听加载【有效】");
+    }
+  };
+
+
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<div class="section-wrap section-main">
+	<div class="section">
+		<div class="typo list-blog">
+		<% page.posts.each(function(post){ %>
+			<div class="item-blog">
+				<h1><a href="<%= post.permalink %>"><%= post.title %></a></h1>
+				<div class="blog-meta">
+					<time><%= date(post.date, 'YYYY/M/D') %></time>
+					<div class="blog-cats"><% post.categories.each(function(cat){ %>
+						<a href="<%= cat.permalink %>"><%= cat.slug %></a>
+					<% }) %></div>
+					<div class="blog-tags"><% post.tags.each(function(tag){ %>
+						<a href="<%= tag.permalink %>"><%= tag.slug %></a>
+					<% }) %></div>
+				</div>
+				<p class="blog-excerpt"><%- post.excerpt %></p>
+			</div>
+		<% }) %>
+		</div>
+		<div class="list-pagination">
+			<%- paginator() %>
+		</div>
+	</div>
+</div>
