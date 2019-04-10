@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta name="renderer" content="webkit">
+    
+    <title>三个 HTML5 不常见特性简介 | 于江水</title>
+    <meta name="description" content="都已经到了 2014 年了，再来说 HTML5 的新特性，实在是够晚了，不过 Denis 说的好，即便再烂的文章，只要不误导，有总比没有强（不是原话，我润色了一下~）。">
+<meta name="keywords" content="HTML5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="三个 HTML5 不常见特性简介">
+<meta property="og:url" content="http://yujiangshui.com/three-html5-feature-intro/index.html">
+<meta property="og:site_name" content="于江水">
+<meta property="og:description" content="都已经到了 2014 年了，再来说 HTML5 的新特性，实在是够晚了，不过 Denis 说的好，即便再烂的文章，只要不误导，有总比没有强（不是原话，我润色了一下~）。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-10T00:17:52.187Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="三个 HTML5 不常见特性简介">
+<meta name="twitter:description" content="都已经到了 2014 年了，再来说 HTML5 的新特性，实在是够晚了，不过 Denis 说的好，即便再烂的文章，只要不误导，有总比没有强（不是原话，我润色了一下~）。">
+<meta name="twitter:creator" content="@yujiangshui">
+<meta property="fb:admins" content="yujiangshui"> 
+    <link rel="alternate" href="/atom.xml" title="于江水" type="application/rss+xml">
+    
+
+    <link rel="stylesheet" href="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/css/style.css">
+    <script data-main="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/js/build" src="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/js/require.js"></script>
+    <!--[if lt IE 7]>
+      <style>
+        .section {
+          width: 780px;
+        }
+        .post-content img {
+          width: 100%;
+        }
+        .jupe pre {
+          width: 100%;
+        }
+      </style>
+    <![endif]-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-57557739-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-57557739-5');
+    </script>
+  </head>
+</html>
+
+<body>
+
+<div class="section-wrap section-main">
+	<div class="section">
+		<div class="header">
+	<h1 class="logo">
+		<a href="/">于江水</a>
+	</h1>
+	<p class="social-links">
+		<a href="http://www.weibo.com/yujiangshui">Weibo</a>
+		\
+		<a href="https://twitter.com/yujiangshui">Twitter</a>
+		\
+		<a href="https://github.com/yujiangshui">Github</a>
+		\
+		<a href="/atom.xml">RSS</a>
+	</p>
+</div>
+		<div class="main">
+			<div class="jupe main-body">
+  <div class="post-content">
+    <h1 class="post-title">三个 HTML5 不常见特性简介</h1>
+    <div class="post-meta">
+      <span class="post-time">2014.02.19</span>
+      <div class="post-cats">
+        <a class="post-cats-item-link" href="/category/HTML/">HTML</a>
+      </div>
+    </div>
+    <div class="post-toc">
+      <div class="toc-title">TOC</div>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#DNS-预解析缓存"><span class="toc-number">1.</span> <span class="toc-text">DNS 预解析缓存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#资源预加载"><span class="toc-number">2.</span> <span class="toc-text">资源预加载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#prefetch-预读取"><span class="toc-number">2.1.</span> <span class="toc-text">prefetch 预读取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#prerender-预渲染"><span class="toc-number">2.2.</span> <span class="toc-text">prerender 预渲染</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Download-属性"><span class="toc-number">3.</span> <span class="toc-text">Download 属性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#资料扩展"><span class="toc-number">4.</span> <span class="toc-text">资料扩展</span></a></li></ol>
+    </div>
+    <p>都已经到了 2014 年了，再来说 HTML5 的新特性，实在是够晚了，不过 <a href="http://blog.wpjam.com/" target="_blank" rel="noopener">Denis</a> 说的好，即便再烂的文章，只要不误导，有总比没有强（不是原话，我润色了一下~）。</p>
+<a id="more"></a>
+<h2 id="DNS-预解析缓存"><a href="#DNS-预解析缓存" class="headerlink" title="DNS 预解析缓存"></a>DNS 预解析缓存</h2><p>众所周知，解析 DNS 是网站性能优化的比较重要的一部分，虽然加载时间不太长，但是很难压缩起来。特别是为了并发下载资源而使用多个 CDN 域名来加载资源的大型网站，更不可忽视，每加载资源之前都要先进行 CDN 域名的 DNS 解析转换。</p>
+<p>如果采用 DNS 预加载，支持该功能的浏览器就会提前对该域名进行 DNS 解析并且缓存一下，而不会在需要请求资源再进行解析。而且这个功能应用实在是太简单：</p>
+<pre><code>&lt;link rel=&quot;dns-prefetch&quot; href=&quot;http://cdn.staticfile.org/&quot;&gt;
+&lt;link rel=&quot;dns-prefetch&quot; href=&quot;//www.google-analytics.com&quot;&gt;
+</code></pre><p>具体之前草草翻译过一篇文章，有兴趣可以大体略过：<a href="http://www.qianxingzhem.com/post-1900.html" target="_blank" rel="noopener">使用预加载提速你的网站</a></p>
+<h2 id="资源预加载"><a href="#资源预加载" class="headerlink" title="资源预加载"></a>资源预加载</h2><p>资源预加载有很多办法，例如常见的图片预加载，有采用 CSS 的背景图片来预加载，大部分还是用 JS。目前 HTML5 提供了专门的资源预加载方法，有两个属性：prefetch（预读取）和 prerender（预渲染），分别被 Firefox 和 Chrome 浏览器支持。</p>
+<h3 id="prefetch-预读取"><a href="#prefetch-预读取" class="headerlink" title="prefetch 预读取"></a>prefetch 预读取</h3><p>预读取就是很常见的资源预加载，当前页面加载完成之后，就会在后面偷偷的下载你指定的资源，一般是 JS 、CSS 和 图片 这类的，也可以下载页面：</p>
+<pre><code>&lt;link rel=&quot;prefetch&quot; href=&quot;http://yujiangshui.com/&quot; /&gt;
+&lt;link rel=&quot;prefetch&quot; href=&quot;http://yujiangshui.com/wp-content/themes/jiangshui/images/avatar.jpg&quot; /&gt;
+&lt;link rel=&quot;prefetch alternate stylesheet&quot; href=&quot;mozspecific.css&quot; /&gt;
+</code></pre><p>目前 Firefox 浏览器支持这个功能，详情请看：<a href="https://developer.mozilla.org/en-US/docs/Link_prefetching_FAQ" target="_blank" rel="noopener">Link prefetching FAQ</a>。</p>
+<h3 id="prerender-预渲染"><a href="#prerender-预渲染" class="headerlink" title="prerender 预渲染"></a>prerender 预渲染</h3><p>这个更厉害了，不仅偷偷的提前下载，而且还给你渲染出来，当用户点击链接的时候，立刻给你展现出来。</p>
+<pre><code>&lt;link rel=&quot;prerender&quot; href=&quot;http://yujiangshui.com/&quot; /&gt;
+</code></pre><p>目前 Chrome 支持这个功能，详情请看：<a href="https://developers.google.com/chrome/whitepapers/prerender" target="_blank" rel="noopener">Web Developer’s Guide to Prerendering in Chrome</a>。</p>
+<p>搜素引擎其实是最需要这种预读取的功能的，因为他们非常确定用户下一步要打开的页面（搜索结果页面），所以当用户输入搜索内容的时候，就可以提前把搜索结果页面的资源提前加载，而且应用之后，效果十分明显。</p>
+<p>目前兼容性是个缺点，貌似只有 Chrome 和 Firefox 支持，而且用的 rel 属性是不同的，如果你想同时兼容两个浏览器，可以写成下面这样：</p>
+<pre><code>&lt;link rel=&quot;prefetch prerender&quot; href=&quot;http://yujiangshui.com&quot; &gt;
+</code></pre><p>此外，当然为了安全没法跨域预加载资源，可能没法用 CDN 了。</p>
+<h2 id="Download-属性"><a href="#Download-属性" class="headerlink" title="Download 属性"></a>Download 属性</h2><p>HTML5 的 Download 属性用来强制浏览器下载对应文件，而不是打开。Chrome 和 Firefox 等浏览器太过于强大，也许是为了增强用户体验，当用户点击的资源文件可以被它们识别的时候（例如 pdf 会直接在浏览器打开，mp3、mp4 等媒体直接用浏览器内置播放器播放）。但有时候，用户其实是希望直接下载而不是在浏览器上看看，这时就可以加上这个属性，属性值会对下载的文件重命名：</p>
+<pre><code>&lt;a href=&quot;downloadpdf.php&quot; download=&quot;download.pdf&quot;&gt;点击直接下载并保存成 download.pdf 文件&lt;/a&gt;
+</code></pre><p>你可以点击下面两个链接试下看：<a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf" target="_blank" rel="noopener">没有加 download 属性的常规 pdf URL</a> | <a href="http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf" target="_blank" rel="noopener">加 download 属性的常规 pdf URL（保存成 Ecma-262.pdf）</a></p>
+<p>如果你确定这个资源是用户肯定会下载的，就可以加上这个属性，还可以用 JS 或者手动改变想要保存的文件名。</p>
+<h2 id="资料扩展"><a href="#资料扩展" class="headerlink" title="资料扩展"></a>资料扩展</h2><p>HTML5 还有很多其他特性，但是看了很长时间书和各种资料，很少见到上面三个又比较实用的属性，拿出来分享一下。关于本文提到的几点，有兴趣深入的可以看一下：</p>
+<ol>
+<li><a href="https://developers.google.com/chrome/whitepapers/prerender" target="_blank" rel="noopener">Web Developer’s Guide to Prerendering in Chrome</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Link_prefetching_FAQ" target="_blank" rel="noopener">Link prefetching FAQ</a></li>
+<li><a href="http://davidwalsh.name/html5-prefetch" target="_blank" rel="noopener">HTML5 Link Prefetching</a></li>
+<li><a href="http://www.rocketmill.co.uk/html5-prefetch" target="_blank" rel="noopener">HTML5 PREFETCH</a></li>
+</ol>
+
+  </div>
+  <div class="post-share">
+	<ul class="share-list">
+		<li><a class="icon icon-weibo" href="javascript:share.weibo();"><span>weibo</span></a></li>
+		<li><a class="icon icon-twitter" href="javascript:share.twitter();"><span>twitter</span></a></li>
+		<li><a class="icon icon-douban" href="javascript:share.douban();"><span>douban</span></a></li>
+		<li><a class="icon icon-qzone" href="javascript:share.qzone();"><span>qzone</span></a></li>
+	</ul>
+</div>
+</div>
+		</div>
+		<div class="footer">
+	<p class="left">&copy; Jiangshui 一个努力坚持中低质量原创的<a class="color-egg" href="/images/meinanzi.png">美男子</a>。生活不易，<a href="#">包养本人</a>。</p>
+	<p class="right">Base on <a href="https://github.com/yujiangshui/jiangshui-simple">Github</a> and <a href="http://hexo.io/">Hexo</a> .</p>
+</div>
+	</div>
+</div>
+
+</body>
+</html>

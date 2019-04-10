@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta name="renderer" content="webkit">
+    
+    <title>如何还原像素级别的设计稿 | 于江水</title>
+    <meta name="description" content="前端重构项目外包做了也有一年左右了，分享一下还原设计稿的一些经验。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何还原像素级别的设计稿">
+<meta property="og:url" content="http://yujiangshui.com/how-to-restore-the-design-draft-pixel-level/index.html">
+<meta property="og:site_name" content="于江水">
+<meta property="og:description" content="前端重构项目外包做了也有一年左右了，分享一下还原设计稿的一些经验。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://jiangshui.b0.upaiyun.com/blog/2014/05/huanyuan0.jpg">
+<meta property="og:image" content="http://jiangshui.b0.upaiyun.com/blog/2014/05/huanyuan2.jpg">
+<meta property="og:image" content="http://jiangshui.b0.upaiyun.com/blog/2014/05/huanyuan1.jpg">
+<meta property="og:updated_time" content="2019-04-10T00:17:52.178Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何还原像素级别的设计稿">
+<meta name="twitter:description" content="前端重构项目外包做了也有一年左右了，分享一下还原设计稿的一些经验。">
+<meta name="twitter:image" content="http://jiangshui.b0.upaiyun.com/blog/2014/05/huanyuan0.jpg">
+<meta name="twitter:creator" content="@yujiangshui">
+<meta property="fb:admins" content="yujiangshui"> 
+    <link rel="alternate" href="/atom.xml" title="于江水" type="application/rss+xml">
+    
+
+    <link rel="stylesheet" href="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/css/style.css">
+    <script data-main="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/js/build" src="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/js/require.js"></script>
+    <!--[if lt IE 7]>
+      <style>
+        .section {
+          width: 780px;
+        }
+        .post-content img {
+          width: 100%;
+        }
+        .jupe pre {
+          width: 100%;
+        }
+      </style>
+    <![endif]-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-57557739-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-57557739-5');
+    </script>
+  </head>
+</html>
+
+<body>
+
+<div class="section-wrap section-main">
+	<div class="section">
+		<div class="header">
+	<h1 class="logo">
+		<a href="/">于江水</a>
+	</h1>
+	<p class="social-links">
+		<a href="http://www.weibo.com/yujiangshui">Weibo</a>
+		\
+		<a href="https://twitter.com/yujiangshui">Twitter</a>
+		\
+		<a href="https://github.com/yujiangshui">Github</a>
+		\
+		<a href="/atom.xml">RSS</a>
+	</p>
+</div>
+		<div class="main">
+			<div class="jupe main-body">
+  <div class="post-content">
+    <h1 class="post-title">如何还原像素级别的设计稿</h1>
+    <div class="post-meta">
+      <span class="post-time">2014.05.28</span>
+      <div class="post-cats">
+        <a class="post-cats-item-link" href="/category/front-end/">前端相关</a>
+      </div>
+    </div>
+    <div class="post-toc">
+      <div class="toc-title">TOC</div>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么要还原像素级别的设计稿"><span class="toc-number">1.</span> <span class="toc-text">为什么要还原像素级别的设计稿</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Photoshop-切图技巧"><span class="toc-number">2.</span> <span class="toc-text">Photoshop 切图技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#传统的切图流程"><span class="toc-number">2.1.</span> <span class="toc-text">传统的切图流程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#改进后的切图流程"><span class="toc-number">2.2.</span> <span class="toc-text">改进后的切图流程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用马克鳗量取精准尺寸"><span class="toc-number">3.</span> <span class="toc-text">使用马克鳗量取精准尺寸</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#之前得测量方法"><span class="toc-number">3.1.</span> <span class="toc-text">之前得测量方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#改进后得测量方法"><span class="toc-number">3.2.</span> <span class="toc-text">改进后得测量方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用-alloydesigner-像素级别对比设计稿"><span class="toc-number">4.</span> <span class="toc-text">使用 alloydesigner 像素级别对比设计稿</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#回顾如何还原像素级别的设计稿"><span class="toc-number">5.</span> <span class="toc-text">回顾如何还原像素级别的设计稿</span></a></li></ol>
+    </div>
+    <p>前端重构项目外包做了也有一年左右了，分享一下还原设计稿的一些经验。</p>
+<a id="more"></a>
+<h2 id="为什么要还原像素级别的设计稿"><a href="#为什么要还原像素级别的设计稿" class="headerlink" title="为什么要还原像素级别的设计稿"></a>为什么要还原像素级别的设计稿</h2><p>前端重构和美工是两个级别的，一个就在于精准还原设计稿而另一个是自我感觉怎么好怎么来。</p>
+<p>而比较高端的项目是分三块的，由专业的设计师做设计，由前端工程师切图做页面，再由后端工程师开发功能整合到系统上。术业有专攻，每一个环节都会有很高的水准，组合成一个各方面都非常专业的网站，为客户的业务提供更好的帮助，因此客户也愿意支付高价。</p>
+<p>所以，前端工程师的任务，就是精确还原设计稿甚至要精确到像素级别，不然为什么还需要设计师？</p>
+<h2 id="Photoshop-切图技巧"><a href="#Photoshop-切图技巧" class="headerlink" title="Photoshop 切图技巧"></a>Photoshop 切图技巧</h2><p>精确第一步，精准的使用 Photoshop 切图。拿到设计稿一般是 PSD 格式的，我们首先会<a href="http://yujiangshui.com/recent-projects-review/#toc-10">认真观察</a>一下设计稿，思考一下对应的 HTML 结构和 CSS 设计模式，然后开始根据需求进行切图。</p>
+<h3 id="传统的切图流程"><a href="#传统的切图流程" class="headerlink" title="传统的切图流程"></a>传统的切图流程</h3><p>确定好了切图方案之后，对于大的 PSD 来说，往往新建一个画布，然后将 PSD 里面需要切出来的图层拖动到新画布中，使用“剪裁”工具把这个图层进一步的剪切，变成最小内容，剪去多余的部分。然后打开“存储为 Web 所用格式”对话框，根据图片选择格式、压缩比以及是否是渐进式等等，然后选择路径修改文件名。</p>
+<p>这样的缺点很明显，有时候图标或者图层有半透明的阴影，这时候对于边界的界定就不好处理，此外需要大量重复的剪裁、返回上一步、继续剪裁、保存图片等等。人工操作过多，导致效率底下，成本增加，大量时间浪费在基础重复的操作中（为此一般项目的扣图都扔给另一个同学^_^）。</p>
+<h3 id="改进后的切图流程"><a href="#改进后的切图流程" class="headerlink" title="改进后的切图流程"></a>改进后的切图流程</h3><p>计算机就是为了帮助人类完成大量重复的工作，有没有自动切图的功能或插件呢？为此我也在不断的搜索。</p>
+<p>然后有一天就发现了 Photoshop 内置的自动切图脚本。位于“文件”－》“脚本”－》“将图层导出文件”。意思就是将你的图层分层分别导出为文件，而且还支持剪裁图片和格式选择等等。</p>
+<p><img src="http://jiangshui.b0.upaiyun.com/blog/2014/05/huanyuan0.jpg" alt="将图层导出文件菜单"></p>
+<p>选择剪裁图片之后，将会自动给你剪裁到最小状态，由于是机器剪裁，所以精度非常高，半透明的阴影也完全 OK。</p>
+<p>于是，改进后的切图流程就变成了：从 PSD 中找到要剪切出来的图层，然后拖动到新画布上面，栅格化文字或者<strong>合并组</strong>、<strong>合并图层</strong>，将要剪切出来的图片们合并到一起变成一个图层，然后使用这个脚本自动导出，命名一下图片。</p>
+<p>这个脚本的不好就在于命名，输出的时候命名比较乱，需要自己修改一下，但是已经非常自动化操纵了，相见恨晚。</p>
+<h2 id="使用马克鳗量取精准尺寸"><a href="#使用马克鳗量取精准尺寸" class="headerlink" title="使用马克鳗量取精准尺寸"></a>使用马克鳗量取精准尺寸</h2><p>切图精准之后，为了精准还原设计稿，下一步就是精准的尺寸，包括间距、宽高、位置等等。</p>
+<h3 id="之前得测量方法"><a href="#之前得测量方法" class="headerlink" title="之前得测量方法"></a>之前得测量方法</h3><p>在没遇到<a href="http://www.getmarkman.com/" target="_blank" rel="noopener">马克鳗</a>之前，我一直苦逼得用 QQ 截图来测量尺寸、大小和位置。好在 QQ 截图得功能比较强大，测量得还算准确，缺陷就是需要来回切换程序界面，一次次得测量，这样必然导致低效率。</p>
+<p>此外，不只是测量尺寸，还原设计稿还需要提取对应位置得背景颜色等等。这样还需要在后台打开 Photoshop 然后偶尔切换到 PS 中，用拾色器来取色。</p>
+<p>后来问了一下<a href="http://www.aips.me/" target="_blank" rel="noopener">周良</a>才知道了这么一个设计师必备得工具<a href="http://www.getmarkman.com/" target="_blank" rel="noopener">马克鳗</a>，相见恨晚。</p>
+<h3 id="改进后得测量方法"><a href="#改进后得测量方法" class="headerlink" title="改进后得测量方法"></a>改进后得测量方法</h3><p>马克鳗得主要功能就是对设计稿测量尺寸、获取颜色、标注信息等等。而且支持各种格式得图片，甚至支持 PSD 格式，标注完之后会自动生成一个 markman 文件，你可以发送给别人，不会影响原来得设计稿。还支持 Retina @2x 设计稿得缩小，例如针对移动端得设计稿往往设计成双倍尺寸得，测量之后尺寸都需要除以2，而使用马克鳗之后，会自动读取文件名后面的 @2x ，如果确定是双倍设计稿，就会自动给你缩小一倍。</p>
+<p>这样改进后的测量方法就变成了：打开设计稿（PSD 或者将 PSD 中不同页面的设计稿保存出来 jpg），使用马克鳗进行标注并且观察设计结构和样式，思考如何做页面结构如何切图。之后根据上面的方法切图，再打开马克鳗测量后的图片，对照尺寸重构页面。</p>
+<h2 id="使用-alloydesigner-像素级别对比设计稿"><a href="#使用-alloydesigner-像素级别对比设计稿" class="headerlink" title="使用 alloydesigner 像素级别对比设计稿"></a>使用 alloydesigner 像素级别对比设计稿</h2><p><a href="http://alloyteam.github.io/AlloyDesigner/" target="_blank" rel="noopener">alloydesigner</a> 是腾讯 <a href="http://www.alloyteam.com/" target="_blank" rel="noopener">alloyteam</a> 团队开发的用来辅助前端页面重构的工具。</p>
+<p>简单的介绍一下它的功能：<a href="http://alloyteam.github.io/AlloyDesigner/" target="_blank" rel="noopener">alloydesigner</a> 是基于浏览器端的一堆 JS ，你可以把它拖动到浏览器书签上点击就可以使用。它可以加载设计稿，作为本透明的背景放在当前网页上面，以达到像素级别的全真对比。包括间距尺寸等等各方面全都一目了然。此外还提供了一些其他实用辅助功能，具体请看：<a href="http://www.alloyteam.com/2014/03/alloydesigner-lai-zi-xing-xing-di-web-qian-duan-kai-fa-fang-shi/" target="_blank" rel="noopener">全新理念的Web前端开发方式——AlloyDesigner</a>。</p>
+<p>今年3月份放出来之后，大家就开始试用了一下，但是反馈并不是特别好。我也跟着试了一下，感觉操作会比较繁琐，而且功能比较多，运行起来稍卡。而且是全新的开发方式，一时也不太习惯，于是就没再用了。</p>
+<p>结果前段时间有个项目，客户有点“像素眼”，结果就用上这工具了，而且幸亏有这工具。前段时间得那个项目比较奇怪，设计稿是图片，要求根据浏览器宽度进行整体得缩放，即浏览器宽屏幕大得时候，里面得尺寸和字体各方面都要变大。所以各方面处理起来需要计算成流动得，文字、间距、尺寸都得用 em 或者百分比单位，再加上没有高清得 PSD 设计稿，还原就不是那么精准。</p>
+<p>更要命的是，git 上另一个同事给我修改了一下尺寸，结果差距就更大了（其实本来还原的还好），客户反馈了一张差距图：</p>
+<p><img src="http://jiangshui.b0.upaiyun.com/blog/2014/05/huanyuan2.jpg" alt="还原有差距的图片"></p>
+<p>于是就想起了这个工具，马上拿出来用了一下。把设计稿主要几个页面裁切了一下，然后试用 Firefox 的响应式开发视图设置好跟设计稿相同的尺寸，然后应用 alloydesigner 加载设计稿图片，再在 Firebug 中调试尺寸等参数，最后达到基本相符：</p>
+<p><img src="http://jiangshui.b0.upaiyun.com/blog/2014/05/huanyuan1.jpg" alt="基本与设计稿还原"></p>
+<p>由于 Web Font 渲染、结构、流动的单位等，没有完全重合，但这样就已经足够了。</p>
+<h2 id="回顾如何还原像素级别的设计稿"><a href="#回顾如何还原像素级别的设计稿" class="headerlink" title="回顾如何还原像素级别的设计稿"></a>回顾如何还原像素级别的设计稿</h2><p>首先先要打开设计稿来认真观察并思考需要做的结构、样式和布局的实现思路等等，认真观察的时候使用马克鳗标注尺寸、颜色等信息。</p>
+<p>准备前端基础文件，例如幻灯片组件、Web Font 等等，如果用 Sass 之类预处理器的话，可以将之前马克鳗标注的颜色等信息先声明好变量。这里自荐一下自己常用的前端基础文件结构 <a href="https://github.com/yujiangshui/ysass" target="_blank" rel="noopener">ysass</a>。</p>
+<p>开始通过 Photoshop 自动切图脚本，自动切图。</p>
+<p>将切好图片图标等放在 images 文件夹下面，根据马克鳗标注的设计稿开始编写 HTML、CSS 等等。</p>
+<p>如果项目要求比较严谨，要求超高还原度，这时候再使用 alloydesigner 工具，进行像素级别的对比调整。</p>
+
+  </div>
+  <div class="post-share">
+	<ul class="share-list">
+		<li><a class="icon icon-weibo" href="javascript:share.weibo();"><span>weibo</span></a></li>
+		<li><a class="icon icon-twitter" href="javascript:share.twitter();"><span>twitter</span></a></li>
+		<li><a class="icon icon-douban" href="javascript:share.douban();"><span>douban</span></a></li>
+		<li><a class="icon icon-qzone" href="javascript:share.qzone();"><span>qzone</span></a></li>
+	</ul>
+</div>
+</div>
+		</div>
+		<div class="footer">
+	<p class="left">&copy; Jiangshui 一个努力坚持中低质量原创的<a class="color-egg" href="/images/meinanzi.png">美男子</a>。生活不易，<a href="#">包养本人</a>。</p>
+	<p class="right">Base on <a href="https://github.com/yujiangshui/jiangshui-simple">Github</a> and <a href="http://hexo.io/">Hexo</a> .</p>
+</div>
+	</div>
+</div>
+
+</body>
+</html>

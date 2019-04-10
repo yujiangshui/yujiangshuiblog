@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta name="renderer" content="webkit">
+    
+    <title>table 那些事 | 于江水</title>
+    <meta name="description" content="table 这个 HTML 标签，是一个很有传奇色彩的标签。它经历过大起大落，走过巅峰，又被人深深唾弃，但仍然不气不馁，在 EDM网页 、居中、数据展示等需求中发挥着不可替代的作用。很多人认为那就是个用 DW 拖拽出来的结构，太简单了，却无法手写出一个完整符合语义性的表单结构。">
+<meta name="keywords" content="table">
+<meta property="og:type" content="article">
+<meta property="og:title" content="table 那些事">
+<meta property="og:url" content="http://yujiangshui.com/about-table/index.html">
+<meta property="og:site_name" content="于江水">
+<meta property="og:description" content="table 这个 HTML 标签，是一个很有传奇色彩的标签。它经历过大起大落，走过巅峰，又被人深深唾弃，但仍然不气不馁，在 EDM网页 、居中、数据展示等需求中发挥着不可替代的作用。很多人认为那就是个用 DW 拖拽出来的结构，太简单了，却无法手写出一个完整符合语义性的表单结构。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://jiangshui.b0.upaiyun.com/blog/2014/03/table0.gif">
+<meta property="og:image" content="http://jiangshui.b0.upaiyun.com/blog/2014/03/table1.png">
+<meta property="og:updated_time" content="2019-04-10T00:17:52.174Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="table 那些事">
+<meta name="twitter:description" content="table 这个 HTML 标签，是一个很有传奇色彩的标签。它经历过大起大落，走过巅峰，又被人深深唾弃，但仍然不气不馁，在 EDM网页 、居中、数据展示等需求中发挥着不可替代的作用。很多人认为那就是个用 DW 拖拽出来的结构，太简单了，却无法手写出一个完整符合语义性的表单结构。">
+<meta name="twitter:image" content="http://jiangshui.b0.upaiyun.com/blog/2014/03/table0.gif">
+<meta name="twitter:creator" content="@yujiangshui">
+<meta property="fb:admins" content="yujiangshui"> 
+    <link rel="alternate" href="/atom.xml" title="于江水" type="application/rss+xml">
+    
+
+    <link rel="stylesheet" href="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/css/style.css">
+    <script data-main="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/js/build" src="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/js/require.js"></script>
+    <!--[if lt IE 7]>
+      <style>
+        .section {
+          width: 780px;
+        }
+        .post-content img {
+          width: 100%;
+        }
+        .jupe pre {
+          width: 100%;
+        }
+      </style>
+    <![endif]-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-57557739-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-57557739-5');
+    </script>
+  </head>
+</html>
+
+<body>
+
+<div class="section-wrap section-main">
+	<div class="section">
+		<div class="header">
+	<h1 class="logo">
+		<a href="/">于江水</a>
+	</h1>
+	<p class="social-links">
+		<a href="http://www.weibo.com/yujiangshui">Weibo</a>
+		\
+		<a href="https://twitter.com/yujiangshui">Twitter</a>
+		\
+		<a href="https://github.com/yujiangshui">Github</a>
+		\
+		<a href="/atom.xml">RSS</a>
+	</p>
+</div>
+		<div class="main">
+			<div class="jupe main-body">
+  <div class="post-content">
+    <h1 class="post-title">table 那些事</h1>
+    <div class="post-meta">
+      <span class="post-time">2014.03.04</span>
+      <div class="post-cats">
+        <a class="post-cats-item-link" href="/category/HTML/">HTML</a>
+      </div>
+    </div>
+    <div class="post-toc">
+      <div class="toc-title">TOC</div>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#table-的使用范围"><span class="toc-number">1.</span> <span class="toc-text">table 的使用范围</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#table-的-HTML-结构"><span class="toc-number">2.</span> <span class="toc-text">table 的 HTML 结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#table-标签"><span class="toc-number">2.1.</span> <span class="toc-text">table 标签</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#table-属性"><span class="toc-number">2.1.1.</span> <span class="toc-text">table 属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#table-的渲染过程"><span class="toc-number">2.1.2.</span> <span class="toc-text">table 的渲染过程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#caption-标签"><span class="toc-number">2.2.</span> <span class="toc-text">caption 标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#thead、tfoot、tbody-标签"><span class="toc-number">2.3.</span> <span class="toc-text">thead、tfoot、tbody 标签</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#thead-标签"><span class="toc-number">2.3.1.</span> <span class="toc-text">thead 标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tfoot-标签"><span class="toc-number">2.3.2.</span> <span class="toc-text">tfoot 标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tbody-标签"><span class="toc-number">2.3.3.</span> <span class="toc-text">tbody 标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#tfoot-要放在-tbody-结构的上面"><span class="toc-number">2.3.4.</span> <span class="toc-text">tfoot 要放在 tbody 结构的上面</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tr-标签"><span class="toc-number">2.4.</span> <span class="toc-text">tr 标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#th、td-标签"><span class="toc-number">2.5.</span> <span class="toc-text">th、td 标签</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#th-标签"><span class="toc-number">2.5.1.</span> <span class="toc-text">th 标签</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#td-标签"><span class="toc-number">2.5.2.</span> <span class="toc-text">td 标签</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#table-的-CSS-设计模式"><span class="toc-number">3.</span> <span class="toc-text">table 的 CSS 设计模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#居中"><span class="toc-number">3.1.</span> <span class="toc-text">居中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#table-常用的-CSS-属性及效果"><span class="toc-number">3.2.</span> <span class="toc-text">table 常用的 CSS 属性及效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#table-的布局模式"><span class="toc-number">3.3.</span> <span class="toc-text">table 的布局模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#table-的响应式处理"><span class="toc-number">4.</span> <span class="toc-text">table 的响应式处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#隐藏掉不需要的列。"><span class="toc-number">4.1.</span> <span class="toc-text">隐藏掉不需要的列。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#overflow-产生滚动条"><span class="toc-number">4.2.</span> <span class="toc-text">overflow 产生滚动条</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#修改-display-重新布局"><span class="toc-number">4.3.</span> <span class="toc-text">修改 display 重新布局</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他方法"><span class="toc-number">4.4.</span> <span class="toc-text">其他方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#table-的可访问性和可用性处理"><span class="toc-number">5.</span> <span class="toc-text">table 的可访问性和可用性处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#保证基本良好完整的-HTML-结构"><span class="toc-number">5.1.</span> <span class="toc-text">保证基本良好完整的 HTML 结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#声明表格的-header"><span class="toc-number">5.2.</span> <span class="toc-text">声明表格的 header</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#做道练习题吧"><span class="toc-number">6.</span> <span class="toc-text">做道练习题吧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#扩展阅读和参考资料"><span class="toc-number">7.</span> <span class="toc-text">扩展阅读和参考资料</span></a></li></ol>
+    </div>
+    <p>table 这个 HTML 标签，是一个很有传奇色彩的标签。它经历过大起大落，走过巅峰，又被人深深唾弃，但仍然不气不馁，在 EDM网页 、居中、数据展示等需求中发挥着不可替代的作用。很多人认为那就是个用 DW 拖拽出来的结构，太简单了，却无法手写出一个完整符合语义性的表单结构。</p>
+<a id="more"></a>
+<p>所以，今天就来好好研究一下这个 table。</p>
+<h2 id="table-的使用范围"><a href="#table-的使用范围" class="headerlink" title="table 的使用范围"></a>table 的使用范围</h2><p>学习 table 标签之前，显然要先明白应该在什么地方使用 table。</p>
+<p>由于 table 便于可视化的布局，使用诸如 DW 这样的工具就可以“画”出来，使用 PS 也可以直接导出切图。兼容性好，即便是低端浏览器也不会遇到错位情况。不需要 CSS 就有丰富的外观设置等等特性。导致 CSS 不发达的几年前，网络上到处都是使用 table 布局的网站。后来 CSS 发展到足够应用了，table 所有的种种弊端显然不再适合用来布局。于是有些人又谈 table 色变，唯恐自己项目里面出现 table。其实 table 有一些不可替代的作用：</p>
+<ul>
+<li><strong>承载数据</strong>。显然，表格的产生，就是为了更好的存放和显示数据。如果需要在网页中显示一个数据列表，显然需要用到 table。</li>
+<li><strong>EDM 网页</strong>。EDM 就是电子邮件营销，往别人的邮箱里发送邮件。由于邮箱的服务商会做出一些限制，再加上接收邮件的客户端能力的差异，导致日常的网页无法用在 EDM 上。而 table 的一些特性，显然最符合 EDM 的需求。</li>
+<li><strong>居中等 hack 用法</strong>。table 的特性可以及其方便的垂直和横向居中里面的内容，而不需要使用 hack 等。</li>
+</ul>
+<h2 id="table-的-HTML-结构"><a href="#table-的-HTML-结构" class="headerlink" title="table 的 HTML 结构"></a>table 的 HTML 结构</h2><p>还是先从 table 本身的 HTML 结构入手吧。无论是多好的资料，都是经过二次加工的资料，或多或少都会有点误差或者残缺的东西。想要了解完整的 table 的 HTML 结构，显然要去看一下 <a href="http://www.w3.org/TR/1999/REC-html401-19991224/struct/tables.html" target="_blank" rel="noopener">W3C HTML4 文档中的 tables 章节</a>。但是文档也有一些坏处，里面有些标签已经被废弃，涉及视觉的那些属性，也不再赞成使用（使用 CSS 来替代），下面就筛选出一些必要的标签和属性来说一下。</p>
+<h3 id="table-标签"><a href="#table-标签" class="headerlink" title="table 标签"></a>table 标签</h3><h4 id="table-属性"><a href="#table-属性" class="headerlink" title="table 属性"></a>table 属性</h4><p><code>&lt;table&gt;</code> 就是表示表格的标签，它主要有 <code>summary</code> 属性，用来表示当前表格的内容概要。主要是用来给屏幕阅读器和视觉有障碍的人用的。至于其他属性，都不推荐使用。</p>
+<h4 id="table-的渲染过程"><a href="#table-的渲染过程" class="headerlink" title="table 的渲染过程"></a>table 的渲染过程</h4><p>当浏览器遇到 table 的时候，解析渲染的步骤如下：</p>
+<ul>
+<li>确保 <code>summary</code> 发挥作用。每个 table 都应该提供这样一个属性来让视觉障碍阅读器可以获取相关信息。</li>
+<li>如果 <code>&lt;caption&gt;</code> 标签定义了，渲染这个标题。</li>
+<li>如果表单定义了头部（header）和尾部（footer），那么先渲染头部，再渲染尾部。因为头部和尾部通常包含重要的信息，所以需要先渲染解析。例如，如果表单的“客户端”不是浏览器，而是打印机这类的，当表格太长的时候，一张纸打印不开，就需要分开。这时候虽然表格分开了，比较智能先进的打印机，会在每一页的上面插入表格头，下面插入表格尾部。</li>
+<li>计算表单中的列数。表格的行数当然就等于表格中 <code>&lt;tr&gt;</code> 标签的数量了。</li>
+<li>通过 <code>column group</code> 声明来划分列组。</li>
+<li>渲染单元格，一行一行的渲染在 表格头 和 表格尾 之间，并且通过 CSS 的相关声明加上样式。</li>
+</ul>
+<h3 id="caption-标签"><a href="#caption-标签" class="headerlink" title="caption 标签"></a>caption 标签</h3><p><code>&lt;caption&gt;</code> 标签的含义是当前表格的标题，通常是 <code>summary</code> 属性的更浓缩版。</p>
+<p>它位于 <code>&lt;table&gt;</code> 结构里面的最顶端，因为按照上面的解析渲染步骤可知，这个标签需要优先解析。</p>
+<h3 id="thead、tfoot、tbody-标签"><a href="#thead、tfoot、tbody-标签" class="headerlink" title="thead、tfoot、tbody 标签"></a>thead、tfoot、tbody 标签</h3><p>这三个标签比较类似，放在一起说。其中比较常用到的就是 <code>&lt;tbody&gt;</code> ，但另外两个也是不可或缺的。</p>
+<h4 id="thead-标签"><a href="#thead-标签" class="headerlink" title="thead 标签"></a>thead 标签</h4><p>表示表格的头部相关信息。如果是一份旅游出行名单的话，通常就是 编号、姓名、联系电话和地址等。用来表示当前列的内容是什么。</p>
+<h4 id="tfoot-标签"><a href="#tfoot-标签" class="headerlink" title="tfoot 标签"></a>tfoot 标签</h4><p>表示表格的底部信息。如果是一份旅游出行名单的话，就是一些 签名、领队联系人、日期 等等信息。</p>
+<h4 id="tbody-标签"><a href="#tbody-标签" class="headerlink" title="tbody 标签"></a>tbody 标签</h4><p>表示表格的主体信息内容，如果是一份旅游出行名单的话，那内容就是一行一行的个人信息。</p>
+<h4 id="tfoot-要放在-tbody-结构的上面"><a href="#tfoot-要放在-tbody-结构的上面" class="headerlink" title="tfoot 要放在 tbody 结构的上面"></a>tfoot 要放在 tbody 结构的上面</h4><p>这是一份大概的表单结构：</p>
+<pre><code>&lt;table summary=&quot;这是一个关于旅客的个人资料信息登记表格，主要内容是XX旅行计划的旅客个人资料以及领队电话。&quot;&gt;
+    &lt;caption&gt;旅客统计&lt;/caption&gt;
+    &lt;thead&gt;
+        ........
+    &lt;/thead&gt;
+    &lt;tfoot&gt;
+        ........
+    &lt;/tfoot&gt;
+    &lt;tbody&gt;
+        ........
+    &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre><p>比较容易产生疑问的地方就在于，为什么 foot 却在 body 上面？再回头看看表格的渲染过程，就明白了，<code>&lt;tfoot&gt;</code> 中往往携带比较重要的信息，需要优先让客户端接收处理，为了避免 <code>&lt;tbody&gt;</code> 内容太多导致长时间无法加载 <code>&lt;tfoot&gt;</code> 信息，所以在结构上放在上面。</p>
+<p>但是浏览器在渲染的时候，还是会将 tfoot 的内容放在 tbody 的下面。</p>
+<h3 id="tr-标签"><a href="#tr-标签" class="headerlink" title="tr 标签"></a>tr 标签</h3><p><code>&lt;tr&gt;</code> 标签表示一行。包裹在里面的单元格处于一行。</p>
+<h3 id="th、td-标签"><a href="#th、td-标签" class="headerlink" title="th、td 标签"></a>th、td 标签</h3><p>这两个标签就是承载信息的单元格，它们有以下常用的属性：</p>
+<ul>
+<li><strong>scope</strong> 表明当前单元格保存的是所在行或所在列的“头部说明”信息。属性值主要有：row 和 col。分别表示当前单元格保存的内容是当前 行 和 列 中的重要头部信息。</li>
+<li><strong>abbr</strong> 这个属性提供了当前单元格内容的缩写。后面会提到。</li>
+<li><strong>rowspan</strong> 表示当前单元格占几行高度，默认值是 1，表示占一行。</li>
+<li><strong>colspan</strong> 表示当前单元格占几列宽度，默认值是 1，表示占一列。这两天属性配合使用来实现合并单元格的功能。</li>
+</ul>
+<h4 id="th-标签"><a href="#th-标签" class="headerlink" title="th 标签"></a>th 标签</h4><p><code>&lt;th&gt;</code> 标签保存的内容，是当前列或者当前行的“头部说明”信息。通常在 <code>&lt;thead&gt;</code> 结构中的单元格，就要用到 <code>&lt;th&gt;</code> 来实现。如果是一个二维表格，在 <code>&lt;tbody&gt;</code> 中，左数第一个单元格保存的往往是当前行中的“头部说明”，也要使用该标签。</p>
+<h4 id="td-标签"><a href="#td-标签" class="headerlink" title="td 标签"></a>td 标签</h4><p><code>&lt;td&gt;</code> 标签就是最普通的单元格，用来保存各种表格中需要的信息。</p>
+<p>table 的 HTML 结构和相关属性，基本就上面那些，很多已经被废弃或者不推荐使用。其中单元格的属性 <strong>rowspan</strong> 和 <strong>colspan</strong> 用起来稍微复杂一些，多写一下就明白了，后面会举一个例子，这里不再赘述。</p>
+<h2 id="table-的-CSS-设计模式"><a href="#table-的-CSS-设计模式" class="headerlink" title="table 的 CSS 设计模式"></a>table 的 CSS 设计模式</h2><h3 id="居中"><a href="#居中" class="headerlink" title="居中"></a>居中</h3><p>table 居中是一个低成本效果好的方法，因为使用 CSS 来进行垂直居中同时要考虑到兼容性，实在是比较麻烦的事情，而 table 可以激活 <code>vertical-align</code> 属性，将其赋值 <code>middle</code> 即可将其中内容垂直居中。至于水平居中，就可以根据具体情况，使用 <code>text-align: center;</code> 或者对外框 <code>margin: 0 auto;</code> 来实现。</p>
+<p>具体用法请看：<a href="http://sofish.de/1909" target="_blank" rel="noopener">垂直居中的几种实现方法</a>，不再赘述。</p>
+<h3 id="table-常用的-CSS-属性及效果"><a href="#table-常用的-CSS-属性及效果" class="headerlink" title="table 常用的 CSS 属性及效果"></a>table 常用的 CSS 属性及效果</h3><p>常规属性：</p>
+<ul>
+<li><strong>background</strong> 是正常的，都可以用。</li>
+<li><strong>text-align、text-indent</strong> 等文字相关属性，只对单元格有效，但是可以<strong>被继承</strong>。*   <strong>margin</strong> 只在 table 上有效，对 td th 等等无效。</li>
+<li><strong>border</strong> 只在 table、td、th、caption 有效，对 thead、tbody、tfoot、tr 等无效。</li>
+<li><strong>padding、overflow、vertical-align</strong> 只对单元格有效。</li>
+<li><strong>width</strong> 在表格、单元格和列上有效，重要的布局属性，后面详细说。</li>
+<li><strong>height</strong> 在表格、行和单元格上有效，但其值只能作为最小高度，因为内容总是会扩大单元格、行以及表格的高度。如果使用 display 将其改成 block 块级元素，就会溢出而不会扩大。</li>
+</ul>
+<p>重点属性：</p>
+<ul>
+<li><strong>vertical-align</strong> 用在单元格里很神奇的效果，有三种比较特殊的设置方式：top、middle 和 bottom，很明显对应表格顶部、中间和底部。神奇之处就在于，它们会将单元格里面的多行内容都进行对齐。这也是上面居中实现的原理。与之相媲美的 position 方式的居中会脱离文档流，而这种方式却不会。</li>
+<li><strong>border-collapse</strong> 设置 table 是分开的边框还是合并起来。table 默认的样式是分开的边框，table 和里面 th、td 的边框之间有缝隙。而设置 <code>border-collapse:collapse;</code> 可以去掉空隙，合并起来。</li>
+<li><strong>border-spacing</strong> 设置边框之间缝隙的宽度，在 table 默认或者 <code>border-collapse:separate;</code> 的时候才有效。<a href="http://www.w3school.com.cn/tiy/t.asp?f=csse_table_border-spacing" target="_blank" rel="noopener">border-spacing 具体 demo</a></li>
+<li><strong>caption-side</strong> 设置 table caption 的位置，有两个值 top（默认）和 bottom，分别放在表格的上面和下面。</li>
+<li><strong>empty-cells</strong> 设置是否显示表格中的空单元格，有两个值 show（默认）和 hide，兼容性 IE8+ 。注意，使用此方法的 hide 隐藏，不会像 display 那样，从文档流中去掉，而是像 <code>visibility:hidden;</code> 那样，保留占位。<a href="http://www.w3school.com.cn/tiy/t.asp?f=csse_table_empty-cells" target="_blank" rel="noopener">empty-cells 具体 demo</a></li>
+<li><strong>table-layout</strong> 设置 table 显示单元格、行、列等效果的规则。这是最重要的属性，也是最复杂的东西，也是本文重点要讲的。</li>
+</ul>
+<h3 id="table-的布局模式"><a href="#table-的布局模式" class="headerlink" title="table 的布局模式"></a>table 的布局模式</h3><p>大体有四个模式，每个模式下对 th、td 的设置和改变，也略有不同。为了简洁明了，我做了一个 <a href="http://codepen.io/yujiangshui/full/blvEp" target="_blank" rel="noopener">table 的设计模式 codepen</a>，欢迎打开：<a href="http://codepen.io/yujiangshui/full/blvEp" target="_blank" rel="noopener">http://codepen.io/yujiangshui/full/blvEp</a> ，这里不再赘述了。</p>
+<p>注意查看表单上的挂的类，和具体呈现的效果。我在对应 table 上面也做了一点解析。</p>
+<p>多说一句，codepen 真是一个很好的在线 Demo 工具，可以直接编写 Sass、less、coffeescript 等，它会帮你自动解析编译。然后<strong>支持 Emmet</strong> 的语法和操作，简直就像在用 sublime text 一样。像表格这种结构变态的东西，不用 Emmet 而用手写结构，简直要疯掉了。</p>
+<h2 id="table-的响应式处理"><a href="#table-的响应式处理" class="headerlink" title="table 的响应式处理"></a>table 的响应式处理</h2><p>table 的自动拉伸特性，比较容易适应各种宽度，但是响应式处理起来还是有一定问题的。因为它虽然可以根据内容和外框的宽度自己调整，但是会缩小到内容宽度，有一个最小宽度值。如果这个宽度比手机屏幕宽度还宽，就会发生溢出。而 table 的数据是一行一行的，不同于其他元素可以取消 float 之类的使其上下排列等。</p>
+<p>目前主要有以下几种解决方法：</p>
+<h3 id="隐藏掉不需要的列。"><a href="#隐藏掉不需要的列。" class="headerlink" title="隐藏掉不需要的列。"></a>隐藏掉不需要的列。</h3><p>既然因为宽度太宽导致出现溢出现象，那么想办法减少宽度就好了。表格中不太重要的列，完全可以使用 <code>display:none;</code> 来隐藏掉，这样就减少宽度达到目的。</p>
+<p>不过会有表格数据损失，对于数据完整性要求严格的表格，显然不合适。</p>
+<h3 id="overflow-产生滚动条"><a href="#overflow-产生滚动条" class="headerlink" title="overflow 产生滚动条"></a>overflow 产生滚动条</h3><p>表格太宽导致溢出，我们可以在外面包裹一层 div 之类的结构，为 div 设置一下宽度（百分比等）和 <code>overflow: scroll;</code>。然后对 table 设置一个固定的宽度，使其在保证数据展示友好的情况下，有一个固定的宽度。</p>
+<p>这样，div 就会产生一个横向的滚动条，手机等设备上就可以通过横向滑动看到完整的表格。</p>
+<p>这个方案应该是最好的，但是前提是你可以灵活的设置结构。一般在文章内插入的表格，使用这个方法比较合适，如果是固定的功能性的页面，就只能用下面的方法了。</p>
+<h3 id="修改-display-重新布局"><a href="#修改-display-重新布局" class="headerlink" title="修改 display 重新布局"></a>修改 display 重新布局</h3><p>最近的一个团队的电子商务网站，使用 woocommerce 提供电子商务功能，其中的购物车的响应式处理是比较啰嗦麻烦的地方。因为它用到了表格，数据比较多，而且不能去掉某一部分内容，同时还需要按照设计稿上的要求来。</p>
+<p>这样只能拿出杀手锏，使用 display 将 table、th、td 等等，全都设置成 block，这样就可以按照平时的布局那样，使用 float 或者 position 等等来定位。虽然会产生一些冗余代码，但也没有更好的办法了。</p>
+<p>还需要注意的是，因为 thead 里面的 th 在响应式之后消失了，所以需要在对应列的 td 使用类似</p>
+<pre><code>td.price:before{
+    content: &apos;Price: &apos;;
+}
+</code></pre><p>这样，才能在响应式界面，仍然让浏览者识别出来对应项数据。</p>
+<p>下面就是最近项目的响应式处理示意：</p>
+<p><img src="http://jiangshui.b0.upaiyun.com/blog/2014/03/table0.gif" alt="table 的响应式处理"></p>
+<h3 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h3><ol>
+<li><a href="https://github.com/thx/cube" target="_blank" rel="noopener">cube</a> 项目，是一个 <strong>跨终端、响应式、低设计耦合的CSS解决方案</strong>，其中提出了<a href="https://github.com/thx/cube/blob/gh-pages/src/table.css" target="_blank" rel="noopener">一个解决响应式表格问题的的 CSS </a>。不过我还没有仔细看过他们的代码和实现工作原理。有兴趣的朋友可以去看一下。</li>
+<li>忘了是 XX.js 了，国外的产品，作者说是专门来解决响应式的 table 问题的。我看了之后很激动的打开测试，居然是这样的：当小分辨率设备访问 table 的时候，JS 将 table 移除然后留下一个类似“点击打开表格”的链接，点击之后，在新页面打开未经过修饰的 table。然后就流汗了，直接关掉，名字都没记住，太扯蛋了。</li>
+</ol>
+<p>如果你还有更好的思路，欢迎交流。</p>
+<h2 id="table-的可访问性和可用性处理"><a href="#table-的可访问性和可用性处理" class="headerlink" title="table 的可访问性和可用性处理"></a>table 的可访问性和可用性处理</h2><p>现在可访问性成为前端工程师的必备技能了，大家都能用的网站，才是好网站。下面谈谈 table 的可访问性和可用性处理。</p>
+<h3 id="保证基本良好完整的-HTML-结构"><a href="#保证基本良好完整的-HTML-结构" class="headerlink" title="保证基本良好完整的 HTML 结构"></a>保证基本良好完整的 HTML 结构</h3><p>就是最开始的那些，尽量编写 <code>summary</code> 属性，让屏幕阅读器可以获取表格的大体内容。添加 <code>&lt;caption&gt;</code>、<code>&lt;thead&gt;</code>、<code>&lt;tfoot&gt;</code>等标签并注意顺序。</p>
+<h3 id="声明表格的-header"><a href="#声明表格的-header" class="headerlink" title="声明表格的 header"></a>声明表格的 header</h3><p>前面第一部分提到的 th、td 的几个属性，其中 scope 和 abbr 就是两个有关可访问性和可用性的属性。</p>
+<p>例如下面这段来自 W3C 文档的示例代码：</p>
+<pre><code>&lt;TABLE border=&quot;1&quot; 
+       summary=&quot;This table charts the number of cups
+                of coffee consumed by each senator, the type 
+                of coffee (decaf or regular), and whether 
+                taken with sugar.&quot;&gt;
+&lt;CAPTION&gt;Cups of coffee consumed by each senator&lt;/CAPTION&gt;
+&lt;TR&gt;
+   &lt;TH scope=&quot;col&quot;&gt;Name&lt;/TH&gt;
+   &lt;TH scope=&quot;col&quot;&gt;Cups&lt;/TH&gt;
+   &lt;TH scope=&quot;col&quot; abbr=&quot;Type&quot;&gt;Type of Coffee&lt;/TH&gt;
+   &lt;TH scope=&quot;col&quot;&gt;Sugar?&lt;/TH&gt;
+&lt;TR&gt;
+   &lt;TD&gt;T. Sexton&lt;/TD&gt;
+   &lt;TD&gt;10&lt;/TD&gt;
+   &lt;TD&gt;Espresso&lt;/TD&gt;
+   &lt;TD&gt;No&lt;/TD&gt;
+&lt;TR&gt;
+   &lt;TD&gt;J. Dinnen&lt;/TD&gt;
+   &lt;TD&gt;5&lt;/TD&gt;
+   &lt;TD&gt;Decaf&lt;/TD&gt;
+   &lt;TD&gt;Yes&lt;/TD&gt;
+&lt;/TABLE&gt;
+</code></pre><p>其中可以看到，在最上面的一行 th 中添加了 scope 属性，值为 col ，意思就是当前这个 th 是当前列的 header。然后屏幕阅读辅助器等，就会根据这个属性，来组织信息提供给用户。而其中有个 Type of Coffee 比较长，还可以使用 abbr 属性来指定一个缩写词。</p>
+<p>scope 属性另外一个值 row ，很明显就是表明当前行中，被赋值的 th、td 是 header，保存了重要信息。</p>
+<h2 id="做道练习题吧"><a href="#做道练习题吧" class="headerlink" title="做道练习题吧"></a>做道练习题吧</h2><p>这是去年9月份 阿里巴巴校招 的一道<strong>仁者见仁智者见智</strong>的网申题，虽然给人很简单的感觉，但是真正有水平的人写出来的结构跟初学者一眼就能分清楚。</p>
+<p><img src="http://jiangshui.b0.upaiyun.com/blog/2014/03/table1.png" alt="table 测试题"></p>
+<p>怎么样，看完本文，来写一下结构吧！下面是我的答案：</p>
+<pre><code>&lt;table summary=&quot;杭州西湖三日游出行的人员名单，包括旅客编号、姓名、联系电话、和地址。&quot;&gt;
+    &lt;caption&gt;杭州西湖三日游出行名单&lt;/caption&gt;
+    &lt;thead&gt;
+        &lt;th scope=&quot;col&quot;&gt;编号&lt;/th&gt;
+        &lt;th scope=&quot;col&quot;&gt;姓名&lt;/th&gt;
+        &lt;th scope=&quot;col&quot;&gt;联系电话&lt;/th&gt;
+        &lt;th scope=&quot;col&quot;&gt;地址&lt;/th&gt;
+    &lt;/thead&gt;
+    &lt;tfoot&gt;
+        &lt;td colspan=&quot;4&quot;&gt;领队签字：&lt;/td&gt;
+    &lt;/tfoot&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;1&lt;/td&gt;
+            &lt;td&gt;Jamson&lt;/td&gt;
+            &lt;td&gt;123-45678&lt;/td&gt;
+            &lt;td&gt;XX市XX区XX号&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;2&lt;/td&gt;
+            &lt;td&gt;Grace&lt;/td&gt;
+            &lt;td&gt;123-45678&lt;/td&gt;
+            &lt;td&gt;XX市XX区XX号&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;3&lt;/td&gt;
+            &lt;td&gt;Dizzy&lt;/td&gt;
+            &lt;td&gt;123-45678&lt;/td&gt;
+            &lt;td&gt;XX市XX区XX号&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre><h2 id="扩展阅读和参考资料"><a href="#扩展阅读和参考资料" class="headerlink" title="扩展阅读和参考资料"></a>扩展阅读和参考资料</h2><ul>
+<li><a href="http://www.w3.org/TR/1999/REC-html401-19991224/struct/tables.html" target="_blank" rel="noopener">W3C HTML4 tables</a></li>
+<li><a href="http://book.douban.com/subject/20440003/" target="_blank" rel="noopener">《HTML5 与 CSS3 设计模式》</a></li>
+<li><a href="http://sofish.de/1909" target="_blank" rel="noopener">垂直居中的几种实现方法</a></li>
+<li><a href="http://webaim.org/blog/10-easy-accessibility-tips/" target="_blank" rel="noopener">10 Easy Accessibility Tips Anyone Can Use</a></li>
+<li><a href="http://thx.github.io/cube/" target="_blank" rel="noopener">Cube</a></li>
+<li><a href="http://blog.wpjam.com/series/frontend-develop-tool-emmet/" target="_blank" rel="noopener">前端开发神器 Emmet</a></li>
+</ul>
+
+  </div>
+  <div class="post-share">
+	<ul class="share-list">
+		<li><a class="icon icon-weibo" href="javascript:share.weibo();"><span>weibo</span></a></li>
+		<li><a class="icon icon-twitter" href="javascript:share.twitter();"><span>twitter</span></a></li>
+		<li><a class="icon icon-douban" href="javascript:share.douban();"><span>douban</span></a></li>
+		<li><a class="icon icon-qzone" href="javascript:share.qzone();"><span>qzone</span></a></li>
+	</ul>
+</div>
+</div>
+		</div>
+		<div class="footer">
+	<p class="left">&copy; Jiangshui 一个努力坚持中低质量原创的<a class="color-egg" href="/images/meinanzi.png">美男子</a>。生活不易，<a href="#">包养本人</a>。</p>
+	<p class="right">Base on <a href="https://github.com/yujiangshui/jiangshui-simple">Github</a> and <a href="http://hexo.io/">Hexo</a> .</p>
+</div>
+	</div>
+</div>
+
+</body>
+</html>

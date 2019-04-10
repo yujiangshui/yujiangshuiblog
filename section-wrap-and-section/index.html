@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta name="renderer" content="webkit">
+    
+    <title>section-wrap 和 section 的 HTML 结构和命名方式 | 于江水</title>
+    <meta name="description" content="命名是个老大难问题，特别是在做页面这块，需要先根据设计稿确定语义化的 HTML 结构并添加上对应的类等。后来我就总结了section-wrap &amp;gt; section这样的一套结构命名方式。一步步的来看。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="section-wrap 和 section 的 HTML 结构和命名方式">
+<meta property="og:url" content="http://yujiangshui.com/section-wrap-and-section/index.html">
+<meta property="og:site_name" content="于江水">
+<meta property="og:description" content="命名是个老大难问题，特别是在做页面这块，需要先根据设计稿确定语义化的 HTML 结构并添加上对应的类等。后来我就总结了section-wrap &amp;gt; section这样的一套结构命名方式。一步步的来看。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://jiangshui.b0.upaiyun.com/blog/2014/03/section0.jpg">
+<meta property="og:image" content="http://jiangshui.b0.upaiyun.com/blog/2014/03/section1.jpg">
+<meta property="og:image" content="http://jiangshui.b0.upaiyun.com/blog/2014/03/section2.jpg">
+<meta property="og:image" content="http://jiangshui.b0.upaiyun.com/blog/2014/03/section3.jpg">
+<meta property="og:image" content="http://jiangshui.b0.upaiyun.com/blog/2014/03/section4.jpg">
+<meta property="og:updated_time" content="2019-04-10T00:17:52.185Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="section-wrap 和 section 的 HTML 结构和命名方式">
+<meta name="twitter:description" content="命名是个老大难问题，特别是在做页面这块，需要先根据设计稿确定语义化的 HTML 结构并添加上对应的类等。后来我就总结了section-wrap &amp;gt; section这样的一套结构命名方式。一步步的来看。">
+<meta name="twitter:image" content="http://jiangshui.b0.upaiyun.com/blog/2014/03/section0.jpg">
+<meta name="twitter:creator" content="@yujiangshui">
+<meta property="fb:admins" content="yujiangshui"> 
+    <link rel="alternate" href="/atom.xml" title="于江水" type="application/rss+xml">
+    
+
+    <link rel="stylesheet" href="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/css/style.css">
+    <script data-main="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/js/build" src="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/js/require.js"></script>
+    <!--[if lt IE 7]>
+      <style>
+        .section {
+          width: 780px;
+        }
+        .post-content img {
+          width: 100%;
+        }
+        .jupe pre {
+          width: 100%;
+        }
+      </style>
+    <![endif]-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-57557739-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-57557739-5');
+    </script>
+  </head>
+</html>
+
+<body>
+
+<div class="section-wrap section-main">
+	<div class="section">
+		<div class="header">
+	<h1 class="logo">
+		<a href="/">于江水</a>
+	</h1>
+	<p class="social-links">
+		<a href="http://www.weibo.com/yujiangshui">Weibo</a>
+		\
+		<a href="https://twitter.com/yujiangshui">Twitter</a>
+		\
+		<a href="https://github.com/yujiangshui">Github</a>
+		\
+		<a href="/atom.xml">RSS</a>
+	</p>
+</div>
+		<div class="main">
+			<div class="jupe main-body">
+  <div class="post-content">
+    <h1 class="post-title">section-wrap 和 section 的 HTML 结构和命名方式</h1>
+    <div class="post-meta">
+      <span class="post-time">2014.03.19</span>
+      <div class="post-cats">
+        <a class="post-cats-item-link" href="/category/HTML/">HTML</a>
+      </div>
+    </div>
+    <div class="post-toc">
+      <div class="toc-title">TOC</div>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#传统的结构命名"><span class="toc-number">1.</span> <span class="toc-text">传统的结构命名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#section-wrap-和-section-的结构和命名方式"><span class="toc-number">2.</span> <span class="toc-text">section-wrap 和 section 的结构和命名方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#命名和结构的语义性"><span class="toc-number">2.1.</span> <span class="toc-text">命名和结构的语义性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结构的-CSS-编写方法"><span class="toc-number">2.2.</span> <span class="toc-text">结构的 CSS 编写方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#高效的应用这种编写方式"><span class="toc-number">2.3.</span> <span class="toc-text">高效的应用这种编写方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用这种命名方式的优势和意义"><span class="toc-number">3.</span> <span class="toc-text">使用这种命名方式的优势和意义</span></a></li></ol>
+    </div>
+    <p>命名是个老大难问题，特别是在做页面这块，需要先根据设计稿确定语义化的 HTML 结构并添加上对应的类等。后来我就总结了<code>section-wrap &gt; section</code>这样的一套结构命名方式。一步步的来看。</p>
+<a id="more"></a>
+<h2 id="传统的结构命名"><a href="#传统的结构命名" class="headerlink" title="传统的结构命名"></a>传统的结构命名</h2><p>一般的网站设计稿来说，正文主体部分有一个宽度并且在页面中居中。所以通常的做法就是用个 <code>wrapper</code> 之类的类或 ID ，赋值宽度和 <code>margin: 0 auto;</code> 使其居中，然后再在里面继续做结构。例如下面这个设计稿</p>
+<p><img src="http://jiangshui.b0.upaiyun.com/blog/2014/03/section0.jpg" alt></p>
+<p>这是去年6月份左右做的项目，是比较传统的设计稿，中间内容居中，然后再在 <code>wrapper</code> 中添加诸如 <code>header、nav、main 和 footer</code> 之类的结构排列下来。大体的框架如下：</p>
+<p><img src="http://jiangshui.b0.upaiyun.com/blog/2014/03/section1.jpg" alt></p>
+<p>使用 <code>main</code> 类使其居中，再在里面写结构，很正常的做法没有什么问题。然后后来遇到很多类似这样结构的设计稿：</p>
+<p><img src="http://jiangshui.b0.upaiyun.com/blog/2014/03/section2.jpg" alt></p>
+<p>同样也是主体居中，但不同的是，导航条等区域都是沾满全宽的，这时候再用上面那种外框包裹主体内容的结构，显然已经不合适了。于是就可以将上面的 header 和 nav 两块区域从居中的 wrapper 结构中拿出来，然后设置全宽，再在里面包裹一个居中块。底部也是这样处理，最后再给 body 设置一个背景颜色，就 OK 了。</p>
+<p>虽然同样能很好的实现，可是这样真的好吗？</p>
+<h2 id="section-wrap-和-section-的结构和命名方式"><a href="#section-wrap-和-section-的结构和命名方式" class="headerlink" title="section-wrap 和 section 的结构和命名方式"></a>section-wrap 和 section 的结构和命名方式</h2><p>没有一套明确的命名方式，就感觉比较乱，每次命名都乱七八糟的，效率低下。后来仔细思考总结出了 section-wrap 和 section 的结构命名方式来处理，直接看下图</p>
+<p><img src="http://jiangshui.b0.upaiyun.com/blog/2014/03/section3.jpg" alt></p>
+<p>很简单吧，就是将每一个区域分离出来，设置 <code>section-wrap section-*</code> 这样的结构，然后再在内部设置一个 <code>section</code> 包裹块，用来居中处理。下面详细的来解释一下：</p>
+<h3 id="命名和结构的语义性"><a href="#命名和结构的语义性" class="headerlink" title="命名和结构的语义性"></a>命名和结构的语义性</h3><p>如果是头部的话，会设置关键词 <code>header</code>，那么就会生成下面这种结构</p>
+<pre><code>&lt;div class=&quot;section-wrap section-header&quot;&gt;
+    &lt;div class=&quot;section&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+</code></pre><p>其实这种命名的灵感还是来自 HTML5 中的 <code>&lt;section&gt;</code> 标签，但为什么不为了语义性而直接使用 <code>&lt;section&gt;</code> 标签？原因有二：</p>
+<ol>
+<li><code>&lt;section&gt;</code> 标签中需要带有 <code>&lt;hn&gt;</code> 标签来表明这个 section 的主要内容，设计稿中通常不会给你说明，自己编写还需要根据区域内容编写，然后隐藏掉。</li>
+<li><code>&lt;section&gt;</code> 标签的兼容性问题，考虑到还需要额外加载脚本，还不如舍弃这点语义性的优势。</li>
+</ol>
+<p>然而，这种 <code>section-wrap section-header section</code> 比较符合人类的语义，一眼看去，就会明白这块结构是一个独立的块，而且是 header 区域内容。</p>
+<h3 id="结构的-CSS-编写方法"><a href="#结构的-CSS-编写方法" class="headerlink" title="结构的 CSS 编写方法"></a>结构的 CSS 编写方法</h3><p><code>section-wrap</code> 这个类其实是没有太大必要的，因为每个区域需要靠自定义的 <code>section-header</code> 这个类来规划。但是仍然保留 <code>section-wrap</code> 来进行全局的“意外的”样式修改处理，对它的定义将会应用在每一个区域中。</p>
+<p><code>section-*</code> 就是来划分不同区域并且进行具体样式编写用的。用它作为一个类似“命名空间”的分割，这样即便是在不同的区域中相同的结构，也可以被灵活的定义成不同的样式而不会产生冲突。这样就可以减少命名的负担，你甚至可以在不同的区域内使用相同的命名，减少命名结构给你脑细胞带来的负担。</p>
+<p><code>section</code> 是该结构的主体部分，显然，直接在全局的水平上为它定义：</p>
+<pre><code>.section{
+    width: 960px;
+    margin: 0 auto;
+    @extend .clearfix;
+}
+</code></pre><p>根据设计稿的宽度定义这里的 <code>section</code> 并且使其居中和清除浮动，这样就创建了一个比较合理的主体包裹结构。</p>
+<p>下一步就是在 <code>section</code> 中进一步的按照设计稿的要求来编写结构和内容了，这里不再赘述。</p>
+<h3 id="高效的应用这种编写方式"><a href="#高效的应用这种编写方式" class="headerlink" title="高效的应用这种编写方式"></a>高效的应用这种编写方式</h3><p>使用 Emmet 的话，可以直接复制下面这行代码，然后添加一下 <code>section</code> 的特殊名字摁下 TAB 键就可以了：</p>
+<pre><code>.section-wrap.section-header&gt;.section
+.section-wrap.section-&gt;.section
+</code></pre><p>这行代码已经添加进 <a href="https://github.com/yujiangshui/ysass/blob/master/html/index.html" target="_blank" rel="noopener">ysass</a> 有兴趣也可以直接用 <a href="https://github.com/yujiangshui/ysass" target="_blank" rel="noopener">ysass</a> 来当模板。</p>
+<p>如果你也用 Sass、Less 这类预处理编译器的话，一般就可以写出下面这种代码</p>
+<p><img src="http://jiangshui.b0.upaiyun.com/blog/2014/03/section4.jpg" alt></p>
+<p>使模块更加清晰。</p>
+<h2 id="使用这种命名方式的优势和意义"><a href="#使用这种命名方式的优势和意义" class="headerlink" title="使用这种命名方式的优势和意义"></a>使用这种命名方式的优势和意义</h2><p>我已经在 10+ 个整站项目中应用该命名结构和功能，其中的设计稿也有很大的不同，但是这种结构都应对的不错，所以可以说它是具有一定灵活性的，可以适应大部分的设计需求。</p>
+<p>更重要的意义我觉得在于模块化，使用这种结构，明确的将各个部分进行了分割。这样在构造新的页面时，可以直接把需要的模块复制过来，而且也不必在乎 CSS 的冲突。例如：页面a 用到了 <code>section-header、section-nav、section-main、section-footer</code> 而 页面b 用到了相同的 <code>section-header、section-nav、section-footer</code>，直接从 页面a 复制过来即可，然后再新建一个 <code>section-content</code> 来处理 页面b 的主体结构。完全不需要考虑模块之间的相互影响。</p>
+<p>同时对于不同结构的等级也有一个明确的划分，使其结构层次关系更加合理明确。</p>
+<p>CSS 方面也是如此，使用 <code>section-*</code> 来做“命名空间”，即便是懒得命名使用相同的命名或结构，也可以定义不同的样式。同时全局的 <code>section-wrap</code> 和 <code>section</code> 类，让你修改尺寸或者做响应式的时候，可以做进一步的统一调整。</p>
+<p>高手在看这篇文章或许会笑，这么基础的东西也写的这么复杂，用这么多专业名词。毕竟我还是菜鸟，如果你有更好的建议或者经验，欢迎讨论分享~</p>
+
+  </div>
+  <div class="post-share">
+	<ul class="share-list">
+		<li><a class="icon icon-weibo" href="javascript:share.weibo();"><span>weibo</span></a></li>
+		<li><a class="icon icon-twitter" href="javascript:share.twitter();"><span>twitter</span></a></li>
+		<li><a class="icon icon-douban" href="javascript:share.douban();"><span>douban</span></a></li>
+		<li><a class="icon icon-qzone" href="javascript:share.qzone();"><span>qzone</span></a></li>
+	</ul>
+</div>
+</div>
+		</div>
+		<div class="footer">
+	<p class="left">&copy; Jiangshui 一个努力坚持中低质量原创的<a class="color-egg" href="/images/meinanzi.png">美男子</a>。生活不易，<a href="#">包养本人</a>。</p>
+	<p class="right">Base on <a href="https://github.com/yujiangshui/jiangshui-simple">Github</a> and <a href="http://hexo.io/">Hexo</a> .</p>
+</div>
+	</div>
+</div>
+
+</body>
+</html>

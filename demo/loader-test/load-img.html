@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<div id="info"></div>
+
+<script>
+(function() {
+
+  var url = "http://yujiangshui.com/images/avatar.png",
+      body = document.getElementsByTagName('body')[0];
+      link = document.createElement('img');
+
+  link.src = url;
+  body.appendChild(link);
+
+  var info = document.getElementById('info');
+  function output (str) {
+    info.innerHTML += str + '<br>';
+  }
+
+  // 监听资源加载
+  // #1
+  link.onload = function () {
+    output('onload 【有效】');
+  }
+  // #2
+  if (link.addEventListener) {
+    link.addEventListener('load', function() {
+      output("addEventListener 监听 load 事件【有效】");
+    }, false);
+  }
+  // #3
+  link.onreadystatechange = function() {
+    var state = link.readyState;
+    if (state === 'loaded' || state === 'complete') {
+      link.onreadystatechange = null;
+      output("onreadystatechange 监听加载【有效】");
+    }
+  };
+
+
+})();
+</script>
+</body>
+</html>

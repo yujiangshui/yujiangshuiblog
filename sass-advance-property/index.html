@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta name="renderer" content="webkit">
+    
+    <title>Sass 进阶 | 于江水</title>
+    <meta name="description" content="先简单的说一下 Sass 这个东西。CSS 是一些非常基础简单得语句的组合，既然简单的语句，就不可避免的有很多重复，冗余的东西。而且没有传统编程语言变量、控制语句等高级特性，所以造成了 CSS 编写低效，往往需要通过查找替换、大量复制来修改或者编写。 Sass 就是用来弥补这个缺陷，为 CSS 提供额外的高级功能，使其开发更加方便快捷，更加方便管理。所以你需要使用 Sass 的语法来编写代码，然后">
+<meta name="keywords" content="sass">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sass 进阶">
+<meta property="og:url" content="http://yujiangshui.com/sass-advance-property/index.html">
+<meta property="og:site_name" content="于江水">
+<meta property="og:description" content="先简单的说一下 Sass 这个东西。CSS 是一些非常基础简单得语句的组合，既然简单的语句，就不可避免的有很多重复，冗余的东西。而且没有传统编程语言变量、控制语句等高级特性，所以造成了 CSS 编写低效，往往需要通过查找替换、大量复制来修改或者编写。 Sass 就是用来弥补这个缺陷，为 CSS 提供额外的高级功能，使其开发更加方便快捷，更加方便管理。所以你需要使用 Sass 的语法来编写代码，然后">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-10T00:17:52.185Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sass 进阶">
+<meta name="twitter:description" content="先简单的说一下 Sass 这个东西。CSS 是一些非常基础简单得语句的组合，既然简单的语句，就不可避免的有很多重复，冗余的东西。而且没有传统编程语言变量、控制语句等高级特性，所以造成了 CSS 编写低效，往往需要通过查找替换、大量复制来修改或者编写。 Sass 就是用来弥补这个缺陷，为 CSS 提供额外的高级功能，使其开发更加方便快捷，更加方便管理。所以你需要使用 Sass 的语法来编写代码，然后">
+<meta name="twitter:creator" content="@yujiangshui">
+<meta property="fb:admins" content="yujiangshui"> 
+    <link rel="alternate" href="/atom.xml" title="于江水" type="application/rss+xml">
+    
+
+    <link rel="stylesheet" href="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/css/style.css">
+    <script data-main="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/js/build" src="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/js/require.js"></script>
+    <!--[if lt IE 7]>
+      <style>
+        .section {
+          width: 780px;
+        }
+        .post-content img {
+          width: 100%;
+        }
+        .jupe pre {
+          width: 100%;
+        }
+      </style>
+    <![endif]-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-57557739-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-57557739-5');
+    </script>
+  </head>
+</html>
+
+<body>
+
+<div class="section-wrap section-main">
+	<div class="section">
+		<div class="header">
+	<h1 class="logo">
+		<a href="/">于江水</a>
+	</h1>
+	<p class="social-links">
+		<a href="http://www.weibo.com/yujiangshui">Weibo</a>
+		\
+		<a href="https://twitter.com/yujiangshui">Twitter</a>
+		\
+		<a href="https://github.com/yujiangshui">Github</a>
+		\
+		<a href="/atom.xml">RSS</a>
+	</p>
+</div>
+		<div class="main">
+			<div class="jupe main-body">
+  <div class="post-content">
+    <h1 class="post-title">Sass 进阶</h1>
+    <div class="post-meta">
+      <span class="post-time">2014.06.02</span>
+      <div class="post-cats">
+        <a class="post-cats-item-link" href="/category/CSS/">CSS</a>
+      </div>
+    </div>
+    <div class="post-toc">
+      <div class="toc-title">TOC</div>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Sass-基础速成"><span class="toc-number">1.</span> <span class="toc-text">Sass 基础速成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sass-进阶"><span class="toc-number">2.</span> <span class="toc-text">Sass 进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Sass-的数据类型"><span class="toc-number">2.1.</span> <span class="toc-text">Sass 的数据类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sass-变量的作用域"><span class="toc-number">2.2.</span> <span class="toc-text">Sass 变量的作用域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#引用父级的-amp"><span class="toc-number">2.3.</span> <span class="toc-text">引用父级的 &amp;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#让一切变成字符串"><span class="toc-number">2.4.</span> <span class="toc-text">让一切变成字符串 #{}</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#神奇的四则运算"><span class="toc-number">2.5.</span> <span class="toc-text">神奇的四则运算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Sass-中的加法"><span class="toc-number">2.5.1.</span> <span class="toc-text">Sass 中的加法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Sass-中的除法"><span class="toc-number">2.5.2.</span> <span class="toc-text">Sass 中的除法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Sass-运算注意事项"><span class="toc-number">2.5.3.</span> <span class="toc-text">Sass 运算注意事项</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#深入理解-extend"><span class="toc-number">2.6.</span> <span class="toc-text">深入理解 @extend</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#extend-可扩展的选择器"><span class="toc-number">2.6.1.</span> <span class="toc-text">@extend 可扩展的选择器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#理解-extend-的扩展方法"><span class="toc-number">2.6.2.</span> <span class="toc-text">理解 @extend 的扩展方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#按需求输出的-extend"><span class="toc-number">2.6.3.</span> <span class="toc-text">按需求输出的 @extend</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#深入理解-mixin"><span class="toc-number">2.7.</span> <span class="toc-text">深入理解 @mixin</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#mixin-与-extend-区别"><span class="toc-number">2.7.1.</span> <span class="toc-text">@mixin 与 @extend 区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mixin-常用示例"><span class="toc-number">2.7.2.</span> <span class="toc-text">@mixin 常用示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mixin-传递多值参数"><span class="toc-number">2.7.3.</span> <span class="toc-text">@mixin 传递多值参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#向-mixin-传递内容"><span class="toc-number">2.7.4.</span> <span class="toc-text">向 @mixin 传递内容</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#灵活的控制语句"><span class="toc-number">2.8.</span> <span class="toc-text">灵活的控制语句</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#for-循环"><span class="toc-number">2.8.1.</span> <span class="toc-text">@for 循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#while-循环"><span class="toc-number">2.8.2.</span> <span class="toc-text">@while 循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#each-遍历循环"><span class="toc-number">2.8.3.</span> <span class="toc-text">@each 遍历循环</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sass-扩展资源"><span class="toc-number">3.</span> <span class="toc-text">Sass 扩展资源</span></a></li></ol>
+    </div>
+    <p>先简单的说一下 Sass 这个东西。CSS 是一些非常基础简单得语句的组合，既然简单的语句，就不可避免的有很多重复，冗余的东西。而且没有传统编程语言变量、控制语句等高级特性，所以造成了 CSS 编写低效，往往需要通过查找替换、大量复制来修改或者编写。</p>
+<p>Sass 就是用来弥补这个缺陷，为 CSS 提供额外的高级功能，使其开发更加方便快捷，更加方便管理。所以你需要使用 Sass 的语法来编写代码，然后通过 Sass 编译成具体的 CSS 代码，然后使用。所以这里就需要学习一下 Sass 的语法。</p>
+<a id="more"></a>
+<p>Sass 的语法是按照一定规则进行缩进然后编写有关 CSS 属性，与传统 CSS 代码差别较大，学习成本高，于是 Sass 就有了一套 Scss 语法规则。Scss 中你可以直接写 CSS，即便你不会 Sass 的语法特性，直接编写 CSS 代码也是可以通过编译的，你只需要保存成 <code>.scss</code> 后缀的文件名即可。</p>
+<p>这样学习成本就低很多。</p>
+<h2 id="Sass-基础速成"><a href="#Sass-基础速成" class="headerlink" title="Sass 基础速成"></a>Sass 基础速成</h2><p>本文讨论 Sass 进阶有关话题，不谈基础的使用方法和语法规则。网上已经有非常多的相关教程和资料了。</p>
+<p>如果你还不太了解，强烈推荐阮一峰老师写过文章 <a href="http://www.ruanyifeng.com/blog/2012/06/sass.html" target="_blank" rel="noopener">SASS用法指南</a>，拿出一个小时，认真看完，拿出编辑器，认真敲一遍，就可以在项目中尝试应用了。</p>
+<h2 id="Sass-进阶"><a href="#Sass-进阶" class="headerlink" title="Sass 进阶"></a>Sass 进阶</h2><h3 id="Sass-的数据类型"><a href="#Sass-的数据类型" class="headerlink" title="Sass 的数据类型"></a>Sass 的数据类型</h3><p>Sass 既然有了类似编程语言的功能，自然也就有了简单的数据类型。这里简单的介绍一些 Sass 中的数据类型，因为在后面的讨论中要用到有关的内容。</p>
+<p>Sass 中主要有六种数据类型：</p>
+<ul>
+<li>数字型 (e.g. 1.2, 13, 10px)</li>
+<li>文本型，单引号、双引号或者不加都可以 (e.g. “foo”, ‘bar’, baz)</li>
+<li>颜色值类型 (e.g. blue, #04a3f9, rgba(255, 0, 0, 0.5))</li>
+<li>布尔值 (e.g. true, false)</li>
+<li>nulls (e.g. null)</li>
+<li>值列表，通过空格或者逗号分割值 (e.g. 1.5em 1em 0 2em,Helvetica, Arial, sans-serif)</li>
+<li>值映射，一个关键词对应一个值 (e.g. (key1: value1, key2: value2))</li>
+</ul>
+<p>针对这些值都有不同的运算规则以及一些实用函数，最后两个主要用来传参等。后面会提到。</p>
+<h3 id="Sass-变量的作用域"><a href="#Sass-变量的作用域" class="headerlink" title="Sass 变量的作用域"></a>Sass 变量的作用域</h3><p>变量是最基础也最常用的东西，例如一段 CSS 中有很多相同的颜色值（例如 #050709），传统的 CSS 中，你就需要不断的去复制这个值，而在 Sass 中，你就可以先在对应文件头部（一般会有一个 var.scss 文件专门用来放置变量等）声明一个变量 <code>$co : #050709</code> 然后在后面需要使用这个颜色值的时候，就可以直接写上 <code>color: $co;</code> 就可以了。</p>
+<p>不仅仅需要输入的字符少了，而且根据规则起变量名让人更加易懂，此外后期需要修改这一种颜色的时候，只需要修改一下变量值即可全部修改，不需要搜索替换了。</p>
+<p>但是这里我们要讨论的是 Sass 中变量的作用域问题，即变量放置的位置先后、同名变量之间的相互影响问题。</p>
+<p>使用下面这段代码即可进行测试：</p>
+<pre><code>$width: 10px;
+
+.wrap{
+    /*$width: 20px;*/
+    .main{
+        width: $width;
+    }
+    .sidebar{
+        /*$width: 30px;*/
+        width: $width;
+    }
+    /*$width: 20px;*/
+}
+
+.content{
+    width: $width;
+}
+
+/*$width: 20px;*/
+</code></pre><p>进行编译之后输出（无视注释掉的东西）：</p>
+<pre><code>.wrap {
+  /*$width: 20px;*/
+  /*$width: 20px;*/
+}
+.wrap .main {
+  width: 10px;
+}
+.wrap .sidebar {
+  /*$width: 30px;*/
+  width: 10px;
+}
+
+.content {
+  width: 10px;
+}
+
+/*$width: 20px;*/
+</code></pre><p>现在是理所当然的常用模式，在最上面设置了变量为 10px，下面引用的地方全都变成了 10px。我们现在注释掉第一行的变量，然后解开最后一行的变量声明。</p>
+<p>结果编译报错不通过，提示 <code>Undefined variable</code> 说明变量声明必须在调用变量语句的上面，这样才能正确的调用变量。</p>
+<p>现在我们恢复到初始状态，开始测试变量是否具有类似块级作用域的特性。把上面所有注释取消掉：</p>
+<pre><code>$width: 10px;
+
+.wrap{
+    $width: 20px;
+    .main{
+        width: $width;
+    }
+    .sidebar{
+        $width: 30px;
+        width: $width;
+    }
+    $width: 20px;
+}
+
+.content{
+    width: $width;
+}
+</code></pre><p>编译后得到：</p>
+<pre><code>.wrap .main {
+  width: 20px;
+}
+.wrap .sidebar {
+  width: 30px;
+}
+
+.content {
+  width: 20px;
+}
+</code></pre><p>这说明，Sass 中的变量没有块级作用域特性，而是随执行随覆盖随调用。调用的前面没有变量声明，就报错，有很多变量声明，就调用在它上面离它最近的变量值。</p>
+<p>而每次做 Sass 和 LESS 对比的时候，总要提一下变量的作用域问题，因为 LESS 支持变量的块级作用域。对此我个人觉得，不要真把这类 CSS 预处理器当成编程语言来用，本来就是很简单的东西，没必要搞的太复杂，变量在最顶端声明一下，后面全局调用就可以了。</p>
+<p>值得注意的是，如果一个项目太大，而且是很多人共同完成，这时候命名规划不好，变量容易被覆盖掉，这样就悲剧了。所以多人合作大项目，一定要制定好规范和命名等事情。</p>
+<h3 id="引用父级的-amp"><a href="#引用父级的-amp" class="headerlink" title="引用父级的 &amp;"></a>引用父级的 &amp;</h3><p>对于后代选择器这类的 CSS 代码，Sass 中只需要嵌套即可，这一点非常方便，省下了重复复制父级选择器，编写和阅读代码也变得十分轻松简单。</p>
+<p>但有时候，我们也需要在嵌套结构中引用父级选择器，这时候就可以用 <code>&amp;</code> 符号代替父级选择器，超级实用，例如：</p>
+<pre><code>.parent{
+    color: green;
+    .son{
+        color: red;
+        &amp;:hover{
+            color: blue;
+        }
+    }
+    body.orange &amp;{
+        color: orange;
+    }
+}
+</code></pre><p>将会生成：</p>
+<pre><code>.parent {
+  color: green;
+}
+.parent .son {
+  color: red;
+}
+.parent .son:hover {
+  color: blue;
+}
+body.orange .parent {
+  color: orange;
+}
+</code></pre><p>注意 <code>&amp;</code> 与其他选择器的空格问题，例如上面的 <code>:hover</code>。</p>
+<h3 id="让一切变成字符串"><a href="#让一切变成字符串" class="headerlink" title="让一切变成字符串 #{}"></a>让一切变成字符串 #{}</h3><p>变量只能作为属性值来用，例如 <code>color: $color;</code>，那变量能不能用在选择器或者属性上面吗？例如这样：</p>
+<pre><code>$name: foo;
+$attr: border;
+p.$name {
+  $attr-color: blue;
+}
+</code></pre><p>编译报错，这时候就需要 <code>#{}</code> 出场了，我们需要它来将变量值转换为字符串，这样就可以用在选择器和属性上了，例如：</p>
+<pre><code>$name: foo;
+$attr: border;
+p.#{$name} {
+  #{$attr}-color: blue;
+}
+</code></pre><p>这样就可以编译出来：</p>
+<pre><code>p.foo {
+  border-color: blue;
+}
+</code></pre><p>再来看下面这个例子：</p>
+<pre><code>p {
+  $font-size: 12px;
+  $line-height: 30px;
+  font: $font-size/$line-height;
+}
+</code></pre><p>目的很明确，想要声明变量然后用在 font 属性上，设置字体大小和行间距，结果编译后傻眼了，编译成了：</p>
+<pre><code>p {
+  font: 0.4;
+}
+</code></pre><p>斜杠被识别为除法运算，将两个变量进行了运算，并编译了执行结果。这样显然是不行的，不符合 font 属性缩写格式，这时候就需要 <code>#{}</code> 登场了，我们修改成：</p>
+<pre><code>p {
+  $font-size: 12px;
+  $line-height: 30px;
+  font: #{$font-size}/#{$line-height};
+}
+</code></pre><p>就可以正常输出了。</p>
+<h3 id="神奇的四则运算"><a href="#神奇的四则运算" class="headerlink" title="神奇的四则运算"></a>神奇的四则运算</h3><p>Sass 支持 加法（＋）、减法（－）、乘法（＊）、除法（／）以及取余（％），这几种运算符号作用相信大家以及比较熟悉了，但是在 Sass 中还有一些需要注意的地方：</p>
+<h4 id="Sass-中的加法"><a href="#Sass-中的加法" class="headerlink" title="Sass 中的加法"></a>Sass 中的加法</h4><p>加法的用法很简单，例如：</p>
+<pre><code>p {
+  $width: 10px;
+  $width2: 20px;
+  width: $width + $width2;
+}
+</code></pre><p>很明显的输出：</p>
+<pre><code>p {
+  width: 30px;
+}
+</code></pre><p>这里需要注意的是，在 Sass 数据类型中提到了，10px 这类数值虽然带有字符单位，但是也算是数值，Sass 会进行计算并对单位进行处理，至于计算是对单位的处理，后面再说。</p>
+<p>加法运算不仅仅是计算数字，也可以跟 JavaScript 一样，连接字符串等。例如下面：</p>
+<pre><code>p {
+  cursor: e + -resize;
+}
+</code></pre><p>会输出；</p>
+<pre><code>p {
+  cursor: e-resize; }
+</code></pre><p>加法连接字符串时，对于引号的合并也有一定规则，如果前面字符串带有引号，后面字符串会自动包含在引号中，如果前面没有，后面带有引号的字符串也会去掉引号：</p>
+<pre><code>p:before {
+  content: &quot;Foo &quot; + Bar;
+  font-family: sans- + &quot;serif&quot;;
+}
+</code></pre><p>会输出：</p>
+<pre><code>p:before {
+  content: &quot;Foo Bar&quot;;
+  font-family: sans-serif; }
+</code></pre><p>所以这里对于一些要求带双引号的属性就要特别注意。运算的时候，会以空格作为分割，会操作相邻的两个数值，比如：</p>
+<pre><code>p {
+  margin: 3px + 4px auto;
+}
+</code></pre><p>会编译成：</p>
+<pre><code>p {
+  margin: 7px auto; }
+</code></pre><p>而不会是：</p>
+<pre><code>p {
+  margin: &quot;3px4pxauto&quot;;
+}
+</code></pre><p>除此之外，如果你想在一段字符串中进行计算并输出，就需要用 <code>#{}</code> 了，例如：</p>
+<pre><code>$w  : 10;
+p:before {
+  content: &quot;I ate #{5 + $w} pies!&quot;;
+}
+</code></pre><p>将会输出：</p>
+<pre><code>p:before {
+  content: &quot;I ate 15 pies!&quot;;
+}
+</code></pre><p>否则将会原封不动的输出运算表达式。</p>
+<h4 id="Sass-中的除法"><a href="#Sass-中的除法" class="headerlink" title="Sass 中的除法"></a>Sass 中的除法</h4><p>除法也有很多需要注意的地方，因为除法的运算符 <code>/</code> 在 CSS 中也有遇到，例如 font 缩写属性时候的 font-size 和 line-height 属性，就需要 <code>/</code> 来分割。所以，在这些包含 <code>/</code> 的 CSS 属性中对应位置的值，是不会参与运算的，除了下面情况下：</p>
+<ol>
+<li>如果两个值其中一个或两个存放在变量中或者是由函数返回的值。</li>
+<li>如果值被包裹在一对括号里面</li>
+<li>如果值被作为另一个表达式的一部分</li>
+</ol>
+<p>例如：</p>
+<pre><code>p {
+  font: 10px/8px;             // 纯 CSS 不会运算
+  $width: 1000px;
+  width: $width/2;            // 使用变量，执行运算
+  width: round(1.5)/2;        // 使用函数返回值，执行运算
+  height: (500px/2);          // 使用括号包裹，执行运算
+  margin-left: 5px + 8px/2px; // 用了加法，作为表达式的一部分，执行运算
+}
+</code></pre><p>编译后输出：</p>
+<pre><code>p {
+  font: 10px/8px;
+  width: 500px;
+  height: 250px;
+  margin-left: 9px; }
+</code></pre><p>如果想要避免在使用变量的时候，进行了运算，在上面提到了那个例子，使用 <code>#{}</code> 来包裹变量，转换成字符串，这里不再赘述。</p>
+<h4 id="Sass-运算注意事项"><a href="#Sass-运算注意事项" class="headerlink" title="Sass 运算注意事项"></a>Sass 运算注意事项</h4><p>1, <strong>建议运算符之间空开一个空格。</strong>当你试着执行下面这句代码，你会发现编译器把 <code>$h-</code> 识别成了一个变量：</p>
+<pre><code>$w : 7px;
+$h : 10px;
+p:before {
+    width: $h-$w;
+}
+</code></pre><p>2, <strong>注意运算单位。</strong>虽然 10px 也被看做是数值型，可以进行数值运算，但是对于单位是有要求的。<strong>单位也会参与运算。</strong>在运算中，两个操作数单位可以一致，也可以一个数没有单位，也可以都没有，而对于不同的运算操作符，单位运算结果也不同，一般来说测试结果如下：</p>
+<ul>
+<li>加法：都没有单位输出纯数字；一方有单位，则结果输出该单位；两方相同单位，结果输出该单位；双方单位不同，报错。</li>
+<li>减法：类似加法。</li>
+<li>除法：两方相同单位，结果无单位；都没有单位，结果无单位；一方有单位另一方无单位，报错。</li>
+<li>乘法：两方相同单位，报错；一方有单位，结果输出该单位；两方都无单位，输出无单位。</li>
+</ul>
+<p>你可以用下面代码进行测试：</p>
+<pre><code>$w : 7;
+$h : 10;
+p:before {
+    width: $h * $w;
+}
+</code></pre><p>至于除法和乘法奇葩的运算规则，正如上面说的那样，单位也会参与运算。除法运算的时候，双方都有单位的时候，单位就被消掉了，得到一个数值。乘法的时候，双方都有单位，结果是单位的平方（px x px），自然也不行。</p>
+<h3 id="深入理解-extend"><a href="#深入理解-extend" class="headerlink" title="深入理解 @extend"></a>深入理解 @extend</h3><p>@extend 这个 Sass 命令是非常实用的功能，简单的方法却极大的解决了 CSS 的代码复用问题。例如在所有的项目中都有了 .clearfix 清除浮动类，在应用这个类的时候，通常会在 HTML 需要的结构上添加这个类，但是这样做就会造成 CSS 和 HTML 的耦合，不利于后期维护。</p>
+<p>如果只在 CSS 中去对每个结构实现 clearfix 的效果，要么把这段代码不停的复制到对应选择器中，产生大量冗余，要么就把这个结构选择器翻到上面去找 .clearfix 类，加在后面，费时费力。</p>
+<p>而使用 Sass 之后，你只需要像下面这样：</p>
+<pre><code>.post{
+    @extend .clearfix;
+    ...
+}
+</code></pre><p>就会自动的把 .post 加到 .clearfix 中实现 .post 结构清除浮动。当然，这只是 @extend 最基础的用法，下面讨论一下进阶用法。</p>
+<h4 id="extend-可扩展的选择器"><a href="#extend-可扩展的选择器" class="headerlink" title="@extend 可扩展的选择器"></a>@extend 可扩展的选择器</h4><p>在了解 @extend 得基础功能之后，我扩展了一下类似 <code>.icon .icon-button</code> 这样的类，即 <code>@extend .icon .icon-button;</code> 这样写。结果报错，现在想想确实有问题，中间有空格分隔开了，就不背识别了。结果尝试加上双引号，也无解。</p>
+<p>所以 @extend 中只能扩展单个选择器，例如：<code>.icon-button</code>、<code>a:hover</code>、<code>a.user:hover</code>等。不过虽然每次 @extend 的是一个整体的选择器，但是你可以将多个选择器写进一条 @extend 命令中，用逗号分割，例如：<code>@extend .message, .important;</code>，表示当前结构复用 <code>.message</code> 和 <code>.important</code> 的代码。</p>
+<p>所以你可能需要想好并规划好 CSS 可复用模块，然后再在后面 @extend 。此外需要注意的是，@extend 命令无法用在其他 @ 命令中，例如用在 @media 命令中。当你在上面定义 .clearfix 类时，在 Media Queries 代码里面就无法扩展 .clearfix 类。但是你可以在 Media Queries<br> 里面再定义一个 .clearfix 然后扩展一下。</p>
+<h4 id="理解-extend-的扩展方法"><a href="#理解-extend-的扩展方法" class="headerlink" title="理解 @extend 的扩展方法"></a>理解 @extend 的扩展方法</h4><p>来看一下下面代码的编译结果：</p>
+<pre><code>#admin .tabbar a {
+  font-weight: bold;
+}
+#admin .overview .fakelink {
+  @extend a;
+}
+</code></pre><p>编译结果：</p>
+<pre><code>#admin .tabbar a,
+#admin .tabbar .overview .fakelink,
+#admin .overview .tabbar .fakelink {
+  font-weight: bold; }
+</code></pre><p>看着这一长串选择器，就比较晕了，为什么会组合出这样的一批选择器？慢慢的来分析一下就知道了。首先，@extend 命令的用处是用来将当前选择器与命令扩展的选择器共用一段 CSS 代码，所以要把当前选择器与命令扩展的选择器组合放在一起，并且要考虑到大部分情况，再来分析一下编译后的结果：</p>
+<p><code>#admin .overview .fakelink</code> 选择器要与 <code>#admin .tabbar a</code> 共用一段 CSS 代码，而且共用的是 <code>a</code> 标签的代码。由于 <code>#admin</code> 是相同的，所以统一放在最前面，只需要组合后面选择器即可。</p>
+<p>既然扩展 <code>a</code> 标签，就先用 <code>.overview .fakelink</code> 替换掉 <code>a</code> 组合成了 <code>#admin .tabbar .overview .fakelink</code> 选择器，由于不知道 <code>.tabbar</code> 与 <code>.overview</code> 类结构的包裹情况，所以又颠倒位置生成了 <code>#admin .overview .tabbar .fakelink</code> 这样一个选择器。这样就足够了，因为已知 <code>.overview .fakelink</code> 是为了替换 <code>.tabbar</code> 选择器的下层结构 <code>a</code>，所以可以确定 <code>.fakelink</code> 结构一定在 <code>.overview</code> 结构的下一级。</p>
+<p>这样所有情况就遍历完成了。</p>
+<h4 id="按需求输出的-extend"><a href="#按需求输出的-extend" class="headerlink" title="按需求输出的 @extend"></a>按需求输出的 @extend</h4><p>像之前说的，使用 @extend 需要规划好可复用的类放在上面，然后再在下面 @extend 调用。这样，我们的可复用部分就会编译输出到 CSS 中，但这些代码可能是无意义的，我们并不想使其编译出现在 CSS 文件中，那么就可以使用 <code>%</code> 符号来实现。</p>
+<p>带有 <code>%</code> 符号的选择器不会被编译输出，但是可以被 @extend 到，替换之后输出，例如：</p>
+<pre><code>#context a %extreme {
+  color: blue;
+  font-weight: bold;
+  font-size: 2em;
+}
+.notice {
+  @extend %extreme;
+}
+#context .title .notice2 {
+  @extend %extreme;
+}
+</code></pre><p>会编译输出：</p>
+<pre><code>#context a .notice, 
+#context a .title .notice2, 
+#context .title a .notice2 {
+  color: blue;
+  font-weight: bold;
+  font-size: 2em;
+}
+</code></pre><p>跟正常的 @extend 一样。</p>
+<h3 id="深入理解-mixin"><a href="#深入理解-mixin" class="headerlink" title="深入理解 @mixin"></a>深入理解 @mixin</h3><p>@mixin 跟 @extend 命令有点类似，也是极其实用的一个命令，也有一些需要注意的细节。</p>
+<h4 id="mixin-与-extend-区别"><a href="#mixin-与-extend-区别" class="headerlink" title="@mixin 与 @extend 区别"></a>@mixin 与 @extend 区别</h4><p>@mixin 定义的是一个片段，这个片段可以是类似变量的一段文字一条属性，也可以是一整个选择器和内容，也可以是一个选择器的一部分 CSS 代码。此外还可以传递参数，通过参数生成不同代码。它需要配合 @inclde 命令来引用这段代码，类似复制的效果。@mixin 定义的内容，不会编译输出。</p>
+<p>@extend 就是简单的扩展，基于某个选择器，将其他类似需求的选择器挂靠上，以提高复用程度。</p>
+<h4 id="mixin-常用示例"><a href="#mixin-常用示例" class="headerlink" title="@mixin 常用示例"></a>@mixin 常用示例</h4><p>基础用法：</p>
+<pre><code>@mixin red-text {
+  color: #ff0000;
+}
+
+.page-title {
+  @include red-text;
+  padding: 4px;
+  margin-top: 10px;
+}
+
+.page-title2 {
+  @include red-text;
+  padding: 4px;
+  font-size: 20px;
+}
+</code></pre><p>编译输出：</p>
+<pre><code>.page-title {
+  color: #ff0000;
+  padding: 4px;
+  margin-top: 10px;
+}
+
+.page-title2 {
+  color: #ff0000;
+  padding: 4px;
+  font-size: 20px;
+}
+</code></pre><p>传递参数：</p>
+<pre><code>@mixin font($color, $fontSize: 14px) {
+    color: $color;
+    font-size: $fontSize;
+}
+p { @include font(blue); }
+h1 { @include font(blue, 20px); }
+h2 { @include font($fontSize: 18px,$color: red); }
+</code></pre><p>编译输出：</p>
+<pre><code>p {
+  color: blue;
+  font-size: 14px;
+}
+
+h1 {
+  color: blue;
+  font-size: 20px;
+}
+
+h2 {
+  color: red;
+  font-size: 18px;
+}
+</code></pre><p>由此可见，传递参数时，参数跟声明变量一致，如果变量后跟一个值，则表示该参数是可选的，带有默认值。传参时，需要按照参数定义顺序传參，也可以传參时使用参数名和值这样的参数对来传递，这样就无关参数顺序。</p>
+<h4 id="mixin-传递多值参数"><a href="#mixin-传递多值参数" class="headerlink" title="@mixin 传递多值参数"></a>@mixin 传递多值参数</h4><p>一些 CSS3 属性不仅仅只有一个值，还可以有多个值。例如 box-shadow 属性，你可以定义一条 <code>0px 4px 5px #666</code> 来指定它的阴影效果，当然，你也可以指定 <code>box-shadow: 0px 4px 5px #666, 2px 6px 10px #999;</code> 多条属性，来细化定义多个阴影效果。</p>
+<p>然而当你定义下面这种 mixin 片段并传值时，报错了：</p>
+<pre><code>@mixin box-shadow($shadows) {
+  -moz-box-shadow: $shadows;
+  -webkit-box-shadow: $shadows;
+  box-shadow: $shadows;
+}
+
+.shadows {
+  @include box-shadow(0px 4px 5px #666, 2px 6px 10px #999);
+}
+</code></pre><p>由于传递进去的多个值中间被逗号分割，Sass 判定其为两个参数，于是就报错了。解决这个问题，你需要在参数后面加上三个点，表示这个参数可能包含多条属性：</p>
+<pre><code>@mixin box-shadow($shadows...) {
+  -moz-box-shadow: $shadows;
+  -webkit-box-shadow: $shadows;
+  box-shadow: $shadows;
+}
+
+.shadows {
+  @include box-shadow(0px 4px 5px #666, 2px 6px 10px #999);
+}
+</code></pre><p>这下正常编译出：</p>
+<pre><code>.shadows {
+  -moz-box-shadow: 0px 4px 5px #666, 2px 6px 10px #999;
+  -webkit-box-shadow: 0px 4px 5px #666, 2px 6px 10px #999;
+  box-shadow: 0px 4px 5px #666, 2px 6px 10px #999;
+}
+</code></pre><p>此外，多值参数还可以用在 @include 传參的时候，分解某个变量值，例如：</p>
+<pre><code>@mixin colors($text, $background, $border) {
+  color: $text;
+  background-color: $background;
+  border-color: $border;
+}
+
+$values: #ff0000, #00ff00, #0000ff;
+.primary {
+  @include colors($values...);
+}
+
+$value-map: (text: #00ff00, background: #0000ff, border: #ff0000);
+.secondary {
+  @include colors($value-map...);
+}
+</code></pre><p>编译输出：</p>
+<pre><code>.primary {
+  color: red;
+  background-color: lime;
+  border-color: blue;
+}
+
+.secondary {
+  color: lime;
+  background-color: blue;
+  border-color: red;
+}
+</code></pre><p>在 .primary 中，将 $values 分解变成三个参数传递进去。而在 .secondary 中，将映射型的变量也分解进行了传參。</p>
+<p>这个功能对于参数很多的 @mixin 来说，就很方便了。</p>
+<h4 id="向-mixin-传递内容"><a href="#向-mixin-传递内容" class="headerlink" title="向 @mixin 传递内容"></a>向 @mixin 传递内容</h4><p>这个功能绝对必不可少，超级实用，特别是在响应式布局中。先看一下官方的例子：</p>
+<pre><code>@mixin apply-to-ie6-only {
+  * html {
+    @content;
+  }
+}
+@include apply-to-ie6-only {
+  #logo {
+    background-image: url(/logo.gif);
+  }
+}
+</code></pre><p>编译后输出：</p>
+<pre><code>* html #logo {
+  background-image: url(/logo.gif);
+}
+</code></pre><p>定义的 apply-to-ie6-only 是一个选择器或者一段代码片段，在其中添加了 @content 这个命令。当使用 @include 命令使用这条 mixin 的时候，将一段内容包裹了起来，这段被包裹的内容就会替换掉 @mixin 中的 @content。</p>
+<p>简直太碉堡了！</p>
+<p>对于 Media Queries 开发就非常方便了，我们可以定义下面这样的代码：</p>
+<pre><code>@mixin apply-to-iphone5 {
+    @media only screen 
+    and (min-device-width : 320px) 
+    and (max-device-width : 568px) { 
+        @content;
+    }
+}
+@include apply-to-iphone5 {
+  #logo {
+    background-image: url(/logo@2x.gif);
+  }
+}
+</code></pre><p>编译后输出：</p>
+<pre><code>@media only screen and (min-device-width: 320px) and (max-device-width: 568px) {
+  #logo {
+    background-image: url(/logo@2x.gif);
+  }
+}
+</code></pre><p>这样在需要 Media Queries 的地方，很快速就插入进去了，而不需要像以前那样在专门的 Media Queries 代码区域编写代码来回跳转。</p>
+<p>而目前也推荐这种方式，即直接在相应位置下面编写 Media Querires 代码，这样在后期维护以及代码阅读方面更加简单。</p>
+<h3 id="灵活的控制语句"><a href="#灵活的控制语句" class="headerlink" title="灵活的控制语句"></a>灵活的控制语句</h3><p>Sass 中也有诸如 @if、@while 等常见的控制语句来实现一些简单的流程控制。这部分主要用于 @function 或者 @mixin 等传递参数的命令，在内部进行判断，提高灵活性。但是普通情况下，也可以应用发挥巨大能量，例如：</p>
+<h4 id="for-循环"><a href="#for-循环" class="headerlink" title="@for 循环"></a>@for 循环</h4><p>就是简单的循环，只能使用数字，每次固定一个步长，例如：</p>
+<pre><code>@for $i from 5 through 1 {
+  .item-#{$i} { width: 2em * $i; }
+}
+</code></pre><p>简单的一个循环，输出：</p>
+<pre><code>.item-5 {
+  width: 10em;
+}
+
+.item-4 {
+  width: 8em;
+}
+
+.item-3 {
+  width: 6em;
+}
+
+.item-2 {
+  width: 4em;
+}
+
+.item-1 {
+  width: 2em;
+}
+</code></pre><p>对于有规律的批量的 CSS 输出非常方便。注意 @for 命令使用时有一个 through 关键词，这个参数还可以是 to 关键词，至于两者的区别，可以自行试验。</p>
+<h4 id="while-循环"><a href="#while-循环" class="headerlink" title="@while 循环"></a>@while 循环</h4><p>@while 和 @for 命令是非常接近的，只不过 @while 循环可以自己定义步长，例如：</p>
+<pre><code>$i: 6;
+@while $i &amp;gt; 0 {
+  .item-#{$i} { width: 2em * $i; }
+  $i: $i - 2;
+}
+</code></pre><p>编译输出：</p>
+<pre><code>.item-6 {
+  width: 12em; }
+
+.item-4 {
+  width: 8em; }
+
+.item-2 {
+  width: 4em; }
+</code></pre><p>控制起来更加灵活一点。</p>
+<h4 id="each-遍历循环"><a href="#each-遍历循环" class="headerlink" title="@each 遍历循环"></a>@each 遍历循环</h4><p>这个是最灵活最实用的循环命令了。你可以用它遍历一个列表或者映射型的变量，然后循环输出。例如网站常见的 icon 的 CSS 代码：</p>
+<pre><code>.puma-icon {
+  background-image: url(&apos;/images/puma.png&apos;); }
+.sea-slug-icon {
+  background-image: url(&apos;/images/sea-slug.png&apos;); }
+.egret-icon {
+  background-image: url(&apos;/images/egret.png&apos;); }
+.salamander-icon {
+  background-image: url(&apos;/images/salamander.png&apos;); }
+</code></pre><p>通常来说，我们需要复制好几遍，然后依次替换掉关键词，但是有了 each 之后，我们可以遍历关键词循环输出，代码如下：</p>
+<pre><code>@each $animal in puma, sea-slug, egret, salamander {
+  .#{$animal}-icon {
+    background-image: url(&apos;/images/#{$animal}.png&apos;);
+  }
+}
+</code></pre><p>在上面，我们定义了一个 $animal 变量作为临时变量，然后循环 puma、sea-slug、egret、salamander 这四个值，循环体内，调用 <code>#{}</code> 将变量变成字符串插入到 CSS 选择器和需要的地方。</p>
+<p>简单的一个循环，就搞定了大量重复的东西。当然，这只是 @each 最基础的用法，这只是一个循环变量，我们还可以增加多个循环变量来构造更加复杂的循环：</p>
+<pre><code>@each $animal, $color, $cursor in (puma, black, default),
+                                  (sea-slug, blue, pointer),
+                                  (egret, white, move) {
+  .#{$animal}-icon {
+    background-image: url(&apos;/images/#{$animal}.png&apos;);
+    border: 2px solid $color;
+    cursor: $cursor;
+  }
+}
+</code></pre><p>上面代码表示循环三个“数组”，三个循环变量分别对应每个组中的相应参数，然后用在循环中，编译输出：</p>
+<pre><code>.puma-icon {
+  background-image: url(&apos;/images/puma.png&apos;);
+  border: 2px solid black;
+  cursor: default; }
+.sea-slug-icon {
+  background-image: url(&apos;/images/sea-slug.png&apos;);
+  border: 2px solid blue;
+  cursor: pointer; }
+.egret-icon {
+  background-image: url(&apos;/images/egret.png&apos;);
+  border: 2px solid white;
+  cursor: move; }
+</code></pre><p>当然，也可以循环映射型的参数：</p>
+<pre><code>@each $header, $size in (h1: 2em, h2: 1.5em, h3: 1.2em) {
+  #{$header} {
+    font-size: $size;
+  }
+}
+</code></pre><p>输出：</p>
+<pre><code>h1 {
+  font-size: 2em; }
+
+h2 {
+  font-size: 1.5em; }
+
+h3 {
+  font-size: 1.2em; }
+</code></pre><h2 id="Sass-扩展资源"><a href="#Sass-扩展资源" class="headerlink" title="Sass 扩展资源"></a>Sass 扩展资源</h2><p>首要的当然是 Sass 官方文档：<a href="http://sass-lang.com/documentation/file.SASS_REFERENCE.html" target="_blank" rel="noopener">http://sass-lang.com/documentation/file.SASS_REFERENCE.html</a> 。了解了本文这些，下一步就应该认真阅读官方文档了，你会发现本文好多例子都是从官方那里复制或者改造过来的 ^_^</p>
+<p>然后强烈推荐开发者 <a href="http://hugogiraudel.com/" target="_blank" rel="noopener">Hugo Giraudel</a> 。这家伙对 Sass 的研究和开发简直疯狂，写了大量的 Sass 有关文章，并发到了很多知名网站上。他的 <a href="https://github.com/HugoGiraudel" target="_blank" rel="noopener">Github</a> 上也有大量关于 Sass 的项目，<a href="https://gist.github.com/HugoGiraudel" target="_blank" rel="noopener">Gist</a> 上面也有好多实用的 Sass mixin function 等代码片段。</p>
+<p>国内来说， <a href="http://www.w3cplus.com/blog/tags/302.html" target="_blank" rel="noopener">W3CPlus</a> 发表了很多 Sass 有关的教程，W3CPlus 站长大漠也是 Sass 的狂热支持者。</p>
+<p>最后，如果你对如何将 Sass 应用在自己的项目中或者怎么用 Sass 开始一个新的重构项目，自荐一下本人前端重构时用的模版 <a href="https://github.com/yujiangshui/ysass" target="_blank" rel="noopener">ysass</a> 它目前还正在完善，如果你有好的建议，欢迎提出。</p>
+
+  </div>
+  <div class="post-share">
+	<ul class="share-list">
+		<li><a class="icon icon-weibo" href="javascript:share.weibo();"><span>weibo</span></a></li>
+		<li><a class="icon icon-twitter" href="javascript:share.twitter();"><span>twitter</span></a></li>
+		<li><a class="icon icon-douban" href="javascript:share.douban();"><span>douban</span></a></li>
+		<li><a class="icon icon-qzone" href="javascript:share.qzone();"><span>qzone</span></a></li>
+	</ul>
+</div>
+</div>
+		</div>
+		<div class="footer">
+	<p class="left">&copy; Jiangshui 一个努力坚持中低质量原创的<a class="color-egg" href="/images/meinanzi.png">美男子</a>。生活不易，<a href="#">包养本人</a>。</p>
+	<p class="right">Base on <a href="https://github.com/yujiangshui/jiangshui-simple">Github</a> and <a href="http://hexo.io/">Hexo</a> .</p>
+</div>
+	</div>
+</div>
+
+</body>
+</html>

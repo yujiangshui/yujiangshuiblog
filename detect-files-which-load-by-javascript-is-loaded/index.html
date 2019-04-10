@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta name="renderer" content="webkit">
+    
+    <title>检测通过 JavaScript 动态加载的资源是否完成加载 | 于江水</title>
+    <meta name="description" content="书签栏工具是特别有意思的东西，比插件轻量，比手工敲到 DevTools Console 里面方便，特别实用。比如之前在学校系统上计算自己的学分，别的同学手工计算三年多的考试成绩，其实写一段 JS 一循环就出来了。于是我就做成了书签栏工具，分享给大家，点击一下就计算出来了。 因为复杂点的书签栏工具代码往往比较多，同时为了方便更新版本，往往通过加载外链的方式，于是就搞了个 bookmark-tool-">
+<meta property="og:type" content="article">
+<meta property="og:title" content="检测通过 JavaScript 动态加载的资源是否完成加载">
+<meta property="og:url" content="http://yujiangshui.com/detect-files-which-load-by-javascript-is-loaded/index.html">
+<meta property="og:site_name" content="于江水">
+<meta property="og:description" content="书签栏工具是特别有意思的东西，比插件轻量，比手工敲到 DevTools Console 里面方便，特别实用。比如之前在学校系统上计算自己的学分，别的同学手工计算三年多的考试成绩，其实写一段 JS 一循环就出来了。于是我就做成了书签栏工具，分享给大家，点击一下就计算出来了。 因为复杂点的书签栏工具代码往往比较多，同时为了方便更新版本，往往通过加载外链的方式，于是就搞了个 bookmark-tool-">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://jiangshui.b0.upaiyun.com/blog/2015/01/jsie6.png">
+<meta property="og:image" content="http://jiangshui.b0.upaiyun.com/blog/2015/01/jsothie.png">
+<meta property="og:image" content="http://jiangshui.b0.upaiyun.com/blog/2015/01/jschrome.png">
+<meta property="og:image" content="http://jiangshui.b0.upaiyun.com/blog/2015/01/jssafari.png">
+<meta property="og:image" content="http://jiangshui.b0.upaiyun.com/blog/2015/01/cssie6.png">
+<meta property="og:image" content="http://jiangshui.b0.upaiyun.com/blog/2015/01/cssothie.png">
+<meta property="og:image" content="http://jiangshui.b0.upaiyun.com/blog/2015/01/csschrome.png">
+<meta property="og:image" content="http://jiangshui.b0.upaiyun.com/blog/2015/01/csssafari.png">
+<meta property="og:image" content="http://jiangshui.b0.upaiyun.com/blog/2015/01/imgie6.png">
+<meta property="og:image" content="http://jiangshui.b0.upaiyun.com/blog/2015/01/imgothie.png">
+<meta property="og:image" content="http://jiangshui.b0.upaiyun.com/blog/2015/01/imgchrome.png">
+<meta property="og:image" content="http://jiangshui.b0.upaiyun.com/blog/2015/01/imgsafari.png">
+<meta property="og:updated_time" content="2019-04-10T00:17:52.176Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="检测通过 JavaScript 动态加载的资源是否完成加载">
+<meta name="twitter:description" content="书签栏工具是特别有意思的东西，比插件轻量，比手工敲到 DevTools Console 里面方便，特别实用。比如之前在学校系统上计算自己的学分，别的同学手工计算三年多的考试成绩，其实写一段 JS 一循环就出来了。于是我就做成了书签栏工具，分享给大家，点击一下就计算出来了。 因为复杂点的书签栏工具代码往往比较多，同时为了方便更新版本，往往通过加载外链的方式，于是就搞了个 bookmark-tool-">
+<meta name="twitter:image" content="http://jiangshui.b0.upaiyun.com/blog/2015/01/jsie6.png">
+<meta name="twitter:creator" content="@yujiangshui">
+<meta property="fb:admins" content="yujiangshui"> 
+    <link rel="alternate" href="/atom.xml" title="于江水" type="application/rss+xml">
+    
+
+    <link rel="stylesheet" href="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/css/style.css">
+    <script data-main="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/js/build" src="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/js/require.js"></script>
+    <!--[if lt IE 7]>
+      <style>
+        .section {
+          width: 780px;
+        }
+        .post-content img {
+          width: 100%;
+        }
+        .jupe pre {
+          width: 100%;
+        }
+      </style>
+    <![endif]-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-57557739-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-57557739-5');
+    </script>
+  </head>
+</html>
+
+<body>
+
+<div class="section-wrap section-main">
+	<div class="section">
+		<div class="header">
+	<h1 class="logo">
+		<a href="/">于江水</a>
+	</h1>
+	<p class="social-links">
+		<a href="http://www.weibo.com/yujiangshui">Weibo</a>
+		\
+		<a href="https://twitter.com/yujiangshui">Twitter</a>
+		\
+		<a href="https://github.com/yujiangshui">Github</a>
+		\
+		<a href="/atom.xml">RSS</a>
+	</p>
+</div>
+		<div class="main">
+			<div class="jupe main-body">
+  <div class="post-content">
+    <h1 class="post-title">检测通过 JavaScript 动态加载的资源是否完成加载</h1>
+    <div class="post-meta">
+      <span class="post-time">2015.01.06</span>
+      <div class="post-cats">
+        
+      </div>
+    </div>
+    <div class="post-toc">
+      <div class="toc-title">TOC</div>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#检测动态加载资源是否完成加载的方法"><span class="toc-number">1.</span> <span class="toc-text">检测动态加载资源是否完成加载的方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试"><span class="toc-number">2.</span> <span class="toc-text">测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#测试-JS"><span class="toc-number">2.1.</span> <span class="toc-text">测试 JS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#IE6"><span class="toc-number">2.1.1.</span> <span class="toc-text">IE6</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其他版本-IE"><span class="toc-number">2.1.2.</span> <span class="toc-text">其他版本 IE</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Chrome"><span class="toc-number">2.1.3.</span> <span class="toc-text">Chrome</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Safari"><span class="toc-number">2.1.4.</span> <span class="toc-text">Safari</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试-CSS"><span class="toc-number">2.2.</span> <span class="toc-text">测试 CSS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#IE6-1"><span class="toc-number">2.2.1.</span> <span class="toc-text">IE6</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其他版本-IE-1"><span class="toc-number">2.2.2.</span> <span class="toc-text">其他版本 IE</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Chrome-1"><span class="toc-number">2.2.3.</span> <span class="toc-text">Chrome</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Safari-1"><span class="toc-number">2.2.4.</span> <span class="toc-text">Safari</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试-IMG"><span class="toc-number">2.3.</span> <span class="toc-text">测试 IMG</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#IE6-2"><span class="toc-number">2.3.1.</span> <span class="toc-text">IE6</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其他版本-IE-2"><span class="toc-number">2.3.2.</span> <span class="toc-text">其他版本 IE</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Chrome-2"><span class="toc-number">2.3.3.</span> <span class="toc-text">Chrome</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Safari-2"><span class="toc-number">2.3.4.</span> <span class="toc-text">Safari</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结论"><span class="toc-number">3.</span> <span class="toc-text">结论</span></a></li></ol>
+    </div>
+    <p>书签栏工具是特别有意思的东西，比插件轻量，比手工敲到 DevTools Console 里面方便，特别实用。比如之前在学校系统上计算自己的学分，别的同学手工计算三年多的考试成绩，其实写一段 JS 一循环就出来了。于是我就做成了书签栏工具，分享给大家，点击一下就计算出来了。</p>
+<p>因为复杂点的书签栏工具代码往往比较多，同时为了方便更新版本，往往通过加载外链的方式，于是就搞了个 <a href="https://github.com/yujiangshui/bookmark-tool-loader" target="_blank" rel="noopener">bookmark-tool-loader</a> 书签栏加载函数。由于一些 JS 有依赖关系，或者需要在调用之后初始化一下。所以就有了这种检测通过 JS 动态加载的资源是否完成加载的需求，当 load 完成之后，我们就可以继续加载新脚本，或者调用函数进行初始化了。</p>
+<h2 id="检测动态加载资源是否完成加载的方法"><a href="#检测动态加载资源是否完成加载的方法" class="headerlink" title="检测动态加载资源是否完成加载的方法"></a>检测动态加载资源是否完成加载的方法</h2><p>在资源加载完成的时候，会抛出一个 <code>load</code> 事件。所以我们可以监听 <code>load</code> 事件来判断该资源已经正确加载了。例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var url = &quot;CSS URL&quot;,</span><br><span class="line">    head = document.getElementsByTagName(&apos;head&apos;)[0];</span><br><span class="line">    link = document.createElement(&apos;link&apos;);</span><br><span class="line"></span><br><span class="line">link.type = &quot;text/css&quot;;</span><br><span class="line">link.rel = &quot;stylesheet&quot;</span><br><span class="line">link.href = url;</span><br><span class="line"></span><br><span class="line">head.appendChild(link);</span><br><span class="line"></span><br><span class="line">link.onload = function () &#123;</span><br><span class="line">  // 加载完成</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>但这种方法在 IE 中检测某类资源时会有兼容性问题。经过测试 IE 浏览器下需要监听 <code>onreadystatechange</code> 状态变化，根据状态变化来判断是否加载完成：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">link.onreadystatechange = function() &#123;</span><br><span class="line">	if ( link.readyState === &apos;loaded&apos; || link.readyState === &apos;complete&apos; ) &#123;</span><br><span class="line">		handle();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>对此，我对常用资源做了一下测试。</p>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>考虑到常用的资源有 JS、CSS、IMG，所以本文就拿这三种资源来做测试。测试关键代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// 监听资源加载</span><br><span class="line">// #1</span><br><span class="line">link.onload = function () &#123;</span><br><span class="line">  output(&apos;onload 【有效】&apos;);</span><br><span class="line">&#125;</span><br><span class="line">// #2</span><br><span class="line">link.addEventListener(&apos;load&apos;, function() &#123;</span><br><span class="line">  output(&quot;addEventListener 监听 load 事件【有效】&quot;);</span><br><span class="line">&#125;, false);</span><br><span class="line">// #3</span><br><span class="line">link.onreadystatechange = function() &#123;</span><br><span class="line">  var state = link.readyState;</span><br><span class="line">  if (state === &apos;loaded&apos; || state === &apos;complete&apos;) &#123;</span><br><span class="line">    link.onreadystatechange = null;</span><br><span class="line">    output(&quot;onreadystatechange 监听加载【有效】&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>主要测试 <code>load</code> 事件和 <code>onreadystatechange</code> 方法，测试 CSS 为 <a href="http://jiangshui.b0.upaiyun.com/com/blog/loader/load-test2.css" target="_blank" rel="noopener">http://jiangshui.b0.upaiyun.com/com/blog/loader/load-test2.css</a>，JS 为 <a href="http://jiangshui.b0.upaiyun.com/com/blog/loader/load-test.js" target="_blank" rel="noopener">http://jiangshui.b0.upaiyun.com/com/blog/loader/load-test.js</a>，图片随便选了一张。主要测试 Win 下 IE6、IE6+ 以及 Mac 的 Safari、Chrome。</p>
+<h3 id="测试-JS"><a href="#测试-JS" class="headerlink" title="测试 JS"></a>测试 JS</h3><p>测试文件 <a href="/demo/loader-test/load-js.html">load-js.html</a>，测试 JS 的加载，当 JS 加载完成之后，会在 console 打出 <code>loaded</code>。</p>
+<p>测试结果如下：</p>
+<h4 id="IE6"><a href="#IE6" class="headerlink" title="IE6"></a>IE6</h4><p><img src="http://jiangshui.b0.upaiyun.com/blog/2015/01/jsie6.png" alt></p>
+<h4 id="其他版本-IE"><a href="#其他版本-IE" class="headerlink" title="其他版本 IE"></a>其他版本 IE</h4><p><img src="http://jiangshui.b0.upaiyun.com/blog/2015/01/jsothie.png" alt></p>
+<h4 id="Chrome"><a href="#Chrome" class="headerlink" title="Chrome"></a>Chrome</h4><p><img src="http://jiangshui.b0.upaiyun.com/blog/2015/01/jschrome.png" alt></p>
+<h4 id="Safari"><a href="#Safari" class="headerlink" title="Safari"></a>Safari</h4><p><img src="http://jiangshui.b0.upaiyun.com/blog/2015/01/jssafari.png" alt></p>
+<p>IE 系列浏览器还是比较奇葩的，不触发 JS 资源加载完成之后的 <code>load</code> 事件。</p>
+<h3 id="测试-CSS"><a href="#测试-CSS" class="headerlink" title="测试 CSS"></a>测试 CSS</h3><p>测试文件 <a href="/demo/loader-test/load-css.html">load-css.html</a>。当 CSS 加载完成之后，会绿瞎双眼。</p>
+<p>测试结果如下：</p>
+<h4 id="IE6-1"><a href="#IE6-1" class="headerlink" title="IE6"></a>IE6</h4><p><img src="http://jiangshui.b0.upaiyun.com/blog/2015/01/cssie6.png" alt></p>
+<h4 id="其他版本-IE-1"><a href="#其他版本-IE-1" class="headerlink" title="其他版本 IE"></a>其他版本 IE</h4><p><img src="http://jiangshui.b0.upaiyun.com/blog/2015/01/cssothie.png" alt></p>
+<h4 id="Chrome-1"><a href="#Chrome-1" class="headerlink" title="Chrome"></a>Chrome</h4><p><img src="http://jiangshui.b0.upaiyun.com/blog/2015/01/csschrome.png" alt></p>
+<h4 id="Safari-1"><a href="#Safari-1" class="headerlink" title="Safari"></a>Safari</h4><p><img src="http://jiangshui.b0.upaiyun.com/blog/2015/01/csssafari.png" alt></p>
+<p>在 IE 中动态加载 CSS 居然支持 <code>load</code> 事件，由于 <code>addEventListener</code> 是标准的监听函数，早期 IE 本身就不支持他，所以也没显示出来。</p>
+<h3 id="测试-IMG"><a href="#测试-IMG" class="headerlink" title="测试 IMG"></a>测试 IMG</h3><p>测试文件 <a href="/demo/loader-test/load-img.html">load-img.html</a>，当 image 加载完成之后，会出现我的头像。</p>
+<p>测试结果如下：</p>
+<h4 id="IE6-2"><a href="#IE6-2" class="headerlink" title="IE6"></a>IE6</h4><p><img src="http://jiangshui.b0.upaiyun.com/blog/2015/01/imgie6.png" alt></p>
+<h4 id="其他版本-IE-2"><a href="#其他版本-IE-2" class="headerlink" title="其他版本 IE"></a>其他版本 IE</h4><p><img src="http://jiangshui.b0.upaiyun.com/blog/2015/01/imgothie.png" alt></p>
+<h4 id="Chrome-2"><a href="#Chrome-2" class="headerlink" title="Chrome"></a>Chrome</h4><p><img src="http://jiangshui.b0.upaiyun.com/blog/2015/01/imgchrome.png" alt></p>
+<h4 id="Safari-2"><a href="#Safari-2" class="headerlink" title="Safari"></a>Safari</h4><p><img src="http://jiangshui.b0.upaiyun.com/blog/2015/01/imgsafari.png" alt></p>
+<p>IE 也支持 <code>load</code> 事件，同时也支持 <code>onreadystatechange</code> 的方法。</p>
+<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>通过测试结果即可看出，IE 浏览器对动态加载的资源，除了 JS 之外，都触发 <code>load</code> 事件，无论什么资源都可以通过检测 <code>onreadystatechange</code> 状态来实现。其他标准浏览器，则触发 <code>load</code> 事件。那么在检测的时候，就可以这样写：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if ( type === &apos;js&apos; &amp;&amp; document.all ) &#123;</span><br><span class="line">	res.onreadystatechange = function() &#123;</span><br><span class="line">		if ( res.readyState === &apos;loaded&apos; || res.readyState === &apos;complete&apos; ) &#123;</span><br><span class="line">			// res loaded, do something</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">	res.onload = function() &#123;</span><br><span class="line">		// res loaded, do something</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>判断如果是 JS 类型同时是 IE 浏览器的花，则用 <code>onreadystatechange</code> 的方法，否则全都用 <code>load</code> 事件来触发加载完后的回调函数。</p>
+
+  </div>
+  <div class="post-share">
+	<ul class="share-list">
+		<li><a class="icon icon-weibo" href="javascript:share.weibo();"><span>weibo</span></a></li>
+		<li><a class="icon icon-twitter" href="javascript:share.twitter();"><span>twitter</span></a></li>
+		<li><a class="icon icon-douban" href="javascript:share.douban();"><span>douban</span></a></li>
+		<li><a class="icon icon-qzone" href="javascript:share.qzone();"><span>qzone</span></a></li>
+	</ul>
+</div>
+</div>
+		</div>
+		<div class="footer">
+	<p class="left">&copy; Jiangshui 一个努力坚持中低质量原创的<a class="color-egg" href="/images/meinanzi.png">美男子</a>。生活不易，<a href="#">包养本人</a>。</p>
+	<p class="right">Base on <a href="https://github.com/yujiangshui/jiangshui-simple">Github</a> and <a href="http://hexo.io/">Hexo</a> .</p>
+</div>
+	</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta name="renderer" content="webkit">
+    
+    <title>有了它你可以不再用 jQuery 了 | 于江水</title>
+    <meta name="description" content="jQuery 是一个非常流行而且功能强大效果好的 JS 库，既然强大又完善，注定文件体积是很大的。尽管各种压缩之后，仍然有 几十KB 大小。 如果你的项目需要些很多 JS ，需要用到 jQuery 的一些封装好的功能，当然要加载 jQuery。但是大部分的普通网站，JS 部分仅仅是实现一些基础的功能，例如：显隐、改变位置、增加减少类来触发交互等等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="有了它你可以不再用 jQuery 了">
+<meta property="og:url" content="http://yujiangshui.com/you-might-not-need-jquery/index.html">
+<meta property="og:site_name" content="于江水">
+<meta property="og:description" content="jQuery 是一个非常流行而且功能强大效果好的 JS 库，既然强大又完善，注定文件体积是很大的。尽管各种压缩之后，仍然有 几十KB 大小。 如果你的项目需要些很多 JS ，需要用到 jQuery 的一些封装好的功能，当然要加载 jQuery。但是大部分的普通网站，JS 部分仅仅是实现一些基础的功能，例如：显隐、改变位置、增加减少类来触发交互等等。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-10T00:17:52.188Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="有了它你可以不再用 jQuery 了">
+<meta name="twitter:description" content="jQuery 是一个非常流行而且功能强大效果好的 JS 库，既然强大又完善，注定文件体积是很大的。尽管各种压缩之后，仍然有 几十KB 大小。 如果你的项目需要些很多 JS ，需要用到 jQuery 的一些封装好的功能，当然要加载 jQuery。但是大部分的普通网站，JS 部分仅仅是实现一些基础的功能，例如：显隐、改变位置、增加减少类来触发交互等等。">
+<meta name="twitter:creator" content="@yujiangshui">
+<meta property="fb:admins" content="yujiangshui"> 
+    <link rel="alternate" href="/atom.xml" title="于江水" type="application/rss+xml">
+    
+
+    <link rel="stylesheet" href="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/css/style.css">
+    <script data-main="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/js/build" src="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/js/require.js"></script>
+    <!--[if lt IE 7]>
+      <style>
+        .section {
+          width: 780px;
+        }
+        .post-content img {
+          width: 100%;
+        }
+        .jupe pre {
+          width: 100%;
+        }
+      </style>
+    <![endif]-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-57557739-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-57557739-5');
+    </script>
+  </head>
+</html>
+
+<body>
+
+<div class="section-wrap section-main">
+	<div class="section">
+		<div class="header">
+	<h1 class="logo">
+		<a href="/">于江水</a>
+	</h1>
+	<p class="social-links">
+		<a href="http://www.weibo.com/yujiangshui">Weibo</a>
+		\
+		<a href="https://twitter.com/yujiangshui">Twitter</a>
+		\
+		<a href="https://github.com/yujiangshui">Github</a>
+		\
+		<a href="/atom.xml">RSS</a>
+	</p>
+</div>
+		<div class="main">
+			<div class="jupe main-body">
+  <div class="post-content">
+    <h1 class="post-title">有了它你可以不再用 jQuery 了</h1>
+    <div class="post-meta">
+      <span class="post-time">2014.02.14</span>
+      <div class="post-cats">
+        <a class="post-cats-item-link" href="/category/JavaScript/">JavaScript</a>
+      </div>
+    </div>
+    <div class="post-toc">
+      <div class="toc-title">TOC</div>
+      
+    </div>
+    <p>jQuery 是一个非常流行而且功能强大效果好的 JS 库，既然强大又完善，注定文件体积是很大的。尽管各种压缩之后，仍然有 几十KB 大小。</p>
+<p>如果你的项目需要些很多 JS ，需要用到 jQuery 的一些封装好的功能，当然要加载 jQuery。但是大部分的普通网站，JS 部分仅仅是实现一些基础的功能，例如：显隐、改变位置、增加减少类来触发交互等等。</p>
+<a id="more"></a>
+<p>实现上面的这些需求，只需要 DOM 选择，然后加一些其他的处理代码就可以，在这种情况下，使用庞大的 jQuery 就有点浪费了，于是就有了取代 jQuery 的方案，最近在 <a href="http://alistapart.com/" target="_blank" rel="noopener">A List Apart</a> 发现了一篇文章（<a href="http://alistapart.com/blog/post/choosing-vanilla-javascript" target="_blank" rel="noopener">Choosing Vanilla JavaScript</a>推荐的一个文档 <a href="http://youmightnotneedjquery.com/" target="_blank" rel="noopener">YOU MIGHT NOT NEED JQUERY</a> 很不错，比之前看到的其他方案要好的多。</p>
+<p><a href="http://youmightnotneedjquery.com/" target="_blank" rel="noopener">YOU MIGHT NOT NEED JQUERY</a> 这个文档提供了 jQuery 与原生 JavaScript 的代码的对比，你可以找到你要用的 jQuery 代码，迅速的找到对应的原生 JavaScript 代码，直接复制粘贴就可以用上了。</p>
+<p>不过这份文档也有一定的缺陷：</p>
+<ol>
+<li>兼容性问题不太好，目前只实现了 IE8+ 以上的兼容性，而 jQuery 是做了很好的平台兼容性。</li>
+<li>没有封装一些常用的功能。它只是给出了实现 jQuery 功能的原生 JavaScript 代码，并没有对常用的功能（例如动画）做进一步的封装。</li>
+</ol>
+<p>所以，如果你的项目比较注重兼容性，而且要用到大量的 jQuery 封装的方法，还是乖乖的用 jQuery 吧，不过学习一下还是很不错的 ：D </p>
+
+  </div>
+  <div class="post-share">
+	<ul class="share-list">
+		<li><a class="icon icon-weibo" href="javascript:share.weibo();"><span>weibo</span></a></li>
+		<li><a class="icon icon-twitter" href="javascript:share.twitter();"><span>twitter</span></a></li>
+		<li><a class="icon icon-douban" href="javascript:share.douban();"><span>douban</span></a></li>
+		<li><a class="icon icon-qzone" href="javascript:share.qzone();"><span>qzone</span></a></li>
+	</ul>
+</div>
+</div>
+		</div>
+		<div class="footer">
+	<p class="left">&copy; Jiangshui 一个努力坚持中低质量原创的<a class="color-egg" href="/images/meinanzi.png">美男子</a>。生活不易，<a href="#">包养本人</a>。</p>
+	<p class="right">Base on <a href="https://github.com/yujiangshui/jiangshui-simple">Github</a> and <a href="http://hexo.io/">Hexo</a> .</p>
+</div>
+	</div>
+</div>
+
+</body>
+</html>

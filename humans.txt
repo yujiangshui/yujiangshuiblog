@@ -1,0 +1,14 @@
+# humanstxt.org/
+
+# TEAM
+
+    Name: yujiangshui
+    Role: front-end developer
+    Email: yujiangshui[at]gmail.com
+    Twitter: https://twitter.com/yujiangshui
+    Weibo: http://weibo.com/yujiangshui
+
+# THANKS
+
+    Hexo: http://hexo.io/
+    Github: http://github.com/

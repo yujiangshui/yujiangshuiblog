@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta name="renderer" content="webkit">
+    
+    <title>WordPress 中如何在发布文章前对文章内容进行预处理 | 于江水</title>
+    <meta name="description" content="我们在 WordPress 发表文章的时候，有时会遇到一些特殊的需求，比如把文章中的链接变成可点击，或者过滤掉文章内容 HTML 标签中的某种属性等。 我近期的项目中就遇到了后面的这个需求，因为直接粘贴复制网络上的文章，往往会夹带着 HTML 的 class、id 和 style 属性值，这些无用的内容会潜在的影响正文的排版布局和样式，所以要过滤掉。">
+<meta name="keywords" content="php">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WordPress 中如何在发布文章前对文章内容进行预处理">
+<meta property="og:url" content="http://yujiangshui.com/do-something-before-publish-post-in-wordpress/index.html">
+<meta property="og:site_name" content="于江水">
+<meta property="og:description" content="我们在 WordPress 发表文章的时候，有时会遇到一些特殊的需求，比如把文章中的链接变成可点击，或者过滤掉文章内容 HTML 标签中的某种属性等。 我近期的项目中就遇到了后面的这个需求，因为直接粘贴复制网络上的文章，往往会夹带着 HTML 的 class、id 和 style 属性值，这些无用的内容会潜在的影响正文的排版布局和样式，所以要过滤掉。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-10T00:17:52.177Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="WordPress 中如何在发布文章前对文章内容进行预处理">
+<meta name="twitter:description" content="我们在 WordPress 发表文章的时候，有时会遇到一些特殊的需求，比如把文章中的链接变成可点击，或者过滤掉文章内容 HTML 标签中的某种属性等。 我近期的项目中就遇到了后面的这个需求，因为直接粘贴复制网络上的文章，往往会夹带着 HTML 的 class、id 和 style 属性值，这些无用的内容会潜在的影响正文的排版布局和样式，所以要过滤掉。">
+<meta name="twitter:creator" content="@yujiangshui">
+<meta property="fb:admins" content="yujiangshui"> 
+    <link rel="alternate" href="/atom.xml" title="于江水" type="application/rss+xml">
+    
+
+    <link rel="stylesheet" href="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/css/style.css">
+    <script data-main="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/js/build" src="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/js/require.js"></script>
+    <!--[if lt IE 7]>
+      <style>
+        .section {
+          width: 780px;
+        }
+        .post-content img {
+          width: 100%;
+        }
+        .jupe pre {
+          width: 100%;
+        }
+      </style>
+    <![endif]-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-57557739-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-57557739-5');
+    </script>
+  </head>
+</html>
+
+<body>
+
+<div class="section-wrap section-main">
+	<div class="section">
+		<div class="header">
+	<h1 class="logo">
+		<a href="/">于江水</a>
+	</h1>
+	<p class="social-links">
+		<a href="http://www.weibo.com/yujiangshui">Weibo</a>
+		\
+		<a href="https://twitter.com/yujiangshui">Twitter</a>
+		\
+		<a href="https://github.com/yujiangshui">Github</a>
+		\
+		<a href="/atom.xml">RSS</a>
+	</p>
+</div>
+		<div class="main">
+			<div class="jupe main-body">
+  <div class="post-content">
+    <h1 class="post-title">WordPress 中如何在发布文章前对文章内容进行预处理</h1>
+    <div class="post-meta">
+      <span class="post-time">2014.01.22</span>
+      <div class="post-cats">
+        <a class="post-cats-item-link" href="/category/WordPress/">WordPress</a>
+      </div>
+    </div>
+    <div class="post-toc">
+      <div class="toc-title">TOC</div>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#解决思路"><span class="toc-number">1.</span> <span class="toc-text">解决思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方案"><span class="toc-number">2.</span> <span class="toc-text">解决方案</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
+    </div>
+    <p>我们在 WordPress 发表文章的时候，有时会遇到一些特殊的需求，比如把文章中的链接变成可点击，或者过滤掉文章内容 HTML 标签中的某种属性等。</p>
+<p>我近期的项目中就遇到了后面的这个需求，因为直接粘贴复制网络上的文章，往往会夹带着 HTML 的 class、id 和 style 属性值，这些无用的内容会潜在的影响正文的排版布局和样式，所以要过滤掉。</p>
+<a id="more"></a>
+<h2 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h2><p>如果想要过滤掉发布文章时，文章内容中 HTML 标签中的 class、id 和 style 等属性，首先需要在摁下“发表”按钮的时候，使用 PHP 正则匹配对要发表的文章内容进行正则匹配处理，替换掉无用的内容，最后继续执行插入数据库的操作。所以这个问题就分成了几个小步骤：</p>
+<ol>
+<li>“获取”文章内容，传递给处理函数</li>
+<li>处理函数使用正则匹配对文章内容进行处理</li>
+<li>将处理好的内容返回，让 WordPress 把内容插入数据库</li>
+</ol>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>面对第一个步骤，WordPress 有一个很强大的“钩子”（hook）开发机制，实现各种功能和开发插件必不可少的功能。简单的说，就是 WordPress 在执行某些关键性的操作时（例如发表文章、发表评论、修改文章、删除文章、新增用户等等），会插入一个“钩子”，这样你就可以在<code>functions.php</code> 中或者插件中，使用 <code>add_action</code> 或者 <code>add_filter</code> 函数挂上这个“钩子”，并增加自定义的函数对数据进行一个动作或者进行过滤。</p>
+<p>例如在发表文章的时候，在提交到插入数据库之前，会有一个叫做 <code>wp_insert_post_data</code> “钩子”，如果你想对文章进行过滤处理，你就需要在 <code>functions.php</code> 文件中，新建一个处理函数，然后将对应处理函数绑定到这个钩子上面。</p>
+<p>首先，你需要找到你要用的“钩子”，你需要浏览 WordPress 官方的 <a href="http://codex.wordpress.org/Plugin_API/Filter_Reference" target="_blank" rel="noopener">Filter Reference</a> 和 <a href="http://codex.wordpress.org/Plugin_API/Action_Reference" target="_blank" rel="noopener">Action Reference</a> 文档，里面是长长的“钩子”列表，看一下下面的说明，然后找到对应的“钩子”就可以开始使用了。比较常用的“钩子”已经给出官方文档和使用说明了，例如：<a href="http://codex.wordpress.org/Plugin_API/Filter_Reference/wp_insert_post_data" target="_blank" rel="noopener"><code>wp_insert_post_data</code></a>，不过由于列表太长了，大部分的没有给出很详细的使用说明，就需要你按照经验来使用。</p>
+<p>找到需要的“钩子”之后，使用 <code>add_filter</code> 函数（具体用法可以看一下官方文档：<a href="http://codex.wordpress.org/Function_Reference/add_filter" target="_blank" rel="noopener">add filter</a>）将钩子和处理函数进行挂钩函数用法如下：</p>
+<pre><code>add_filter($tag,  $function_to_add,  $priority = 10,  $accepted_args = 1);
+</code></pre><p>就本例而言，基本结构如下：</p>
+<pre><code>&lt;?php
+function wpjam_insert_post_data( $data , $postarr ) {
+  // 处理函数的逻辑部分和功能代码
+  return $data;
+}
+
+add_filter( &apos;wp_insert_post_data&apos;, &apos;wpjam_insert_post_data&apos;, &apos;99&apos;, 2 );
+?&gt;
+</code></pre><p>这样，我们的第一个步骤就完成了。下面来编写函数的处理代码。既然要过滤文章中的具有某些特征的代码，所以需要使用 PHP 的正则匹配替换掉。可以使用如下的 PHP 代码：</p>
+<pre><code>$date = preg_replace(&apos;/&lt;([a-z]+?)\s+?.*?&gt;/i&apos;, &apos;&lt;$1&gt;&apos;, $date);
+</code></pre><p>根据 <a href="http://codex.wordpress.org/Plugin_API/Filter_Reference/wp_insert_post_data" target="_blank" rel="noopener"><code>wp_insert_post_data</code></a> 文档可以看出，传递进去的 <code>$data</code> 数组里面是文章的相关信息，我们需要处理的是正文内容，所以使用 <code>$date[&#39;post_content&#39;]</code> 和<code>$date[&#39;post_content_filtered&#39;]</code> 这两个变量，那么就可以写出下面这段代码：</p>
+<pre><code>function wpjam_insert_post_data( $data , $postarr ) {
+
+    $date[&apos;post_content_filtered&apos;] = preg_replace(&apos;/&lt;([a-z]+?)\s+?.*?&gt;/i&apos;, &apos;&lt;$1&gt;&apos;, $date[&apos;post_content_filtered&apos;]);
+    $date[&apos;post_content&apos;] = preg_replace(&apos;/&lt;([a-z]+?)\s+?.*?&gt;/i&apos;, &apos;&lt;$1&gt;&apos;, $date[&apos;post_content&apos;]);
+
+  return $data;
+}
+
+add_filter( &apos;wp_insert_post_data&apos;, &apos;wpjam_insert_post_data&apos;, &apos;99&apos;, 2 );
+</code></pre><p>因为函数里面已经将处理后的数据 <code>return</code> 了，这样第二步和第三步就完成了，我们的这个需求也就实现了。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>正是因为有了这种开发机制，WordPress 的灵活性和扩展性大大增强。如果你还想对文章进行其他处理（例如文章末尾加版权信息等），都可以继续编写函数，挂钩在对应的钩子即可。</p>
+
+  </div>
+  <div class="post-share">
+	<ul class="share-list">
+		<li><a class="icon icon-weibo" href="javascript:share.weibo();"><span>weibo</span></a></li>
+		<li><a class="icon icon-twitter" href="javascript:share.twitter();"><span>twitter</span></a></li>
+		<li><a class="icon icon-douban" href="javascript:share.douban();"><span>douban</span></a></li>
+		<li><a class="icon icon-qzone" href="javascript:share.qzone();"><span>qzone</span></a></li>
+	</ul>
+</div>
+</div>
+		</div>
+		<div class="footer">
+	<p class="left">&copy; Jiangshui 一个努力坚持中低质量原创的<a class="color-egg" href="/images/meinanzi.png">美男子</a>。生活不易，<a href="#">包养本人</a>。</p>
+	<p class="right">Base on <a href="https://github.com/yujiangshui/jiangshui-simple">Github</a> and <a href="http://hexo.io/">Hexo</a> .</p>
+</div>
+	</div>
+</div>
+
+</body>
+</html>

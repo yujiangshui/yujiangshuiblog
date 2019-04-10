@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta name="renderer" content="webkit">
+    
+    <title>【CodeWars 总结1】 超长数字计算 | 于江水</title>
+    <meta name="description" content="CodeWars（附带我邀请码的地址） 是一个在线做题的网站，提供一些问题，然后让你用代码（支持 JS、Java、Ruby、Python 等）来解决这个问题。当你编写好函数并 submit，它会为代码做单元测试判断是否正确。如果正确就可以提交代码，这时候可以看到别人写的代码。">
+<meta name="keywords" content="codewars">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【CodeWars 总结1】 超长数字计算">
+<meta property="og:url" content="http://yujiangshui.com/codewars-weekly1/index.html">
+<meta property="og:site_name" content="于江水">
+<meta property="og:description" content="CodeWars（附带我邀请码的地址） 是一个在线做题的网站，提供一些问题，然后让你用代码（支持 JS、Java、Ruby、Python 等）来解决这个问题。当你编写好函数并 submit，它会为代码做单元测试判断是否正确。如果正确就可以提交代码，这时候可以看到别人写的代码。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-10T00:17:52.176Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【CodeWars 总结1】 超长数字计算">
+<meta name="twitter:description" content="CodeWars（附带我邀请码的地址） 是一个在线做题的网站，提供一些问题，然后让你用代码（支持 JS、Java、Ruby、Python 等）来解决这个问题。当你编写好函数并 submit，它会为代码做单元测试判断是否正确。如果正确就可以提交代码，这时候可以看到别人写的代码。">
+<meta name="twitter:creator" content="@yujiangshui">
+<meta property="fb:admins" content="yujiangshui"> 
+    <link rel="alternate" href="/atom.xml" title="于江水" type="application/rss+xml">
+    
+
+    <link rel="stylesheet" href="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/css/style.css">
+    <script data-main="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/js/build" src="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/js/require.js"></script>
+    <!--[if lt IE 7]>
+      <style>
+        .section {
+          width: 780px;
+        }
+        .post-content img {
+          width: 100%;
+        }
+        .jupe pre {
+          width: 100%;
+        }
+      </style>
+    <![endif]-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-57557739-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-57557739-5');
+    </script>
+  </head>
+</html>
+
+<body>
+
+<div class="section-wrap section-main">
+	<div class="section">
+		<div class="header">
+	<h1 class="logo">
+		<a href="/">于江水</a>
+	</h1>
+	<p class="social-links">
+		<a href="http://www.weibo.com/yujiangshui">Weibo</a>
+		\
+		<a href="https://twitter.com/yujiangshui">Twitter</a>
+		\
+		<a href="https://github.com/yujiangshui">Github</a>
+		\
+		<a href="/atom.xml">RSS</a>
+	</p>
+</div>
+		<div class="main">
+			<div class="jupe main-body">
+  <div class="post-content">
+    <h1 class="post-title">【CodeWars 总结1】 超长数字计算</h1>
+    <div class="post-meta">
+      <span class="post-time">2014.09.30</span>
+      <div class="post-cats">
+        <a class="post-cats-item-link" href="/category/JavaScript/">JavaScript</a>
+      </div>
+    </div>
+    <div class="post-toc">
+      <div class="toc-title">TOC</div>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#精确判断-JavaScript-值的类型"><span class="toc-number">1.</span> <span class="toc-text">精确判断 JavaScript 值的类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#String-也有-length-属性及善用三目运算"><span class="toc-number">2.</span> <span class="toc-text">String 也有 length 属性及善用三目运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#善用-Array-的函数"><span class="toc-number">3.</span> <span class="toc-text">善用 Array 的函数</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#Solution"><span class="toc-number"></span> <span class="toc-text">Solution</span></a>
+    </li></div>
+    <p><a href="http://www.codewars.com/" target="_blank" rel="noopener">CodeWars</a>（<a href="www.codewars.com/r/D2Ns0Q">附带我邀请码的地址</a>） 是一个在线做题的网站，提供一些问题，然后让你用代码（支持 JS、Java、Ruby、Python 等）来解决这个问题。当你编写好函数并 submit，它会为代码做单元测试判断是否正确。如果正确就可以提交代码，这时候可以看到别人写的代码。</p>
+<a id="more"></a>
+<p>一般的来说，等你 submit 之后，看到排名第一的答案，会<strong>真真正正</strong>的感觉自己写了一坨翔。而仔细思考学习别人的代码，就是一种进步。决定每过一段时间刷一下 CodeWars 然后总结，记录一些精彩的技巧（Tips，一些技巧）和解决方案（Solution，一个思路）。</p>
+<p>##Tips</p>
+<h3 id="精确判断-JavaScript-值的类型"><a href="#精确判断-JavaScript-值的类型" class="headerlink" title="精确判断 JavaScript 值的类型"></a>精确判断 JavaScript 值的类型</h3><p>提到判断类型，立马想到 <code>typeof</code> 但是这种方式判断出来的特别不准，例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var a = &#123;&apos;b&apos;:2&#125;;</span><br><span class="line">typeof a; //-&gt; &quot;object&quot;</span><br><span class="line"></span><br><span class="line">a = [&apos;b&apos;,&apos;c&apos;];</span><br><span class="line">typeof a; //-&gt; &quot;object&quot;</span><br></pre></td></tr></table></figure>
+<p>可以使用 <code>toString</code> 方法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var a = [&apos;b&apos;,&apos;c&apos;];</span><br><span class="line">Object.prototype.toString.call(a);</span><br></pre></td></tr></table></figure>
+<p>之后会返回 <code>&quot;[object Array]&quot;</code> 这个值是绝对准确的，详情请看：<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toString" target="_blank" rel="noopener">Example: Using toString() to detect object class</a>。</p>
+<p>此外，配合使用 <code>typeof</code> 和 <code>instanceof</code> 也可以判断某些特定的类型，前提是你对它们俩足够了解，不然可能会判断出错。</p>
+<h3 id="String-也有-length-属性及善用三目运算"><a href="#String-也有-length-属性及善用三目运算" class="headerlink" title="String 也有 length 属性及善用三目运算"></a>String 也有 length 属性及善用三目运算</h3><p>这个有点丢人，做题才知道的。有道题是将溢出字符截掉替换成 <code>...</code> ，我的版本是：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function solution(string,limit)&#123;</span><br><span class="line"></span><br><span class="line">    var newStr;</span><br><span class="line"></span><br><span class="line">    if ( string.split(&apos;&apos;).length &lt;= limit ) &#123;</span><br><span class="line">    	newStr = string;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">    	newStr = string.substring(0,limit)+&apos;...&apos;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return newStr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>先把字符串切割成了数组，再用 length 属性来判断位数，然后就是常规的 if 语句。太过于臃肿，而最佳答案简单明了：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function solution(string,limit)&#123;</span><br><span class="line">    return string.length &gt; limit ? string.substr(0,limit) + &quot;...&quot; : string;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="善用-Array-的函数"><a href="#善用-Array-的函数" class="headerlink" title="善用 Array 的函数"></a>善用 Array 的函数</h3><p>遇到数组有关操作，脑子第一反应不要再是嵌套 for 循环了，<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array" target="_blank" rel="noopener">Array 类型</a>提供了一些遍历有关的函数，好好使用可以省下很多麻烦，主要有：</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach" target="_blank" rel="noopener">Array.prototype.forEach()</a> ： 把数组每个元素丢到一个处理 function 里面，相当于 for 循环。</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every" target="_blank" rel="noopener">Array.prototype.every() </a> ： 所有数组元素处理后全部 return true，那么就 return true，有点像 &amp;&amp;。</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/some" target="_blank" rel="noopener">Array.prototype.some()</a> ： 只要一个数组元素处理后 return true，那么就 return true，有点像 ||。</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter" target="_blank" rel="noopener">Array.prototype.filter()</a> ： 将处理时 return true 的数组元素拿出来组成一个新数组。</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map" target="_blank" rel="noopener">Array.prototype.map()</a> ： 对每个数组元素进行处理，并组成一个新数组。</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce" target="_blank" rel="noopener">Array.prototype.reduce()</a> ： 像一个累加器一样，把数组元素全部加起来（从左向右）。</li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduceRight" target="_blank" rel="noopener">Array.prototype.reduceRight()</a> ： 同上，顺序从右向左。</li>
+</ul>
+<p>有这么多辅助函数，处理 Array 几乎用不到 for 语句，例如有道题是要求判断某个值是否存在与一个多层数组（locate([‘a’,’b’,[‘c’,’d’,[‘e’]]],’e’); // should return true），一开始的思路就是常规的，先把多重数组递归创建一个单层的数组，然后 for 循环比对返回，于是拉出了这么一坨：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var locate = function(arr,value)&#123;</span><br><span class="line">  var tempArr = [],</span><br><span class="line">    flag = false;</span><br><span class="line"></span><br><span class="line">  fullArr(arr);</span><br><span class="line">  function fullArr(arr)&#123;</span><br><span class="line">    for( var i = 0; i &lt; arr.length; i++ )&#123;</span><br><span class="line">      if( typeof arr[i] !== &apos;object&apos; )&#123;</span><br><span class="line">        tempArr.push(arr[i]);</span><br><span class="line">      &#125;else&#123;</span><br><span class="line">        fullArr(arr[i]);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  for( var j = 0; j &lt; tempArr.length; j++ )&#123;</span><br><span class="line">    if( !flag &amp;&amp; value === tempArr[j] )&#123;</span><br><span class="line">      flag = true;</span><br><span class="line">      break;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">      flag = false;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  return flag;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看到排名第一的答案，当场尿了：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var locate = function(arr, v) &#123;</span><br><span class="line">  return arr.some(function(e) &#123; return Array.isArray(e) ? locate(e, v) : e === v; &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一个 some ，判断如果有一个 return true 就表示有这个值，将每一个值传递进去，如果还是数组，递归调用这个，否则就返回，简直帅爆！</p>
+<p>再来一个统计字符串每个字母出现次数的函数：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function count (string) &#123;  </span><br><span class="line">  var count = &#123;&#125;;</span><br><span class="line">  string.split(&apos;&apos;).forEach(function(s) &#123;</span><br><span class="line">     count[s] ? count[s]++ : count[s] = 1;</span><br><span class="line">  &#125;);</span><br><span class="line">  return count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>善用这些函数还可以创建一些辅助函数：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Array.prototype.square  = function () &#123; return this.map(function(n) &#123; return n*n; &#125;); &#125;</span><br><span class="line">Array.prototype.average = function () &#123; return this.sum() / this.length; &#125;</span><br><span class="line">Array.prototype.sum     = function () &#123; return this.reduce(function(a, b) &#123; return a + b; &#125;, 0); &#125;</span><br><span class="line">Array.prototype.even    = function () &#123; return this.filter(function(item) &#123; return 0 == item % 2; &#125;); &#125;</span><br><span class="line">Array.prototype.odd     = function () &#123; return this.filter(function(item) &#123; return 0 != item % 2; &#125;); &#125;</span><br></pre></td></tr></table></figure>
+<p>扔掉 for 吧！</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>有个问题需要将字符串（大数字）计算相加并转换成字符串，传递的参数是字符串，马上想到的思路就是用 parseInt 这类函数转换类型相加，但遇到了大数字就不能直接这么办了。所以本次 Solution 就来解决 JS 大数字计算。</p>
+<p>JS 的数字计算坑比较多的，浮点型的计算带有精度问题，所以通常先将浮点型变成整数进行计算，然后再以字符串的形式，变成浮点型输出。大数字计算会变成科学计数法，JS 中，数字超过21位就会变成科学计数法，例如：<code>8100824045303269669937 -&gt; 8.100824045303269e+21</code> ，这样会损失一些精度。</p>
+<p>那么大数字计算要怎么精确实现？JS 怎么避免出现大数字科学计数法？还是得靠字符串。</p>
+<p>首先先说明一点，搜了很多资料，JS 数值型好像没法避免科学计数法，只要超过 21 位，Number 类型的数值自动抹掉低位数，使用科学计数法。这样精度必然有损失。</p>
+<p>我的思路大体就是：把两个大数字以字符串的形式分割成小位数数字数组，然后分别相加，如果位数超过分割位数，则向上一个分段和加一，最后再 join 成字符串。可以解决问题，但感觉不够完美，关键代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function sumStrings(a,b) &#123;</span><br><span class="line"></span><br><span class="line">	var result = &apos;&apos;;</span><br><span class="line"></span><br><span class="line">	var arrA = splitNum(a);</span><br><span class="line">	var arrB = splitNum(b);</span><br><span class="line">	var forNum = ( arrA.length &gt; arrB.length ) ? arrA.length : arrB.length;</span><br><span class="line">	var tempArr = [];</span><br><span class="line"></span><br><span class="line">	//循环计算分段和</span><br><span class="line">	for( var i = 0; i &lt; forNum; i++ )&#123;</span><br><span class="line">		tempArr.push(cal(arrA[i], arrB[i]));</span><br><span class="line">	&#125;</span><br><span class="line">	tempArr = overflow(tempArr);</span><br><span class="line">	result = tempArr.reverse().join(&apos;&apos;);</span><br><span class="line"></span><br><span class="line">	return result;</span><br><span class="line">&#125;</span><br><span class="line">//字符串切割小数组计算</span><br><span class="line">function splitNum (numStr) &#123;</span><br><span class="line">	var numLength = numStr.length;</span><br><span class="line">	//这里统一将大数字切割成 8 位</span><br><span class="line">	var numLengthTime = Math.ceil(numLength / 8);</span><br><span class="line">	var tempArr = []</span><br><span class="line">	//把数字倒过来，然后切割后再倒过来，就可以优先计算小段位数字</span><br><span class="line">	numStr = numStr.split(&apos;&apos;).reverse().join(&apos;&apos;);</span><br><span class="line">	for( var i = 0; i &lt; numLengthTime; i++ )&#123;</span><br><span class="line">		//循环切割八位数字，并倒过来恢复正常数字顺序</span><br><span class="line">		tempArr[i] = numStr.substring(i*8,(i+1)*8);</span><br><span class="line">		tempArr[i] = tempArr[i].split(&apos;&apos;).reverse().join(&apos;&apos;);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	return tempArr;</span><br><span class="line">&#125;</span><br><span class="line">//计算两个数值</span><br><span class="line">function cal (a, b) &#123;</span><br><span class="line">	var num = 0;</span><br><span class="line">	//两个大数字位数不一定相同，如果 undefined 表示该数字高位没有数字</span><br><span class="line">	var a = ( typeof a === &apos;undefined&apos; ) ? 0 : parseFloat(a);</span><br><span class="line">	var b = ( typeof b === &apos;undefined&apos; ) ? 0 : parseFloat(b);</span><br><span class="line"></span><br><span class="line">	num = a + b;</span><br><span class="line"></span><br><span class="line">	return num.toString();</span><br><span class="line">&#125;</span><br><span class="line">//判断溢出添加上一个数组</span><br><span class="line">function overflow (tempArr) &#123;</span><br><span class="line">	for( var i = 0; i &lt; tempArr.length; i++ )&#123;</span><br><span class="line">		if ( tempArr[i].length &gt; 8 ) &#123;</span><br><span class="line">			//如果超出 8 位，则向后一个数值进一</span><br><span class="line">			tempArr[i+1] = parseInt(tempArr[i+1]) + 1;</span><br><span class="line">			tempArr[i+1] = tempArr[i+1].toString();</span><br><span class="line">			tempArr[i] = tempArr[i].substring(1);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	return tempArr;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用了太多的逻辑和代码，不够简洁，实现起来不够爽快。分析了一下排名第一的代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">String.prototype.reverse = function() &#123;</span><br><span class="line">  return this.split(&apos;&apos;).reverse().join(&apos;&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function sumStrings(a,b) &#123;</span><br><span class="line">  a = a.reverse(); b = b.reverse();</span><br><span class="line">  var carry = 0;</span><br><span class="line">  var index = 0;</span><br><span class="line">  var sumDigits = [];</span><br><span class="line">  while (index &lt; a.length || index &lt; b.length || carry != 0) &#123;</span><br><span class="line">    var aDigit = index &lt; a.length ? parseInt(a[index]) : 0;</span><br><span class="line">    var bDigit = index &lt; b.length ? parseInt(b[index]) : 0;</span><br><span class="line">    var digitSum = aDigit + bDigit + carry;</span><br><span class="line">    sumDigits.push((digitSum % 10).toString());</span><br><span class="line">    carry = Math.floor(digitSum / 10);</span><br><span class="line">    index++;</span><br><span class="line">  &#125;</span><br><span class="line">  sumDigits.reverse();</span><br><span class="line">  while (sumDigits[0] == &apos;0&apos;) sumDigits.shift();</span><br><span class="line">  return sumDigits.join(&apos;&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>大体思路比较巧妙，先把数字倒过来然后按位计算，while 循环的条件用的很神。设置三个变量分别作为位数（index）、进位（carry）、结果（sumDigits），每次循环用 index 拿到对应位的数字加上上一个循环的进位，然后取10的余数以字符串形式存入结果数字，然后再取到本次运算的进位，下一个循环继续。最后处理输出即可。</p>
+<p>除此之外，对于大数字的操作可以扩展阅读：</p>
+<ul>
+<li><a href="http://stackoverflow.com/questions/4288821/how-to-deal-with-big-numbers-in-javascript" target="_blank" rel="noopener">How to deal with big numbers in javascript [duplicate]</a></li>
+<li><a href="https://github.com/MikeMcl/big.js/" target="_blank" rel="noopener">MikeMcl/big.js</a></li>
+</ul>
+
+  </div>
+  <div class="post-share">
+	<ul class="share-list">
+		<li><a class="icon icon-weibo" href="javascript:share.weibo();"><span>weibo</span></a></li>
+		<li><a class="icon icon-twitter" href="javascript:share.twitter();"><span>twitter</span></a></li>
+		<li><a class="icon icon-douban" href="javascript:share.douban();"><span>douban</span></a></li>
+		<li><a class="icon icon-qzone" href="javascript:share.qzone();"><span>qzone</span></a></li>
+	</ul>
+</div>
+</div>
+		</div>
+		<div class="footer">
+	<p class="left">&copy; Jiangshui 一个努力坚持中低质量原创的<a class="color-egg" href="/images/meinanzi.png">美男子</a>。生活不易，<a href="#">包养本人</a>。</p>
+	<p class="right">Base on <a href="https://github.com/yujiangshui/jiangshui-simple">Github</a> and <a href="http://hexo.io/">Hexo</a> .</p>
+</div>
+	</div>
+</div>
+
+</body>
+</html>

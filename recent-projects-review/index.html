@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta name="renderer" content="webkit">
+    
+    <title>近期几个项目总结 | 于江水</title>
+    <meta name="description" content="近期做了一些之前没怎么做过的项目，踩了一些坑，也有一些提升，总结一下备忘。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="近期几个项目总结">
+<meta property="og:url" content="http://yujiangshui.com/recent-projects-review/index.html">
+<meta property="og:site_name" content="于江水">
+<meta property="og:description" content="近期做了一些之前没怎么做过的项目，踩了一些坑，也有一些提升，总结一下备忘。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://jiangshui.b0.upaiyun.com/blog/2014/03/bug0.png">
+<meta property="og:updated_time" content="2019-04-10T00:17:52.184Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="近期几个项目总结">
+<meta name="twitter:description" content="近期做了一些之前没怎么做过的项目，踩了一些坑，也有一些提升，总结一下备忘。">
+<meta name="twitter:image" content="http://jiangshui.b0.upaiyun.com/blog/2014/03/bug0.png">
+<meta name="twitter:creator" content="@yujiangshui">
+<meta property="fb:admins" content="yujiangshui"> 
+    <link rel="alternate" href="/atom.xml" title="于江水" type="application/rss+xml">
+    
+
+    <link rel="stylesheet" href="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/css/style.css">
+    <script data-main="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/js/build" src="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/js/require.js"></script>
+    <!--[if lt IE 7]>
+      <style>
+        .section {
+          width: 780px;
+        }
+        .post-content img {
+          width: 100%;
+        }
+        .jupe pre {
+          width: 100%;
+        }
+      </style>
+    <![endif]-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-57557739-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-57557739-5');
+    </script>
+  </head>
+</html>
+
+<body>
+
+<div class="section-wrap section-main">
+	<div class="section">
+		<div class="header">
+	<h1 class="logo">
+		<a href="/">于江水</a>
+	</h1>
+	<p class="social-links">
+		<a href="http://www.weibo.com/yujiangshui">Weibo</a>
+		\
+		<a href="https://twitter.com/yujiangshui">Twitter</a>
+		\
+		<a href="https://github.com/yujiangshui">Github</a>
+		\
+		<a href="/atom.xml">RSS</a>
+	</p>
+</div>
+		<div class="main">
+			<div class="jupe main-body">
+  <div class="post-content">
+    <h1 class="post-title">近期几个项目总结</h1>
+    <div class="post-meta">
+      <span class="post-time">2014.03.23</span>
+      <div class="post-cats">
+        <a class="post-cats-item-link" href="/category/front-end/">前端相关</a>
+      </div>
+    </div>
+    <div class="post-toc">
+      <div class="toc-title">TOC</div>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#某微信活动项目"><span class="toc-number">1.</span> <span class="toc-text">某微信活动项目</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#项目背景"><span class="toc-number">1.1.</span> <span class="toc-text">项目背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目总结"><span class="toc-number">1.2.</span> <span class="toc-text">项目总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#移动端尽量不要用-jQuery。"><span class="toc-number">1.2.1.</span> <span class="toc-text">移动端尽量不要用 jQuery。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CSS3-动画优化"><span class="toc-number">1.2.2.</span> <span class="toc-text">CSS3 动画优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#图片体积太大"><span class="toc-number">1.2.3.</span> <span class="toc-text">图片体积太大</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#图片预加载失效"><span class="toc-number">1.2.4.</span> <span class="toc-text">图片预加载失效</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#audio-autoplay-失效问题"><span class="toc-number">1.2.5.</span> <span class="toc-text">audio autoplay 失效问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#某官网子站"><span class="toc-number">2.</span> <span class="toc-text">某官网子站</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#项目背景-1"><span class="toc-number">2.1.</span> <span class="toc-text">项目背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目总结-1"><span class="toc-number">2.2.</span> <span class="toc-text">项目总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#抽象可复用模块，避免冗余"><span class="toc-number">2.2.1.</span> <span class="toc-text">抽象可复用模块，避免冗余</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#严格检测避免产生冲突"><span class="toc-number">2.2.2.</span> <span class="toc-text">严格检测避免产生冲突</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#平时多积累常见功能和效果的实现方法"><span class="toc-number">2.2.3.</span> <span class="toc-text">平时多积累常见功能和效果的实现方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#测试的时候关闭无用插件"><span class="toc-number">2.2.4.</span> <span class="toc-text">测试的时候关闭无用插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#插件错位功能失效-BUG"><span class="toc-number">2.2.5.</span> <span class="toc-text">插件错位功能失效 BUG</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#某官网子站的移动版"><span class="toc-number">3.</span> <span class="toc-text">某官网子站的移动版</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#项目背景-2"><span class="toc-number">3.1.</span> <span class="toc-text">项目背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#项目总结-2"><span class="toc-number">3.2.</span> <span class="toc-text">项目总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#还是移动端性能优化"><span class="toc-number">3.2.1.</span> <span class="toc-text">还是移动端性能优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#还是上传剪裁缩略图功能"><span class="toc-number">3.2.2.</span> <span class="toc-text">还是上传剪裁缩略图功能</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#overflow-hidden-失效"><span class="toc-number">3.2.3.</span> <span class="toc-text">overflow hidden 失效</span></a></li></ol></li></ol></li></ol>
+    </div>
+    <p>近期做了一些之前没怎么做过的项目，踩了一些坑，也有一些提升，总结一下备忘。</p>
+<a id="more"></a>
+<h2 id="某微信活动项目"><a href="#某微信活动项目" class="headerlink" title="某微信活动项目"></a>某微信活动项目</h2><h3 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h3><p>为某个节日做的一个活动页面，主要用在手机端（微信），主要设备是 iPhone 或者高端 安卓 设备。大体设计和功能就是摇晃手机产生一个抽签的效果，然后签子飞出来滑动出现一个展板上面显示一些广告语之类的东西，再进行跳转。</p>
+<h3 id="项目总结"><a href="#项目总结" class="headerlink" title="项目总结"></a>项目总结</h3><p>这个算作一个简单的 Web APP 吧，主要就是根据设计稿和对方的要求，理解活动的工作流程，然后再去编写 CSS3 动画和相关 JS 功能。通过 CSS3 来做动画效果，使用 JS 来控制逻辑、添加各种类来完成动画效果。逻辑一定不要混乱，设置几个变量来当做“开关”，比如摇晃的时候设置开关，使其不能再处理摇晃的函数，有弹窗的时候设置开关，使其不能再处理摇晃函数以及开启其他弹窗等。没有什么太大的难度。</p>
+<p>做这个项目之前没有太多移动端性能能优化的经验，导致这个项目的前端性能有一些问题。</p>
+<h4 id="移动端尽量不要用-jQuery。"><a href="#移动端尽量不要用-jQuery。" class="headerlink" title="移动端尽量不要用 jQuery。"></a>移动端尽量不要用 jQuery。</h4><p>除了需要很高可靠性的移动端项目或者需要大量依赖 jQuery 的项目，还是尽量不要使用 jQuery ，毕竟是 90多k 的东西，而且还要大量的运算。面对这样的功能不是很复杂的面对移动端的小项目，还是 <a href="http://zeptojs.com/" target="_blank" rel="noopener">zepto</a> 比较合适，大体看了文档，跟 jQuery 几乎一模一样。此外，后来又发现了 AlloyTeam 团队的 <a href="http://alloyteam.github.io/Spirit/modules/JM/index.html" target="_blank" rel="noopener">JM</a> 项目，JM 就是 Javascript Mobile Framework 的缩写（够简练。。），引用官方介绍就是：</p>
+<blockquote>
+<p>新一代轻量级高性能移动web框架，由腾讯前端团队AlloyTeam经项目实践积累沉淀而成。为拥抱移动互联网全新设计，专注为移动web项目，整个框架压缩后只有36K</p>
+</blockquote>
+<p>于是后面我又用 JM 重构一下这个项目，顺便打算了解一下。然后发现这个框架还不是很完善，使用起来比较容易出错，文档也不是很完善很基础，估计是大神写的，对于菜鸟来说很难解决问题，很多功能的使用你得自己去查源代码，不过还好源代码不算多还分块了。当然有很多地方是非常好的，比如他们的动画效果实现，是通过将 CSS3 属性直接添加或移除 style 来实现，这样就不会产生一些副作用，比 setTimeout 挂上 类 的方式感觉要好一些。</p>
+<p>再后面忙其他东西，也就作罢没有重构完。JM 的想法非常好，真心希望大神能继续完善，投入使用。</p>
+<h4 id="CSS3-动画优化"><a href="#CSS3-动画优化" class="headerlink" title="CSS3 动画优化"></a>CSS3 动画优化</h4><p>只需要考虑很简单基础的几个原则就可以：</p>
+<ul>
+<li>在布局的时候，就应该考虑到这方面的，对于动画元素，使其脱离 normal flow ，避免动画过程产生重绘等。</li>
+<li>尽量保持动画元素的 DOM 的简单，比如直接使用图片代替一些比较复杂的结构，虽然不好后期调整，但是省事啊。</li>
+<li>用 transform 的 translate 来移动，比 position 的方法移动位置，性能要好。</li>
+<li>其他的看这里 <a href="http://www.qianduan.net/high-performance-css3-animations.html" target="_blank" rel="noopener">高性能 CSS3 动画</a></li>
+</ul>
+<h4 id="图片体积太大"><a href="#图片体积太大" class="headerlink" title="图片体积太大"></a>图片体积太大</h4><p>这个跟我无关，是设计稿太复杂精细了，而且对于 retina 还需要切双倍图，体积已经做最大压缩了，没有办法的事情。</p>
+<h4 id="图片预加载失效"><a href="#图片预加载失效" class="headerlink" title="图片预加载失效"></a>图片预加载失效</h4><p>最初切的是小图标，然后在线测试的时候，当你动画出来新结构等，如果用的是 background 引用的图片，显然要有一个加载的过程，这样就造成了不良的用户体验。</p>
+<p>然后就是采用各种预加载功能，要加载他们，但是奇怪的来了，哪种方式预加载刷新手机浏览器还是会闪烁加载。</p>
+<p>最后没办法，只能来硬的，合并做 sprite 这样第一次打开，第一个界面上的图标出现慢点，但是后面就不会闪烁了。</p>
+<p>这块预加载还得多做些测试，如果你有好的方案，欢迎提出。</p>
+<h4 id="audio-autoplay-失效问题"><a href="#audio-autoplay-失效问题" class="headerlink" title="audio autoplay 失效问题"></a>audio autoplay 失效问题</h4><p>后面客户来了新要求，需要在摇晃出现签子的时候，同时播放一段声音，更加拟物化。显然要用到 HTML5 的 audio 标签。然后就写上了，再写 JS 当摇晃触发的时候，播放 audio 的音频。Chrome 测试 OK ，然后手机端来问题了，死活不播放。</p>
+<p>后面进行测试，设置 autoplay 属性，在移动端也没有对应的播放效果。没办法，使用万能问题解决固定搜索句式： XX not working 就可以搜到 StackOverflow 上的解决方案，屡试不爽。找到了这个 <a href="http://stackoverflow.com/questions/17350924/iphone-html5-audio-tag-not-working" target="_blank" rel="noopener">iPhone HTML5 Audio tag not working</a> 问题，再查了一下相关资料，新技能 Get√ ：</p>
+<blockquote>
+<p>由于自动播放网页中的音频或视频，会给用户带来一些困扰或者不必要的流量消耗，所以苹果系统和安卓系统通常都会禁止自动播放和使用 JS 的触发播放，必须由用户来触发才可以播放。</p>
+</blockquote>
+<p>这样就明白了，即便是摇晃也无法进行播放，必须由人类触发播放，它才能播放，于是就有了那哥们的很棒的解决方案：</p>
+<pre><code>document.addEventListener(&apos;touchstart&apos;, function () {
+    document.getElementsByTagName(&apos;audio&apos;)[0].play();
+    document.getElementsByTagName(&apos;audio&apos;)[0].pause();
+});
+</code></pre><p>用户触摸屏幕就播放，但此时音频还没有下载，正在开始下载，所以不会出现声音，然后立刻暂停播放。这样就不会出现声音，但是音频下载下来了，也解锁了播放功能。但是这里需要用户去触摸屏幕，于是改了一下活动的流程，先自动弹出活动说明，必须人工点击一下活动说明消失，才能开始摇晃，就解决了用户触摸和播放声音的问题。</p>
+<p>但是这里遇到了比较大的性能问题，音频加载倒不是很头疼的事情，而是播放。据他们测试的说，使用 IP4 iOS6 的 safari 测试会变很卡，不流畅。所以最后这个功能去掉了，白忙活。</p>
+<h2 id="某官网子站"><a href="#某官网子站" class="headerlink" title="某官网子站"></a>某官网子站</h2><h3 id="项目背景-1"><a href="#项目背景-1" class="headerlink" title="项目背景"></a>项目背景</h3><p>这反正应该是我做过最大的一个项目，某日本单反品牌的某国分站的一个子站，就是一个整站但是要整合进官方网站之中。工作量看起来就比较大，各种元素比较多，需要用到很多功能，需要整合很多插件等。需要使用他们提供的官网模板框架。</p>
+<h3 id="项目总结-1"><a href="#项目总结-1" class="headerlink" title="项目总结"></a>项目总结</h3><p>以后做这类项目之前：</p>
+<p><strong>先看3小时PSD！！**</strong>先看3小时PSD！！<strong><strong>先看3小时PSD！！<strong></strong>先看3小时PSD！！</strong></strong>先看3小时PSD！！<strong><strong>先看3小时PSD！！<strong></strong>先看3小时PSD！！</strong><strong>先看3小时PSD！！<strong><strong>先看3小时PSD！！<strong></strong>先看3小时PSD！！</strong></strong>先看3小时PSD！！</strong><strong>先看3小时PSD！！<strong></strong>先看3小时PSD！！</strong></strong>先看3小时PSD！！<strong><strong>先看3小时PSD！！<strong></strong>先看3小时PSD！！</strong><strong>先看3小时PSD！！<strong><strong>先看3小时PSD！！**</strong>先看3小时PSD！！</strong></strong>先看3小时PSD！！</strong></p>
+<p>然后再：</p>
+<p><strong>看透对方提供的框架模板代码！！**</strong>看透对方提供的框架模板代码！！<strong><strong>看透对方提供的框架模板代码！！<strong></strong>看透对方提供的框架模板代码！！</strong></strong>看透对方提供的框架模板代码！！<strong><strong>看透对方提供的框架模板代码！！<strong></strong>看透对方提供的框架模板代码！！</strong><strong>看透对方提供的框架模板代码！！<strong><strong>看透对方提供的框架模板代码！！<strong></strong>看透对方提供的框架模板代码！！</strong></strong>看透对方提供的框架模板代码！！</strong><strong>看透对方提供的框架模板代码！！<strong></strong>看透对方提供的框架模板代码！！</strong></strong>看透对方提供的框架模板代码！！<strong><strong>看透对方提供的框架模板代码！！<strong></strong>看透对方提供的框架模板代码！！</strong></strong>看透对方提供的框架模板代码！！<strong>**看透对方提供的框架模板代码！！</strong></p>
+<p>接着：</p>
+<p><strong>看对方官方网站！！**</strong>看对方官方网站！！<strong><strong>看对方官方网站！！<strong></strong>看对方官方网站！！</strong></strong>看对方官方网站！！<strong><strong>看对方官方网站！！<strong></strong>看对方官方网站！！</strong><strong>看对方官方网站！！<strong><strong>看对方官方网站！！<strong></strong>看对方官方网站！！</strong></strong>看对方官方网站！！</strong><strong>看对方官方网站！！<strong></strong>看对方官方网站！！</strong></strong>看对方官方网站！！**</p>
+<p>最后：</p>
+<p><strong>把PSD公用模块重写，编写结构和样式，把所有命名都搞定！！**</strong>把PSD公用模块重写，编写结构和样式，把所有命名都搞定！！<strong><strong>把PSD公用模块重写，编写结构和样式，把所有命名都搞定！！<strong></strong>把PSD公用模块重写，编写结构和样式，把所有命名都搞定！！</strong></strong>把PSD公用模块重写，编写结构和样式，把所有命名都搞定！！<strong><strong>把PSD公用模块重写，编写结构和样式，把所有命名都搞定！！<strong></strong>把PSD公用模块重写，编写结构和样式，把所有命名都搞定！！</strong></strong>把PSD公用模块重写，编写结构和样式，把所有命名都搞定！！<strong><strong>把PSD公用模块重写，编写结构和样式，把所有命名都搞定！！**</strong>把PSD公用模块重写，编写结构和样式，把所有命名都搞定！！</strong></p>
+<h4 id="抽象可复用模块，避免冗余"><a href="#抽象可复用模块，避免冗余" class="headerlink" title="抽象可复用模块，避免冗余"></a>抽象可复用模块，避免冗余</h4><p>之前做的项目应该都没有这么复杂过，一般看一下 PSD ，脑子里大体思考一下可以复用的模块，然后找准一个比较多的页面直接开始做，然后做其他页面的时候，复制一下再加上特定类或者编写新的模块就可以了。但是这个实在有点大，比较复杂，看似公用的模块，却又有一些细节不相符，只能添加比较多的特定类，这样为了避免冲突，还需要重复定义代码，产生冗余。</p>
+<p>由于之前没有仔细认真的观察 PSD ，也导致有些结构重复定义，没有进行抽象公用，产生了一些冗余。大体感觉上，CSS 大约有 10% 的冗余代码，这些冗余代码不仅仅是维护，还是问题和性能的隐患，对于患有代码洁癖的我，实在是有些别扭，但幸亏我不是处女座，还可以接受。</p>
+<p>冗余代码还会增加工作量，拖延工期各种问题。每每想到这里，耳边就自动播放老妈小时候说的：磨刀不误砍柴工。。。</p>
+<p>恩，做重构之前，一定要认真观察 PSD ，不放过任何一个可复用的模块，多的话，甚至要用笔来记下来。然后把命名和结构等都确定下来，这样前期进展慢，但是总的来说是快的，而且质量高。</p>
+<p>好的复用模块，应该是完整的、独立的。完整就是包含 PSD 中遇到的各种情况，对于不同的情况，只需要添加不同的类或者改用不同结构即可。独立性就是与其他模块和结构完全独立，直接粘贴复制不会产生任何影响。</p>
+<p>此外，既然是要整合进官方网站的，风格都是类似的，有些模块也是一样的。应该多看看官方网站的页面，如果找到类似风格的，可以直接复制结构和 CSS 等，既保证了统一性，又避免冗余减轻工作量，这里没仔细看有点失误。</p>
+<h4 id="严格检测避免产生冲突"><a href="#严格检测避免产生冲突" class="headerlink" title="严格检测避免产生冲突"></a>严格检测避免产生冲突</h4><p>由于这次使用的是对方提供的模板，不是团队自己用惯了的，所以产生了一些冲突，解决起来也浪费了一些时间。</p>
+<p>比如 IE10- 浏览器的弹出表单遇到了离奇的 BUG</p>
+<p><img src="http://jiangshui.b0.upaiyun.com/blog/2014/03/bug0.png" alt></p>
+<p>本来应该是正常的表单，结果上面平白无故的多了一个遮盖层，而其他的弹出层没有问题。各种 CSS 都没法解决，经过各种测试，发现去掉弹出层的 form 标签就正常了，CSS 等完全没有问题，百思不得其解。在后面编写的时候，才发现，官方模板为了方便，在最顶端和最低端加了 form 标签，也就是说，用 form 包裹了整个网页 - -! 好吧，form 里面是不能包裹 form 的，遇到 BUG 就很正常了，这就是因为没有提前认真阅读对方模板代码和结构产生的问题。</p>
+<p>此外，看到他们模板引入了 base.css 类，我以为自带了 CSS reset 相关代码，就没有处理这块，但是万万没想到，他们根本没有 CSS reset 。。但是这样我也不能引入 reset，引入之后全局 reset，会对他们之前的结构产生影响，甚至会错位之类的。于是就针对每个模块的 hn 或者 p 这类的元素都进行 reset 定义，产生了冗余。如果早阅读过，了解没有 reset 代码的话，就可以在自己的类名下面设置一下 reset。</p>
+<p>JS 的冲突就不提了，他们引入的各种插件等，各种 XX is not defined 。然后插件版本有的比较老了，居然没法用 - -！，迫不得已为了避免冲突，只能改用其他的。</p>
+<p>这里简单的总结几条避免冲突的方法：</p>
+<ul>
+<li>好好阅读他们的代码，找准 jQuery 等库的版本，了解兼容性。</li>
+<li>调用插件等之前，先要判断结构或者功能是否支持等，避免报错。</li>
+<li>尽量优先使用他们使用的插件，不行的话，再另找插件。</li>
+</ul>
+<h4 id="平时多积累常见功能和效果的实现方法"><a href="#平时多积累常见功能和效果的实现方法" class="headerlink" title="平时多积累常见功能和效果的实现方法"></a>平时多积累常见功能和效果的实现方法</h4><p>这个项目要用的功能还是比较多的，大体有印象的就有：幻灯片、滚动条模拟、select 下拉模拟、搜索框候选项下拉、cookie 标签页切换、lightbox 弹窗、google 地图相关、拖拽上传+预览+剪裁保存缩略图、表单验证、背景图片居中、折线数据表等等。此外那些基础的效果、统计字数之类的功能就不提了吧。</p>
+<p>平时里就得尽量针对常见的前端有关功能进行实现和学习、分析，并且记录积累。例如这次的滚动条模拟，他们官方用的滚动条插件版本太老，而对应老版本的滚动条使用文档已经找不到了，这样就得另找插件，幸亏很早很早之前，就翻译学习过 <a href="http://manos.malihu.gr/jquery-custom-content-scroller/" target="_blank" rel="noopener">mCustomScrollbar</a> 这个插件，于是这次就直接拿来用了。</p>
+<p>lightbox 相关功能，理所当然就想到 <a href="http://fancyapps.com/fancybox/" target="_blank" rel="noopener">fancybox</a> 这类插件，但是项目中的弹窗里面的内容和结构比较复杂，而之前做过的项目中也有一个需要自定义弹窗结构的需求，当时用的 fancybox 结果自定义的蛋都碎了，所以这次就直接没用，而是自己写的简单的弹窗功能。</p>
+<p>比较惊喜的就是，前段时间刚封装的一个小插件 <a href="https://github.com/yujiangshui/jquery-bgimgcenter" target="_blank" rel="noopener">jquery-bgimgcenter</a> 正好用到了，在设计中有这种需求。这样就减少了一部分工作量。</p>
+<p>这个项目比较麻烦的就是 带预览的拖拽上传+剪裁缩略图 功能，看了一下拖拽上传带预览使用 <a href="http://www.dropzonejs.com/" target="_blank" rel="noopener">DropzoneJS</a> 比较好，但是也遇到了坑，就是在将 dropzone 生成的预览图传输给剪裁插件那里比较麻烦，dropzone 之所以强大是因为作者封装的比较封闭，感觉扩展性不太好，文档这方面也不是很完善，于是认真的查看了几点代码才顺利用上。剪裁缩略图前期用的 Jcrop ，结果与之配合起来不好用，最后又换了 <a href="http://odyniec.net/projects/imgareaselect/" target="_blank" rel="noopener">imgAreaSelect</a> 这个插件，完成了需求。这个插件还是相当好的。</p>
+<p>虽然完成了需求，但是过程查阅了很多文档，比较浪费时间，如果之前有过类似方面的学习，做起来就快的多而且不容易出错。总结了一下，比较常见的需要平时多学习的功能主要有：</p>
+<ul>
+<li>上传+缩略图+预览+剪裁 等等</li>
+<li>幻灯片虽然有插件，但是尽量也自己实现一下看看</li>
+<li>模拟下拉、表单美化这些</li>
+<li>弹窗+前后切换功能</li>
+</ul>
+<p>还有一些其他的，就不提了，这些感觉是比较麻烦的，日后应该多学习一下。</p>
+<h4 id="测试的时候关闭无用插件"><a href="#测试的时候关闭无用插件" class="headerlink" title="测试的时候关闭无用插件"></a>测试的时候关闭无用插件</h4><p>这次还遇到了一个十分离奇的 BUG，就是在做 social share 模块的时候，chrome 里面死活没有对应结构，其他浏览器都是正常的。测试的时候，无论修改什么样式都不行，在 HTML 结构中，将原本的 share-list 类修改成 share2-list 反而可以。</p>
+<p>于是就统一修改成了 share2-list 。。后来又发现了异常，才突然想起来，chrome 开启了反广告的 Adblock Plus 插件，附带清除社交网络分享的功能。于是关闭了，就正常了。这点有点可笑。</p>
+<h4 id="插件错位功能失效-BUG"><a href="#插件错位功能失效-BUG" class="headerlink" title="插件错位功能失效 BUG"></a>插件错位功能失效 BUG</h4><p>这是本次踩到的最大的坑之一。</p>
+<p>因为用到了许多插件，而且有一些是要先隐藏起来 display none，然后再用 jQuery 显示出来。但是出现了很多错位或者失效的现象。</p>
+<p>想了一下才明白，那些插件都需要进行尺寸、方位的计算，而使用 CSS 给它们 display none 之后，初始化的计算显然就有问题了，所以导致了功能失效或者错位等问题。</p>
+<p>但是前期没有考虑到，后期修补只能将其使用 z-index 等来隐藏在下层，然后通过 setTimeout 为其恢复 z-index 属性并添加 display none 属性。这样既使其隐藏起来让插件获取到正确的尺寸，同时 display none 了还方便后面 jQuery 调用显示出来。虽然实现了，但是不够优雅，应该提早就考虑到这一点，从结构和样式上来预防这点。</p>
+<p>目前主要发现的有这些问题的插件如下：</p>
+<ul>
+<li>幻灯片类</li>
+<li>gmap.js 地图类</li>
+<li>数据表单类</li>
+</ul>
+<p>其实就是需要计算位置这类的插件，这个坑之前没遇到过。</p>
+<h2 id="某官网子站的移动版"><a href="#某官网子站的移动版" class="headerlink" title="某官网子站的移动版"></a>某官网子站的移动版</h2><h3 id="项目背景-2"><a href="#项目背景-2" class="headerlink" title="项目背景"></a>项目背景</h3><p>就是做一个风格类似的手机版，当初考虑分开单独做，但是因为工期有点超，对方打算做响应式。我了个惊天大去，设计稿上元素和功能都有些区别，怎么做响应式，再加上加载的那么多东西，做成响应式直接让手机爆炸了吧。幸好最后他们决定做专版。</p>
+<h3 id="项目总结-2"><a href="#项目总结-2" class="headerlink" title="项目总结"></a>项目总结</h3><p>这个就轻松太多了，用自己团队的模板就可以，都比较熟悉。然后面对手机端，需要测试，于是顺便尝试使用了 <a href="http://browsersync.io/" target="_blank" rel="noopener">browsersync</a> 这个同步工具，这样在手机和电脑上都可以刷新实时看到效果。工具是相当不错的，但是由于软件升级等乱七八糟的事情导致遇到了一些问题，后来也解决了，错过这个工具了。</p>
+<p>在做移动版网站的时候，也要尽量多看 PSD 设计稿和说明文档，一定要了解设计稿之间的关系、跳转或者切换等等，这样做出来才会方便后端继承。这个由于吸取了上面项目的经验，做的还是比较好的，结构和类都提前规划了一些，当然移动端的设计也比较简单，做的比较顺利。</p>
+<h4 id="还是移动端性能优化"><a href="#还是移动端性能优化" class="headerlink" title="还是移动端性能优化"></a>还是移动端性能优化</h4><p>这个项目的功能和相关插件比较依赖 jQuery ，所以只能用 jQuery。其他的就是上面提到的 CSS3 动画性能效果。</p>
+<p>这里对性能的优化还是没有太多经验，同页面打算做一个左右切换整页效果，用了各种高性能动画技巧，不过还是出现闪烁错位等不和谐的效果。最后去掉了，直接使用 z-index 和 opacity 的方式来隐藏显示。估计是 DOM 太过于复杂，同时应用了 flexslider 幻灯片插件的缘故。</p>
+<p>这块还需要好好学习多做点测试。</p>
+<h4 id="还是上传剪裁缩略图功能"><a href="#还是上传剪裁缩略图功能" class="headerlink" title="还是上传剪裁缩略图功能"></a>还是上传剪裁缩略图功能</h4><p>这个设计师，mobile 上的功能也设计成这样，还好 dropzone 也支持手机端，但是剪裁缩略图插件出问题了。最后还是搜索到了<br> <a href="http://www.marinkrmpotic.com/simpleimagecrop/" target="_blank" rel="noopener">Simple Image Crop Plugin</a> 配合 <a href="https://github.com/danielglyde/TouchIt" target="_blank" rel="noopener">TouchIt</a> 插件可以实现触摸选择截取区域的功能。</p>
+<h4 id="overflow-hidden-失效"><a href="#overflow-hidden-失效" class="headerlink" title="overflow hidden 失效"></a>overflow hidden 失效</h4><p>一直以为 overflow hidden 是万能隐藏，啥也会切断，如果问你什么情况下 overflow hidden 会失效你能想出来吗？</p>
+<p>这次就遇到了。具体看下面 demo 吧，通过注释几条 CSS 就可以看到对应效果。简单的说，body 的 overflow hidden 是无效的。然后父级如果没有 position relative 的话，子元素设置了 position absolute 之后，是相对于更上级来进行偏移，不属于父级元素，这时候设置 父级元素 overflow hidden 也不会隐藏切割掉子元素。</p>
+<iframe width="100%" height="300" src="http://jsfiddle.net/yujiangshui/A8a4H/3/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>暂时就这些吧，永远踩不完的坑~</p>
+
+  </div>
+  <div class="post-share">
+	<ul class="share-list">
+		<li><a class="icon icon-weibo" href="javascript:share.weibo();"><span>weibo</span></a></li>
+		<li><a class="icon icon-twitter" href="javascript:share.twitter();"><span>twitter</span></a></li>
+		<li><a class="icon icon-douban" href="javascript:share.douban();"><span>douban</span></a></li>
+		<li><a class="icon icon-qzone" href="javascript:share.qzone();"><span>qzone</span></a></li>
+	</ul>
+</div>
+</div>
+		</div>
+		<div class="footer">
+	<p class="left">&copy; Jiangshui 一个努力坚持中低质量原创的<a class="color-egg" href="/images/meinanzi.png">美男子</a>。生活不易，<a href="#">包养本人</a>。</p>
+	<p class="right">Base on <a href="https://github.com/yujiangshui/jiangshui-simple">Github</a> and <a href="http://hexo.io/">Hexo</a> .</p>
+</div>
+	</div>
+</div>
+
+</body>
+</html>

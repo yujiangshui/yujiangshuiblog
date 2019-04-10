@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta name="renderer" content="webkit">
+    
+    <title>JavaScript 和事件 | 于江水</title>
+    <meta name="description" content="与浏览器进行交互的时候浏览器就会触发各种事件。比如当我们打开某一个网页的时候，浏览器加载完成了这个网页，就会触发一个 load 事件；当我们点击页面中的某一个“地方”，浏览器就会在那个“地方”触发一个 click 事件。 这样，我们就可以编写 JavaScript，通过监听某一个事件，来实现某些功能扩展。例如监听 load 事件，显示欢迎信息，那么当浏览器加载完一个网页之后，就会显示欢迎信息。 下">
+<meta name="keywords" content="事件">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 和事件">
+<meta property="og:url" content="http://yujiangshui.com/javascript-event/index.html">
+<meta property="og:site_name" content="于江水">
+<meta property="og:description" content="与浏览器进行交互的时候浏览器就会触发各种事件。比如当我们打开某一个网页的时候，浏览器加载完成了这个网页，就会触发一个 load 事件；当我们点击页面中的某一个“地方”，浏览器就会在那个“地方”触发一个 click 事件。 这样，我们就可以编写 JavaScript，通过监听某一个事件，来实现某些功能扩展。例如监听 load 事件，显示欢迎信息，那么当浏览器加载完一个网页之后，就会显示欢迎信息。 下">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://jiangshui.b0.upaiyun.com/blog/2014/12/event0.svg">
+<meta property="og:image" content="http://jiangshui.b0.upaiyun.com/blog/2014/12/event1.png">
+<meta property="og:image" content="http://jiangshui.b0.upaiyun.com/blog/2014/12/event2.png">
+<meta property="og:updated_time" content="2019-04-10T00:17:52.179Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 和事件">
+<meta name="twitter:description" content="与浏览器进行交互的时候浏览器就会触发各种事件。比如当我们打开某一个网页的时候，浏览器加载完成了这个网页，就会触发一个 load 事件；当我们点击页面中的某一个“地方”，浏览器就会在那个“地方”触发一个 click 事件。 这样，我们就可以编写 JavaScript，通过监听某一个事件，来实现某些功能扩展。例如监听 load 事件，显示欢迎信息，那么当浏览器加载完一个网页之后，就会显示欢迎信息。 下">
+<meta name="twitter:image" content="http://jiangshui.b0.upaiyun.com/blog/2014/12/event0.svg">
+<meta name="twitter:creator" content="@yujiangshui">
+<meta property="fb:admins" content="yujiangshui"> 
+    <link rel="alternate" href="/atom.xml" title="于江水" type="application/rss+xml">
+    
+
+    <link rel="stylesheet" href="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/css/style.css">
+    <script data-main="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/js/build" src="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/js/require.js"></script>
+    <!--[if lt IE 7]>
+      <style>
+        .section {
+          width: 780px;
+        }
+        .post-content img {
+          width: 100%;
+        }
+        .jupe pre {
+          width: 100%;
+        }
+      </style>
+    <![endif]-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-57557739-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-57557739-5');
+    </script>
+  </head>
+</html>
+
+<body>
+
+<div class="section-wrap section-main">
+	<div class="section">
+		<div class="header">
+	<h1 class="logo">
+		<a href="/">于江水</a>
+	</h1>
+	<p class="social-links">
+		<a href="http://www.weibo.com/yujiangshui">Weibo</a>
+		\
+		<a href="https://twitter.com/yujiangshui">Twitter</a>
+		\
+		<a href="https://github.com/yujiangshui">Github</a>
+		\
+		<a href="/atom.xml">RSS</a>
+	</p>
+</div>
+		<div class="main">
+			<div class="jupe main-body">
+  <div class="post-content">
+    <h1 class="post-title">JavaScript 和事件</h1>
+    <div class="post-meta">
+      <span class="post-time">2014.12.23</span>
+      <div class="post-cats">
+        <a class="post-cats-item-link" href="/category/JavaScript/">JavaScript</a>
+      </div>
+    </div>
+    <div class="post-toc">
+      <div class="toc-title">TOC</div>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础事件操作"><span class="toc-number">1.</span> <span class="toc-text">基础事件操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#监听事件"><span class="toc-number">1.1.</span> <span class="toc-text">监听事件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#HTML-内联属性（避免使用）"><span class="toc-number">1.1.1.</span> <span class="toc-text">HTML 内联属性（避免使用）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DOM-属性绑定"><span class="toc-number">1.1.2.</span> <span class="toc-text">DOM 属性绑定</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用事件监听函数"><span class="toc-number">1.1.3.</span> <span class="toc-text">使用事件监听函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#移除事件监听"><span class="toc-number">1.2.</span> <span class="toc-text">移除事件监听</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事件触发过程"><span class="toc-number">2.</span> <span class="toc-text">事件触发过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#捕获阶段（Capture-Phase）"><span class="toc-number">2.1.</span> <span class="toc-text">捕获阶段（Capture Phase）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#目标阶段（Target-Phase）"><span class="toc-number">2.2.</span> <span class="toc-text">目标阶段（Target Phase）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#冒泡阶段（Bubbling-Phase）"><span class="toc-number">2.3.</span> <span class="toc-text">冒泡阶段（Bubbling Phase）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么不用第三个参数-true"><span class="toc-number">2.4.</span> <span class="toc-text">为什么不用第三个参数 true</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用事件代理（Event-Delegate）提升性能"><span class="toc-number">2.5.</span> <span class="toc-text">使用事件代理（Event Delegate）提升性能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#停止事件冒泡（stopPropagation）"><span class="toc-number">2.6.</span> <span class="toc-text">停止事件冒泡（stopPropagation）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事件的-Event-对象"><span class="toc-number">3.</span> <span class="toc-text">事件的 Event 对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#type-string"><span class="toc-number">3.1.</span> <span class="toc-text">type(string)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#target-node"><span class="toc-number">3.2.</span> <span class="toc-text">target(node)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#bubbles-boolean"><span class="toc-number">3.3.</span> <span class="toc-text">bubbles (boolean)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#preventDefault-function"><span class="toc-number">3.4.</span> <span class="toc-text">preventDefault (function)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stopPropagation-function"><span class="toc-number">3.5.</span> <span class="toc-text">stopPropagation (function)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#stopImmediatePropagation-function"><span class="toc-number">3.6.</span> <span class="toc-text">stopImmediatePropagation (function)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#cancelable-boolean"><span class="toc-number">3.7.</span> <span class="toc-text">cancelable (boolean)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#eventPhase-number"><span class="toc-number">3.8.</span> <span class="toc-text">eventPhase (number)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pageX-和-pageY-number"><span class="toc-number">3.9.</span> <span class="toc-text">pageX 和 pageY (number)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#isTrusted-boolean"><span class="toc-number">3.10.</span> <span class="toc-text">isTrusted (boolean)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jQuery-中的事件"><span class="toc-number">4.</span> <span class="toc-text">jQuery 中的事件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#绑定事件和事件代理"><span class="toc-number">4.1.</span> <span class="toc-text">绑定事件和事件代理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#处理过兼容性的事件对象（Event-Object）"><span class="toc-number">4.2.</span> <span class="toc-text">处理过兼容性的事件对象（Event Object）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#触发事件-trigger-方法"><span class="toc-number">4.3.</span> <span class="toc-text">触发事件 trigger 方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事件进阶话题"><span class="toc-number">5.</span> <span class="toc-text">事件进阶话题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IE-浏览器的差异和兼容性问题"><span class="toc-number">5.1.</span> <span class="toc-text">IE 浏览器的差异和兼容性问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#IE-下绑定事件"><span class="toc-number">5.1.1.</span> <span class="toc-text">IE 下绑定事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#IE-中-Event-对象需要注意的地方"><span class="toc-number">5.1.2.</span> <span class="toc-text">IE 中 Event 对象需要注意的地方</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事件回调函数的作用域问题"><span class="toc-number">5.2.</span> <span class="toc-text">事件回调函数的作用域问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#使用匿名函数"><span class="toc-number">5.2.1.</span> <span class="toc-text">使用匿名函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用-bind-方法"><span class="toc-number">5.2.2.</span> <span class="toc-text">使用 bind 方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用事件和技巧"><span class="toc-number">5.3.</span> <span class="toc-text">常用事件和技巧</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#load"><span class="toc-number">5.3.1.</span> <span class="toc-text">load</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#beforeunload"><span class="toc-number">5.3.2.</span> <span class="toc-text">beforeunload</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#resize"><span class="toc-number">5.3.3.</span> <span class="toc-text">resize</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#error"><span class="toc-number">5.3.4.</span> <span class="toc-text">error</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用-JavaScript-模拟触发内置事件"><span class="toc-number">5.4.</span> <span class="toc-text">用 JavaScript 模拟触发内置事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义事件"><span class="toc-number">5.5.</span> <span class="toc-text">自定义事件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#在开发中应用事件"><span class="toc-number">5.6.</span> <span class="toc-text">在开发中应用事件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#用事件解耦"><span class="toc-number">5.6.1.</span> <span class="toc-text">用事件解耦</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#发布（Publish）和订阅（Subscribe）模式"><span class="toc-number">5.6.2.</span> <span class="toc-text">发布（Publish）和订阅（Subscribe）模式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结和扩展阅读"><span class="toc-number">6.</span> <span class="toc-text">总结和扩展阅读</span></a></li></ol>
+    </div>
+    <p>与浏览器进行交互的时候浏览器就会触发各种事件。比如当我们打开某一个网页的时候，浏览器加载完成了这个网页，就会触发一个 <code>load</code> 事件；当我们点击页面中的某一个“地方”，浏览器就会在那个“地方”触发一个 <code>click</code> 事件。</p>
+<p>这样，我们就可以编写 JavaScript，通过监听某一个事件，来实现某些功能扩展。例如监听 <code>load</code> 事件，显示欢迎信息，那么当浏览器加载完一个网页之后，就会显示欢迎信息。</p>
+<p>下面就来介绍一下事件。</p>
+<h2 id="基础事件操作"><a href="#基础事件操作" class="headerlink" title="基础事件操作"></a>基础事件操作</h2><h3 id="监听事件"><a href="#监听事件" class="headerlink" title="监听事件"></a>监听事件</h3><p>浏览器会根据某些操作触发对应事件，如果我们需要针对某种事件进行处理，则需要监听这个事件。监听事件的方法主要有以下几种：</p>
+<h4 id="HTML-内联属性（避免使用）"><a href="#HTML-内联属性（避免使用）" class="headerlink" title="HTML 内联属性（避免使用）"></a>HTML 内联属性（避免使用）</h4><p>HTML 元素里面直接填写事件有关属性，属性值为 JavaScript 代码，即可在触发该事件的时候，执行属性值的内容。</p>
+<p>例如：</p>
+<pre><code>&lt;button onclick=&quot;alert(&apos;你点击了这个按钮&apos;);&quot;&gt;点击这个按钮&lt;/button&gt;
+</code></pre><p><code>onclick</code> 属性表示触发 <code>click</code>，属性值的内容（JavaScript 代码）会在单击该 HTML 节点时执行。</p>
+<p>显而易见，使用这种方法，JavaScript 代码与 HTML 代码耦合在了一起，不便于维护和开发。所以除非在必须使用的情况（例如统计链接点击数据）下，尽量避免使用这种方法。</p>
+<h4 id="DOM-属性绑定"><a href="#DOM-属性绑定" class="headerlink" title="DOM 属性绑定"></a>DOM 属性绑定</h4><p>也可以直接设置 DOM 属性来指定某个事件对应的处理函数，这个方法比较简单：</p>
+<pre><code>element.onclick = function(event){
+    alert(&apos;你点击了这个按钮&apos;);
+};
+</code></pre><p>上面代码就是监听 <code>element</code> 节点的 <code>click</code> 事件。它比较简单易懂，而且有较好的兼容性。但是也有缺陷，因为直接赋值给对应属性，如果你在后面代码中再次为 <code>element</code> 绑定一个回调函数，会覆盖掉之前回调函数的内容。</p>
+<p>虽然也可以用一些方法实现多个绑定，但还是推荐下面的标准事件监听函数。</p>
+<h4 id="使用事件监听函数"><a href="#使用事件监听函数" class="headerlink" title="使用事件监听函数"></a>使用事件监听函数</h4><p>标准的事件监听函数如下：</p>
+<pre><code>element.addEventListener(&lt;event-name&gt;, &lt;callback&gt;, &lt;use-capture&gt;);
+</code></pre><p>表示在 <code>element</code> 这个对象上面添加一个事件监听器，当监听到有 <code>&lt;event-name&gt;</code> 事件发生的时候，调用 <code>&lt;callback&gt;</code> 这个回调函数。至于 <code>&lt;use-capture&gt;</code> 这个参数，表示该事件监听是在“捕获”阶段中监听（设置为 true）还是在“冒泡”阶段中监听（设置为 false）。关于捕获和冒泡，我们会在下面讲解。</p>
+<p>用标准事件监听函数改写上面的例子：</p>
+<pre><code>var btn = document.getElementsByTagName(&apos;button&apos;);
+btn[0].addEventListener(&apos;click&apos;, function() {
+    alert(&apos;你点击了这个按钮&apos;);
+}, false);
+</code></pre><p>这里最好是为 HTML 结构定义个 id 或者 class 属性，方便选择，在这里只作为演示使用。</p>
+<p>Demo：</p>
+<iframe width="100%" height="300" src="http://jsfiddle.net/yujiangshui/L8uucrga/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<h3 id="移除事件监听"><a href="#移除事件监听" class="headerlink" title="移除事件监听"></a>移除事件监听</h3><p>当我们为某个元素绑定了一个事件，每次触发这个事件的时候，都会执行事件绑定的回调函数。如果我们想解除绑定，需要使用 <code>removeEventListener</code> 方法：</p>
+<pre><code>element.removeEventListener(&lt;event-name&gt;, &lt;callback&gt;, &lt;use-capture&gt;);
+</code></pre><p>需要注意的是，绑定事件时的回调函数不能是匿名函数，必须是一个声明的函数，因为解除事件绑定时需要传递这个回调函数的引用，才可以断开绑定。例如：</p>
+<pre><code>var fun = function() {
+    // function logic
+};
+
+element.addEventListener(&apos;click&apos;, fun, false);
+element.removeEventListener(&apos;click&apos;, fun, false);
+</code></pre><p>Demo：</p>
+<iframe width="100%" height="300" src="http://jsfiddle.net/yujiangshui/L8uucrga/1/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<h2 id="事件触发过程"><a href="#事件触发过程" class="headerlink" title="事件触发过程"></a>事件触发过程</h2><p>在上面大体了解了事件是什么、如何监听并执行某些操作，但我们对事件触发整个过程还不够了解。</p>
+<p>下图就是事件的触发过程，借用了 <a href="http://www.w3.org/TR/DOM-Level-3-Events/#event-flow" target="_blank" rel="noopener">W3C 的图片</a></p>
+<p><img src="http://jiangshui.b0.upaiyun.com/blog/2014/12/event0.svg" alt="W3C Event Phase"></p>
+<h3 id="捕获阶段（Capture-Phase）"><a href="#捕获阶段（Capture-Phase）" class="headerlink" title="捕获阶段（Capture Phase）"></a>捕获阶段（Capture Phase）</h3><p>当我们在 DOM 树的某个节点发生了一些操作（例如单击、鼠标移动上去），就会有一个事件发射过去。这个事件从 Window 发出，不断经过下级节点直到目标节点。在到达目标节点之前的过程，就是捕获阶段（Capture Phase）。</p>
+<p>所有经过的节点，都会触发这个事件。捕获阶段的任务就是建立这个事件传递路线，以便后面冒泡阶段顺着这条路线返回 Window。</p>
+<p>监听某个在捕获阶段触发的事件，需要在事件监听函数传递第三个参数 <code>true</code>。</p>
+<pre><code>element.addEventListener(&lt;event-name&gt;, &lt;callback&gt;, true);
+</code></pre><p>但一般使用时我们往往传递 false，会在后面说明原因。</p>
+<h3 id="目标阶段（Target-Phase）"><a href="#目标阶段（Target-Phase）" class="headerlink" title="目标阶段（Target Phase）"></a>目标阶段（Target Phase）</h3><p>当事件跑啊跑，跑到了事件触发目标节点那里，最终在目标节点上触发这个事件，就是目标阶段。</p>
+<p>需要注意的时，事件触发的目标总是最底层的节点。比如你点击一段文字，你以为你的事件目标节点在 <code>div</code> 上，但实际上触发在 <code>&lt;p&gt;</code>、<code>&lt;span&gt;</code> 等子节点上。例如：</p>
+<iframe width="100%" height="300" src="http://jsfiddle.net/yujiangshui/ju2ujmzp/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>在 Demo 中，我监听单击事件，将目标节点的 tag name 弹出。当你点击加粗字体时，事件的目标节点就为最底层的 <code>&lt;strong&gt;</code> 节点。</p>
+<h3 id="冒泡阶段（Bubbling-Phase）"><a href="#冒泡阶段（Bubbling-Phase）" class="headerlink" title="冒泡阶段（Bubbling Phase）"></a>冒泡阶段（Bubbling Phase）</h3><p>当事件达到目标节点之后，就会沿着原路返回，由于这个过程类似水泡从底部浮到顶部，所以称作冒泡阶段。</p>
+<p>在实际使用中，你并不需要把事件监听函数准确绑定到最底层的节点也可以正常工作。比如在上例，你想为这个 <code>&lt;div&gt;</code> 绑定单击时的回调函数，你无须为这个 <code>&lt;div&gt;</code> 下面的所有子节点全部绑定单击事件，只需要为 <code>&lt;div&gt;</code> 这一个节点绑定即可。因为发生它子节点的单击事件，都会冒泡上去，发生在 <code>&lt;div&gt;</code> 上面。</p>
+<p>针对这三个阶段，wilsonpage 做了一个非常棒的 <a href="http://jsbin.com/exezex/4/edit?css,js,output" target="_blank" rel="noopener">Demo</a>，可以看下：</p>
+<p><a class="jsbin-embed" href="http://jsbin.com/exezex/4/embed?css,js,output" target="_blank" rel="noopener">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
+<h3 id="为什么不用第三个参数-true"><a href="#为什么不用第三个参数-true" class="headerlink" title="为什么不用第三个参数 true"></a>为什么不用第三个参数 true</h3><p>介绍完上面三个事件触发阶段，我们来看下这个问题。</p>
+<p>所有介绍事件的文章都会说，在使用 <code>addEventListener</code> 函数来监听事件时，第三个参数设置为 <code>false</code>，这样监听事件时只会监听冒泡阶段发生的事件。</p>
+<p>这是因为 IE 浏览器不支持在捕获阶段监听事件，为了统一而设置的，毕竟 IE 浏览器的份额是不可忽略的。</p>
+<p>IE 浏览器在事件这方面与标准还有一些其他的差异，我们会在后面集中介绍。</p>
+<h3 id="使用事件代理（Event-Delegate）提升性能"><a href="#使用事件代理（Event-Delegate）提升性能" class="headerlink" title="使用事件代理（Event Delegate）提升性能"></a>使用事件代理（Event Delegate）提升性能</h3><p>因为事件有冒泡机制，所有子节点的事件都会顺着父级节点跑回去，所以我们可以通过监听父级节点来实现监听子节点的功能，这就是事件代理。</p>
+<p>使用事件代理主要有两个优势：</p>
+<ol>
+<li>减少事件绑定，提升性能。之前你需要绑定一堆子节点，而现在你只需要绑定一个父节点即可。减少了绑定事件监听函数的数量。</li>
+<li>动态变化的 DOM 结构，仍然可以监听。当一个 DOM 动态创建之后，不会带有任何事件监听，除非你重新执行事件监听函数，而使用事件监听无须担忧这个问题。</li>
+</ol>
+<p>看一个例子：</p>
+<iframe width="100%" height="300" src="http://jsfiddle.net/yujiangshui/ju2ujmzp/1/embedded/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+<p>上面例子中，为了简便，我使用 jQuery 来实现普通事件绑定和事件代理。我的目标是监听所有 <code>a</code> 链接的单击事件，<code>.ul1</code>  是常规的事件绑定方法，jQuery 会循环每一个 <code>.ul &gt; a</code> 结构并绑定事件监听函数。<code>.ul2</code> 则是事件监听的方法，jQuery 只为 <code>.ul2</code> 结构绑定事件监听函数，因为 <code>.ul2</code> 下面可能会有很多无关节点也会触发 <code>click</code> 事件，所以我在 <code>on</code> 函数里传递了第二个参数，表示只监听 <code>a</code> 子节点的事件。</p>
+<p>它们都可以正常工作，但是当我动态创建新 DOM 结构的时候，第一个 <code>ul</code> 问题就出现了，新创建结构虽然还是 <code>.ul1 &gt; a</code>，但是没有绑定事件，所以无法执行回调函数。而第二个 <code>ul</code> 工作的很好，因为点击新创建的 DOM ，它的事件会冒泡到父级节点进行处理。</p>
+<p>如果使用原生的方式实现事件代理，需要注意过滤非目标节点，可以通过 id、class 或者 tagname 等等，例如：</p>
+<pre><code>element.addEventListener(&apos;click&apos;, function(event) {
+    // 判断是否是 a 节点
+    if ( event.target.tagName == &apos;A&apos; ) {
+        // a 的一些交互操作
+    }
+}, false);
+</code></pre><h3 id="停止事件冒泡（stopPropagation）"><a href="#停止事件冒泡（stopPropagation）" class="headerlink" title="停止事件冒泡（stopPropagation）"></a>停止事件冒泡（stopPropagation）</h3><p>所有的事情都会有对立面，事件的冒泡阶段虽然看起来很好，也会有不适合的场所。比较复杂的应用，由于事件监听比较复杂，可能会希望只监听发生在具体节点的事件。这个时候就需要停止事件冒泡。</p>
+<p>停止事件冒泡需要使用事件对象的 <code>stopPropagation</code> 方法，具体代码如下：</p>
+<pre><code>element.addEventListener(&apos;click&apos;, function(event) {
+    event.stopPropagation();
+}, false);
+</code></pre><p>在事件监听的回调函数里，会传递一个参数，这就是 <code>Event</code> 对象，在这个对象上调用 <code>stopPropagation</code> 方法即可停止事件冒泡。举个停止事件冒泡的应用实例：</p>
+<p><a class="jsbin-embed" href="http://jsbin.com/aparot/3/embed?html,js,output" target="_blank" rel="noopener">JS Bin</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
+<p>在上面例子中，有一个弹出层，我们可以在弹出层上做任何操作，例如 <code>click</code> 等。当我们想关掉这个弹出层，在弹出层外面的任意结构中点击即可关掉。它首先对 <code>document</code> 节点进行 <code>click</code> 事件监听，所有的 <code>click</code> 事件，都会让弹出层隐藏掉。同样的，我们在弹出层上面的单击操作也会导致弹出层隐藏。之后我们对弹出层使用停止事件冒泡，掐断了单击事件返回 <code>document</code> 的冒泡路线，这样在弹出层的操作就不会被 <code>document</code> 的事件处理函数监听到。</p>
+<p>更多关于 <code>Event</code> 对象的事情，我们会在下面介绍。</p>
+<h2 id="事件的-Event-对象"><a href="#事件的-Event-对象" class="headerlink" title="事件的 Event 对象"></a>事件的 Event 对象</h2><p>当一个事件被触发的时候，会创建一个事件对象（Event Object），这个对象里面包含了一些有用的属性或者方法。事件对象会作为第一个参数，传递给我们的毁掉函数。我们可以使用下面代码，在浏览器中打印出这个事件对象：</p>
+<pre><code>&lt;button&gt;打印 Event Object&lt;/button&gt;
+
+&lt;script&gt;
+    var btn = document.getElementsByTagName(&apos;button&apos;);
+    btn[0].addEventListener(&apos;click&apos;, function(event) {
+        console.log(event);
+    }, false);
+&lt;/script&gt;
+</code></pre><p>就可以看到一堆属性列表：</p>
+<p><img src="http://jiangshui.b0.upaiyun.com/blog/2014/12/event1.png" alt="事件属性列表"></p>
+<p>事件对象包括很多有用的信息，比如事件触发时，鼠标在屏幕上的坐标、被触发的 DOM 详细信息、以及上图最下面继承过来的停止冒泡方法（stopPropagation）。下面介绍一下比较常用的几个属性和方法：</p>
+<h3 id="type-string"><a href="#type-string" class="headerlink" title="type(string)"></a><code>type</code>(string)</h3><p>事件的名称，比如 “click”。</p>
+<h3 id="target-node"><a href="#target-node" class="headerlink" title="target(node)"></a><code>target</code>(node)</h3><p>事件要触发的目标节点。</p>
+<h3 id="bubbles-boolean"><a href="#bubbles-boolean" class="headerlink" title="bubbles (boolean)"></a><code>bubbles</code> (boolean)</h3><p>表明该事件是否是在冒泡阶段触发的。</p>
+<h3 id="preventDefault-function"><a href="#preventDefault-function" class="headerlink" title="preventDefault (function)"></a><code>preventDefault</code> (function)</h3><p>这个方法可以禁止一切默认的行为，例如点击 <code>a</code> 标签时，会打开一个新页面，如果为 <code>a</code> 标签监听事件 <code>click</code> 同时调用该方法，则不会打开新页面。</p>
+<h3 id="stopPropagation-function"><a href="#stopPropagation-function" class="headerlink" title="stopPropagation (function)"></a><code>stopPropagation</code> (function)</h3><p>停止冒泡，上面有提到，不再赘述。</p>
+<h3 id="stopImmediatePropagation-function"><a href="#stopImmediatePropagation-function" class="headerlink" title="stopImmediatePropagation (function)"></a><code>stopImmediatePropagation</code> (function)</h3><p>与 <code>stopPropagation</code> 类似，就是阻止触发其他监听函数。但是与 <code>stopPropagation</code> 不同的是，它更加 “强力”，阻止除了目标之外的事件触发，甚至阻止针对同一个目标节点的相同事件，Demo：<a href="http://jsfiddle.net/yujiangshui/ju2ujmzp/2/。" target="_blank" rel="noopener">http://jsfiddle.net/yujiangshui/ju2ujmzp/2/。</a></p>
+<h3 id="cancelable-boolean"><a href="#cancelable-boolean" class="headerlink" title="cancelable (boolean)"></a><code>cancelable</code> (boolean)</h3><p>这个属性表明该事件是否可以通过调用 <code>event.preventDefault</code> 方法来禁用默认行为。</p>
+<h3 id="eventPhase-number"><a href="#eventPhase-number" class="headerlink" title="eventPhase (number)"></a><code>eventPhase</code> (number)</h3><p>这个属性的数字表示当前事件触发在什么阶段。none：0；捕获：1；目标：2；冒泡：3。</p>
+<h3 id="pageX-和-pageY-number"><a href="#pageX-和-pageY-number" class="headerlink" title="pageX 和 pageY (number)"></a><code>pageX</code> 和 <code>pageY</code> (number)</h3><p>这两个属性表示触发事件时，鼠标相对于页面的坐标。Demo：<a href="http://api.jquery.com/event.pagex/。" target="_blank" rel="noopener">http://api.jquery.com/event.pagex/。</a></p>
+<h3 id="isTrusted-boolean"><a href="#isTrusted-boolean" class="headerlink" title="isTrusted (boolean)"></a><code>isTrusted</code> (boolean)</h3><p>表明该事件是浏览器触发（用户真实操作触发），还是 JavaScript 代码触发的。</p>
+<h2 id="jQuery-中的事件"><a href="#jQuery-中的事件" class="headerlink" title="jQuery 中的事件"></a>jQuery 中的事件</h2><p>如果你在写文章或者 Demo，为了简单，你当然可以用上面的事件监听函数，以及那些事件对象提供的方法等。但在实际中，有一些方法和属性是有兼容性问题的，所以我们会使用 jQuery 来消除兼容性问题。</p>
+<p>下面简单的来说一下 jQuery 中事件的基础操作。</p>
+<h3 id="绑定事件和事件代理"><a href="#绑定事件和事件代理" class="headerlink" title="绑定事件和事件代理"></a>绑定事件和事件代理</h3><p>在 jQuery 中，提供了诸如 <code>click()</code> 这样的语法糖来绑定对应事件，但是这里推荐统一使用 <code>on()</code> 来绑定事件。语法：</p>
+<pre><code>.on( events [, selector ] [, data ], handler )
+</code></pre><p><code>events</code> 即为事件的名称，你可以传递第二个参数来实现事件代理，具体文档<a href="http://api.jquery.com/on/" target="_blank" rel="noopener">.on()</a> 这里不再赘述。</p>
+<h3 id="处理过兼容性的事件对象（Event-Object）"><a href="#处理过兼容性的事件对象（Event-Object）" class="headerlink" title="处理过兼容性的事件对象（Event Object）"></a>处理过兼容性的事件对象（Event Object）</h3><p>事件对象有些方法等也有兼容性差异，jQuery 将其封装处理，并提供跟标准一直的命名。</p>
+<p>如果你想在 jQuery 事件回调函数中访问原来的事件对象，需要使用 <code>event.originalEvent</code>，它指向原生的事件对象。</p>
+<h3 id="触发事件-trigger-方法"><a href="#触发事件-trigger-方法" class="headerlink" title="触发事件 trigger 方法"></a>触发事件 <code>trigger</code> 方法</h3><p>点击某个绑定了 <code>click</code> 事件的节点，自然会触发该节点的 <code>click</code> 事件，从而执行对应回调函数。</p>
+<p><code>trigger</code> 方法可以模拟触发事件，我们单击另一个节点 elementB，可以使用：</p>
+<pre><code>$(elementB).on(&apos;click&apos;, function(){
+    $(elementA).trigger( &quot;click&quot; );
+});
+</code></pre><p>来触发 elementA 节点的单击监听回调函数。详情请看文档 <a href="http://api.jquery.com/trigger/" target="_blank" rel="noopener">.trigger()</a>。</p>
+<h2 id="事件进阶话题"><a href="#事件进阶话题" class="headerlink" title="事件进阶话题"></a>事件进阶话题</h2><h3 id="IE-浏览器的差异和兼容性问题"><a href="#IE-浏览器的差异和兼容性问题" class="headerlink" title="IE 浏览器的差异和兼容性问题"></a>IE 浏览器的差异和兼容性问题</h3><p>IE 浏览器就是特立独行，它对于事件的操作与标准有一些差异。不过 IE 浏览器现在也开始慢慢努力改造，让浏览器变得更加标准。</p>
+<h4 id="IE-下绑定事件"><a href="#IE-下绑定事件" class="headerlink" title="IE 下绑定事件"></a>IE 下绑定事件</h4><p>在 IE 下面绑定一个事件监听，在 IE9- 无法使用标准的 <code>addEventListener</code> 函数，而是使用自家的 <code>attachEvent</code>，具体用法：</p>
+<pre><code>element.attachEvent(&lt;event-name&gt;, &lt;callback&gt;);
+</code></pre><p>其中 <code>&lt;event-name&gt;</code> 参数需要注意，它需要为事件名称添加 <code>on</code> 前缀，比如有个事件叫 <code>click</code>，标准事件监听函数监听 <code>click</code>，IE 这里需要监听 <code>onclick</code>。</p>
+<p>另一个，它没有第三个参数，也就是说它只支持监听在冒泡阶段触发的事件，所以为了统一，在使用标准事件监听函数的时候，第三参数传递 false。</p>
+<p>当然，这个方法在 IE9 已经被抛弃，在 IE11 已经被移除了，IE 也在慢慢变好。</p>
+<h4 id="IE-中-Event-对象需要注意的地方"><a href="#IE-中-Event-对象需要注意的地方" class="headerlink" title="IE 中 Event 对象需要注意的地方"></a>IE 中 Event 对象需要注意的地方</h4><p>IE 中往回调函数中传递的事件对象与标准也有一些差异，你需要使用 <code>window.event</code> 来获取事件对象。所以你通常会写出下面代码来获取事件对象：</p>
+<pre><code>event = event || window.event
+</code></pre><p>此外还有一些事件属性有差别，比如比较常用的 <code>event.target</code> 属性，IE 中没有，而是使用 <code>event.srcElement</code> 来代替。如果你的回调函数需要处理触发事件的节点，那么需要写：</p>
+<pre><code>node = event.srcElement || event.target;
+</code></pre><p>常见的就是这点，更细节的不再多说。在概念学习中，我们没必要为不标准的东西支付学习成本；在实际应用中，类库已经帮我们封装好这些兼容性问题。可喜的是 IE 浏览器现在也开始不断向标准进步。</p>
+<h3 id="事件回调函数的作用域问题"><a href="#事件回调函数的作用域问题" class="headerlink" title="事件回调函数的作用域问题"></a>事件回调函数的作用域问题</h3><p>与事件绑定在一起的回调函数作用域会有问题，我们来看个例子：</p>
+<p><a class="jsbin-embed" href="http://jsbin.com/atoluy/1/embed?html,js,output" target="_blank" rel="noopener">Events in JavaScript: Removing event listeners</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
+<p>回调函数调用的 <code>user.greeting</code> 函数作用域应该是在 <code>user</code> 下的，本期望输出 <code>My name is Bob</code> 结果却输出了 <code>My name is undefined</code>。这是因为事件绑定函数时，该函数会以当前元素为作用域执行。为了证明这一点，我们可以为当前 <code>element</code> 添加属性：</p>
+<pre><code>element.firstname = &apos;jiangshui&apos;;
+</code></pre><p>再次点击，可以正确弹出 <code>My name is jiangshui</code>。那么我们来解决一下这个问题。</p>
+<h4 id="使用匿名函数"><a href="#使用匿名函数" class="headerlink" title="使用匿名函数"></a>使用匿名函数</h4><p>我们为回调函数包裹一层匿名函数。</p>
+<p><a class="jsbin-embed" href="http://jsbin.com/onomud/1/embed?html,js,output" target="_blank" rel="noopener">Events in JavaScript: Removing event listeners</a><script src="http://static.jsbin.com/js/embed.js"></script></p>
+<p>包裹之后，虽然匿名函数的作用域被指向事件触发元素，但执行的内容就像直接调用一样，不会影响其作用域。</p>
+<h4 id="使用-bind-方法"><a href="#使用-bind-方法" class="headerlink" title="使用 bind 方法"></a>使用 bind 方法</h4><p>使用匿名函数是有缺陷的，每次调用都包裹进匿名函数里面，增加了冗余代码等，此外如果想使用 <code>removeEventListener</code> 解除绑定，还需要再创建一个函数引用。<code>Function</code> 类型提供了 <code>bind</code> 方法，可以为函数绑定作用域，无论函数在哪里调用，都不会改变它的作用域。通过如下语句绑定作用域：</p>
+<pre><code>user.greeting = user.greeting.bind(user);
+</code></pre><p>这样我们就可以直接使用：</p>
+<pre><code>element.addEventListener(&apos;click&apos;, user.greeting);
+</code></pre><h3 id="常用事件和技巧"><a href="#常用事件和技巧" class="headerlink" title="常用事件和技巧"></a>常用事件和技巧</h3><p>用户的操作有很多种，所以有很多事件。为了开发方便，浏览器又提供了一些事件，所以有很多很多的事件。这里只介绍几种常用的事件和使用技巧。</p>
+<h4 id="load"><a href="#load" class="headerlink" title="load"></a><code>load</code></h4><p><code>load</code> 事件在资源加载完成时触发。这个资源可以是图片、CSS 文件、JS 文件、视频、document 和 window 等等。</p>
+<p>比较常用的就是监听 window 的 <code>load</code> 事件，当页面内所有资源全部加载完成之后就会触发。比如用 JS 对图片以及其他资源处理，我们在 <code>load</code> 事件中触发，可以保证 JS 不会在资源未加载完成就开始处理资源导致报错。</p>
+<p>同样的，也可以监听图片等其他资源加载情况。</p>
+<h4 id="beforeunload"><a href="#beforeunload" class="headerlink" title="beforeunload"></a><code>beforeunload</code></h4><p>当浏览者在页面上的输入框输入一些内容时，未保存、误操作关掉网页可能会导致输入信息丢失。</p>
+<p>当浏览者输入信息但未保存时关掉网页，我们就可以开始监听这个事件，例如：</p>
+<pre><code>window.addEventListener(&quot;beforeunload&quot;, function( event ) {
+    event.returnValue = &quot;放弃当前未保存内容而关闭页面？&quot;;
+});
+</code></pre><p>这时候试图关闭网页的时候，会弹窗阻止操作，点击确认之后才会关闭。当然，如果没有必要，就不要监听，不要以为使用它可以为你留住浏览者。</p>
+<h4 id="resize"><a href="#resize" class="headerlink" title="resize"></a><code>resize</code></h4><p>当节点尺寸发生变化时，触发这个事件。通常用在 window 上，这样可以监听浏览器窗口的变化。通常用在复杂布局和响应式上。</p>
+<p>常见的视差滚动效果网站以及同类比较复杂的布局网站，往往使用 JavaScript 来计算尺寸、位置。如果用户调整浏览器大小，尺寸、位置不随着改变则会出现错位情况。在 window 上监听该事件，触发时调用计算尺寸、位置的函数，可以根据浏览器的大小来重新计算。</p>
+<p>但需要注意一点，当浏览器发生任意变化都会触发 <code>resize</code> 事件，哪怕是缩小 1px 的浏览器宽度，这样调整浏览器时会触发大量的 <code>resize</code> 事件，你的回调函数就会被大量的执行，导致变卡、崩溃等。</p>
+<p>你可以使用函数 throttle 或者 debounce 技巧来进行优化，throttle 方法大体思路就是在某一段时间内无论多次调用，只执行一次函数，到达时间就执行；debounce 方法大体思路就是在某一段时间内等待是否还会重复调用，如果不会再调用，就执行函数，如果还有重复调用，则不执行继续等待。关于它们更详细的信息，我后面会介绍一下发表在我的博客上，这里不再赘述。</p>
+<h4 id="error"><a href="#error" class="headerlink" title="error"></a><code>error</code></h4><p>当我们加载资源失败或者加载成功但是只加载一部分而无法使用时，就会触发 <code>error</code> 事件，我们可以通过监听该事件来提示一个友好的报错或者进行其他处理。比如 JS 资源加载失败，则提示尝试刷新；图片资源加载失败，在图片下面提示图片加载失败等。该事件不会冒泡。因为子节点加载失败，并不意味着父节点加载失败，所以你的处理函数必须精确绑定到目标节点。</p>
+<p>需要注意的是，对于该事件，你可以使用 <code>addEventListener</code> 等进行监听，但是有时候会出现失效情况（看<a href="http://jsbin.com/esimAWA/2/quiet" target="_blank" rel="noopener">这个例子</a>），这是因为 <code>error</code> 事件都触发过了，你的 JS 监听处理代码还没有加载进来执行。为了避免这种情况，用内联法更好一些：</p>
+<pre><code>&lt;img src=&quot;not-found.jpg&quot; onerror=&quot;doSomething&quot; /&gt;
+</code></pre><p>如果还有其他常用事件，欢迎留言补充。</p>
+<h3 id="用-JavaScript-模拟触发内置事件"><a href="#用-JavaScript-模拟触发内置事件" class="headerlink" title="用 JavaScript 模拟触发内置事件"></a>用 JavaScript 模拟触发内置事件</h3><p>内置的事件也可以被 JavaScript 模拟触发，比如下面函数模拟触发单击事件：</p>
+<pre><code>function simulateClick() {
+  var event = new MouseEvent(&apos;click&apos;, {
+    &apos;view&apos;: window,
+    &apos;bubbles&apos;: true,
+    &apos;cancelable&apos;: true
+  });
+  var cb = document.getElementById(&apos;checkbox&apos;); 
+  var canceled = !cb.dispatchEvent(event);
+  if (canceled) {
+    // A handler called preventDefault.
+    alert(&quot;canceled&quot;);
+  } else {
+    // None of the handlers called preventDefault.
+    alert(&quot;not canceled&quot;);
+  }
+}
+</code></pre><p>可以看这个 <a href="https://developer.mozilla.org/samples/domref/dispatchEvent.html" target="_blank" rel="noopener">Demo</a> 来了解更多。</p>
+<h3 id="自定义事件"><a href="#自定义事件" class="headerlink" title="自定义事件"></a>自定义事件</h3><p>我们可以自定义事件来实现更灵活的开发，事件用好了可以是一件很强大的工具，基于事件的开发有很多优势（后面介绍）。</p>
+<p>与自定义事件的函数有 <code>Event</code>、<code>CustomEvent</code> 和 <code>dispatchEvent</code>。</p>
+<p>直接自定义事件，使用 <code>Event</code> 构造函数：</p>
+<pre><code>var event = new Event(&apos;build&apos;);
+
+// Listen for the event.
+elem.addEventListener(&apos;build&apos;, function (e) { ... }, false);
+
+// Dispatch the event.
+elem.dispatchEvent(event);
+</code></pre><p><code>CustomEvent</code> 可以创建一个更高度自定义事件，还可以附带一些数据，具体用法如下：</p>
+<pre><code>var myEvent = new CustomEvent(eventname, options);
+</code></pre><p>其中 options 可以是：</p>
+<pre><code>{
+    detail: {
+        ...
+    },
+    bubbles: true,
+    cancelable: false
+}
+</code></pre><p>其中 <code>detail</code> 可以存放一些初始化的信息，可以在触发的时候调用。其他属性就是定义该事件是否具有冒泡等等功能。</p>
+<p>内置的事件会由浏览器根据某些操作进行触发，自定义的事件就需要人工触发。<code>dispatchEvent</code> 函数就是用来触发某个事件：</p>
+<pre><code>element.dispatchEvent(customEvent);
+</code></pre><p>上面代码表示，在 element 上面触发 customEvent 这个事件。结合起来用就是：</p>
+<pre><code>// add an appropriate event listener
+obj.addEventListener(&quot;cat&quot;, function(e) { process(e.detail) });
+
+// create and dispatch the event
+var event = new CustomEvent(&quot;cat&quot;, {&quot;detail&quot;:{&quot;hazcheeseburger&quot;:true}});
+obj.dispatchEvent(event);
+</code></pre><p>使用自定义事件需要注意兼容性问题，而使用 jQuery 就简单多了：</p>
+<pre><code>// 绑定自定义事件
+$(element).on(&apos;myCustomEvent&apos;, function(){});
+
+// 触发事件
+$(element).trigger(&apos;myCustomEvent&apos;);
+</code></pre><p>此外，你还可以在触发自定义事件时传递更多参数信息：</p>
+<pre><code>$( &quot;p&quot; ).on( &quot;myCustomEvent&quot;, function( event, myName ) {
+  $( this ).text( myName + &quot;, hi there!&quot; );
+});
+$( &quot;button&quot; ).click(function () {
+  $( &quot;p&quot; ).trigger( &quot;myCustomEvent&quot;, [ &quot;John&quot; ] );
+});
+</code></pre><p>更详细的用法请看 <a href="http://learn.jquery.com/events/introduction-to-custom-events/" target="_blank" rel="noopener">Introducing Custom Events</a>，这里不再赘述。</p>
+<h3 id="在开发中应用事件"><a href="#在开发中应用事件" class="headerlink" title="在开发中应用事件"></a>在开发中应用事件</h3><p>当我们操作某一个 DOM，发出一个事件，我们可以在另一个地方写代码捕获这个事件执行处理逻辑。触发操作和捕获处理操作是分开的。我们可以根据这个特性来对程序解耦。</p>
+<h4 id="用事件解耦"><a href="#用事件解耦" class="headerlink" title="用事件解耦"></a>用事件解耦</h4><p>我们可以将一个整个的功能，分割成独立的小功能，每个小功能绑定一个事件，由一个“控制器”负责根据条件触发某个事件。这样，在外面触发这个事件，也可以调用对应功能，使其更加灵活。</p>
+<p><img src="http://jiangshui.b0.upaiyun.com/blog/2014/12/event2.png" alt="应用事件对程序解耦"></p>
+<p>在《基于 MVC 的 JavaScript Web 富应用开发》一书中，有更加具体的实例，有兴趣的朋友可以买本看看。</p>
+<h4 id="发布（Publish）和订阅（Subscribe）模式"><a href="#发布（Publish）和订阅（Subscribe）模式" class="headerlink" title="发布（Publish）和订阅（Subscribe）模式"></a>发布（Publish）和订阅（Subscribe）模式</h4><p>针对上面这种用法，继续抽象一下，就是发布和订阅开发模式。正如其名，这种模式有两个角色：发布者和订阅者，此外有一条信道，发布者被触发往这个信道里面发信，订阅者从这个信道里面收信，如果收到特定信件则执行某个对应的逻辑。这样，发布者和订阅者之间是完全解耦的，只有一条信道连接。这样就非常容易扩展，也不会引入额外的依赖。</p>
+<p>这样如果需要添加新功能，只需要添加一个新的订阅者（及其执行逻辑），监听信道中某一类新的信件。再在应用中通过发布者发送一类新的信件即可。</p>
+<p>具体实现，这里推荐 cowboy 开发的 <a href="https://github.com/cowboy/jquery-tiny-pubsub" target="_blank" rel="noopener">Tiny Pub Sub</a>，通过 jQuery 实现，非常简洁直观，jQuery 太赞。代码就这几行：</p>
+<pre><code>(function($) {
+
+  var o = $({});
+
+  $.subscribe = function() {
+    o.on.apply(o, arguments);
+  };
+
+  $.unsubscribe = function() {
+    o.off.apply(o, arguments);
+  };
+
+  $.publish = function() {
+    o.trigger.apply(o, arguments);
+  };
+
+}(jQuery));
+</code></pre><p>定义一个对象作为信道，然后提供了三个方法，订阅者、取消订阅、发布者。</p>
+<h2 id="总结和扩展阅读"><a href="#总结和扩展阅读" class="headerlink" title="总结和扩展阅读"></a>总结和扩展阅读</h2><p>事件有关的基础知识基本就这些，更多的还有待你继续挖掘。本文资料参考和推荐扩展阅读如下（感谢他们）：</p>
+<ul>
+<li><a href="http://www.w3.org/TR/DOM-Level-3-Events/" target="_blank" rel="noopener">DOM-Level-3-Events</a></li>
+<li><a href="https://developer.mozilla.org/en/docs/Web/API/Event" target="_blank" rel="noopener">Event on MDN</a></li>
+<li><a href="http://api.jquery.com/category/events/" target="_blank" rel="noopener">Events of jQuery</a></li>
+<li><a href="http://learn.jquery.com/events/introduction-to-custom-events/" target="_blank" rel="noopener">Introducing Custom Events</a></li>
+<li><a href="http://www.smashingmagazine.com/2013/11/12/an-introduction-to-dom-events/" target="_blank" rel="noopener">An Introduction To DOM Events</a></li>
+<li>《基于 MVC 的 JavaScript Web 富应用开发》</li>
+</ul>
+
+  </div>
+  <div class="post-share">
+	<ul class="share-list">
+		<li><a class="icon icon-weibo" href="javascript:share.weibo();"><span>weibo</span></a></li>
+		<li><a class="icon icon-twitter" href="javascript:share.twitter();"><span>twitter</span></a></li>
+		<li><a class="icon icon-douban" href="javascript:share.douban();"><span>douban</span></a></li>
+		<li><a class="icon icon-qzone" href="javascript:share.qzone();"><span>qzone</span></a></li>
+	</ul>
+</div>
+</div>
+		</div>
+		<div class="footer">
+	<p class="left">&copy; Jiangshui 一个努力坚持中低质量原创的<a class="color-egg" href="/images/meinanzi.png">美男子</a>。生活不易，<a href="#">包养本人</a>。</p>
+	<p class="right">Base on <a href="https://github.com/yujiangshui/jiangshui-simple">Github</a> and <a href="http://hexo.io/">Hexo</a> .</p>
+</div>
+	</div>
+</div>
+
+</body>
+</html>

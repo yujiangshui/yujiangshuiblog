@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta name="renderer" content="webkit">
+    
+    <title>Mac 下的基础前端开发环境搭建 | 于江水</title>
+    <meta name="description" content="最近刚买了 Mac Pro，折腾了半个月，目前已经完全适应并投入使用。因为我是做前端的，所以在这里总结记录一下 Mac 系统下的基础前端开发环境搭建和必备软件，给新手一点帮助。">
+<meta name="keywords" content="Mac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac 下的基础前端开发环境搭建">
+<meta property="og:url" content="http://yujiangshui.com/mac-basic-workflow-for-frontend-develop/index.html">
+<meta property="og:site_name" content="于江水">
+<meta property="og:description" content="最近刚买了 Mac Pro，折腾了半个月，目前已经完全适应并投入使用。因为我是做前端的，所以在这里总结记录一下 Mac 系统下的基础前端开发环境搭建和必备软件，给新手一点帮助。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-10T00:17:52.182Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mac 下的基础前端开发环境搭建">
+<meta name="twitter:description" content="最近刚买了 Mac Pro，折腾了半个月，目前已经完全适应并投入使用。因为我是做前端的，所以在这里总结记录一下 Mac 系统下的基础前端开发环境搭建和必备软件，给新手一点帮助。">
+<meta name="twitter:creator" content="@yujiangshui">
+<meta property="fb:admins" content="yujiangshui"> 
+    <link rel="alternate" href="/atom.xml" title="于江水" type="application/rss+xml">
+    
+
+    <link rel="stylesheet" href="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/css/style.css">
+    <script data-main="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/js/build" src="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/js/require.js"></script>
+    <!--[if lt IE 7]>
+      <style>
+        .section {
+          width: 780px;
+        }
+        .post-content img {
+          width: 100%;
+        }
+        .jupe pre {
+          width: 100%;
+        }
+      </style>
+    <![endif]-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-57557739-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-57557739-5');
+    </script>
+  </head>
+</html>
+
+<body>
+
+<div class="section-wrap section-main">
+	<div class="section">
+		<div class="header">
+	<h1 class="logo">
+		<a href="/">于江水</a>
+	</h1>
+	<p class="social-links">
+		<a href="http://www.weibo.com/yujiangshui">Weibo</a>
+		\
+		<a href="https://twitter.com/yujiangshui">Twitter</a>
+		\
+		<a href="https://github.com/yujiangshui">Github</a>
+		\
+		<a href="/atom.xml">RSS</a>
+	</p>
+</div>
+		<div class="main">
+			<div class="jupe main-body">
+  <div class="post-content">
+    <h1 class="post-title">Mac 下的基础前端开发环境搭建</h1>
+    <div class="post-meta">
+      <span class="post-time">2014.04.17</span>
+      <div class="post-cats">
+        <a class="post-cats-item-link" href="/category/others/">其他</a>
+      </div>
+    </div>
+    <div class="post-toc">
+      <div class="toc-title">TOC</div>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#几点感悟和心得"><span class="toc-number">1.</span> <span class="toc-text">几点感悟和心得</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#必备软件"><span class="toc-number">2.</span> <span class="toc-text">必备软件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#前端开发环境搭建"><span class="toc-number">3.</span> <span class="toc-text">前端开发环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#开发工具"><span class="toc-number">3.1.</span> <span class="toc-text">开发工具</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Sublime-text"><span class="toc-number">3.1.1.</span> <span class="toc-text">Sublime text</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Brackets"><span class="toc-number">3.1.2.</span> <span class="toc-text">Brackets</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Node-js-等等"><span class="toc-number">3.1.3.</span> <span class="toc-text">Node.js 等等</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#本地搭建-AMP-环境"><span class="toc-number">3.1.4.</span> <span class="toc-text">本地搭建 AMP 环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#浏览器们"><span class="toc-number">3.1.5.</span> <span class="toc-text">浏览器们</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前端辅助工具"><span class="toc-number">3.2.</span> <span class="toc-text">前端辅助工具</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#马克鳗尺寸测量工具"><span class="toc-number">3.2.1.</span> <span class="toc-text">马克鳗尺寸测量工具</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PhotoShop"><span class="toc-number">3.2.2.</span> <span class="toc-text">PhotoShop</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Charles"><span class="toc-number">3.2.3.</span> <span class="toc-text">Charles</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Koala"><span class="toc-number">3.2.4.</span> <span class="toc-text">Koala</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Dash"><span class="toc-number">3.2.5.</span> <span class="toc-text">Dash</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前端测试工具"><span class="toc-number">3.3.</span> <span class="toc-text">前端测试工具</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#BrowserSync"><span class="toc-number">3.3.1.</span> <span class="toc-text">BrowserSync</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Parallels-Destop-虚拟机"><span class="toc-number">3.3.2.</span> <span class="toc-text">Parallels Destop 虚拟机</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更多资源"><span class="toc-number">4.</span> <span class="toc-text">更多资源</span></a></li></ol>
+    </div>
+    <p>最近刚买了 Mac Pro，折腾了半个月，目前已经完全适应并投入使用。因为我是做前端的，所以在这里总结记录一下 Mac 系统下的基础前端开发环境搭建和必备软件，给新手一点帮助。</p>
+<a id="more"></a>
+<h2 id="几点感悟和心得"><a href="#几点感悟和心得" class="headerlink" title="几点感悟和心得"></a>几点感悟和心得</h2><p>超级强大碉堡的触摸板和手势控制，简直不需要鼠标的存在，将程序等全屏，然后手势切换，即可在小屏幕实现外接大屏幕 PC 的工作效率。所以一定要熟练掌握手势操作，我已经不再用鼠标了。</p>
+<p>比较适合双屏幕工作，因为最新的系统，两个屏幕之间比较独立，多个程序界面切换相当方便。配合时时刷新的插件，可以快速方便的看到效果。</p>
+<p>不过也有地方不太好，不够灵活开放，例如外接显示器也有一些要求，字体会发虚；机身会带静电，但是习惯就好。</p>
+<p>第一次遇到这样的安装软件方法，之前配置 linux 的时候，都得编译，或者用 yum 自己安装，执行命令之类的。而 Mac 的程序安装，感觉有点奇怪。一般是挂载 dmg 镜像，然后会弹出一个窗口，让你把 app 文件拖动到 Application 文件夹中。或者直接解压出现 app 文件，双击就算是安装好了。卸载可以直接删掉 app 文件或者（最好）用 CleanMyMac 这类软件。</p>
+<p>系统里还内置里很多很多有用的功能，你可以多探索探索，比如三指敲击触摸板会弹出单词翻译，选中英文摁下 option ＋ esc 会给你读出来，而且发音不错。当然这些功能需要你设置一下，发音的设置可以参考：<a href="http://www.zhihu.com/question/20873070" target="_blank" rel="noopener">程序员如何优雅的使用 Mac</a> 。</p>
+<h2 id="必备软件"><a href="#必备软件" class="headerlink" title="必备软件"></a>必备软件</h2><ul>
+<li><a href="http://www.alfredapp.com/" target="_blank" rel="noopener">Alfred 2</a> 必备神器，随手打开即可快速启动各种需要的程序或者文件目录等等。</li>
+<li><a href="http://getpocket.com/" target="_blank" rel="noopener">Pocket</a> 阅读文章、资料等必备工具。</li>
+<li><a href="https://www.dropbox.com/" target="_blank" rel="noopener">Dropbox</a> 同步备份盘。</li>
+<li><a href="http://www.iterm2.com/" target="_blank" rel="noopener">iTerm2</a> 听闻强大，还在摸索中。</li>
+<li><a href="http://manytricks.com/moom/" target="_blank" rel="noopener">Moom</a> 快速调整窗口的大小和位置，减少切换。</li>
+<li><a href="http://www.cockos.com/licecap/" target="_blank" rel="noopener">LICEcap</a> 小巧实用的 GIF 录像软件。也可以用 QuickTime 来录制视频，但是录出来 mov 实在太大。</li>
+<li><a href="https://www.rescuetime.com/" target="_blank" rel="noopener">RescueTime</a> 检测你日常时间都做了什么，方便记录工作情况，还可以设置工作目标等。</li>
+<li><a href="https://pilotmoon.com/scrollreverser/" target="_blank" rel="noopener">Scroll Reverser</a> 小工具解决大麻烦，可以设置让你的鼠标正常方向滚动，让触摸板还是原来的滚动方向，对于用 PC 鼠标的比较方便。</li>
+<li><a href="http://macpaw.com/cleanmymac" target="_blank" rel="noopener">CleanMyMac</a> 清理系统和卸载程序用的。</li>
+<li><a href="http://coppertino.com/" target="_blank" rel="noopener">Vox</a> 我的无损音乐就靠它播放了。</li>
+<li><a href="http://mouapp.com/" target="_blank" rel="noopener">Mou</a> Markdown 语法编辑器，小巧而美，写写文章就用它。</li>
+<li><a href="http://wakaba.c3.cx/s/apps/unarchiver" target="_blank" rel="noopener">The Unarchiver</a> 解压打包 Zip。</li>
+</ul>
+<p>其他的诸如 迅雷、百度同步盘、有道云笔记、QQ、阿里旺旺 等等软件，就按照你自己的需求来安装就好，mac 上都有。</p>
+<p>此外，建议尽量不要通过官方的 App store 安装程序，速度太坑了。例如 xcode 这种庞然大物，使用迅雷的 Thunder Store 搜索下载，速度超快，毕竟是专业下载的。</p>
+<h2 id="前端开发环境搭建"><a href="#前端开发环境搭建" class="headerlink" title="前端开发环境搭建"></a>前端开发环境搭建</h2><h3 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h3><h4 id="Sublime-text"><a href="#Sublime-text" class="headerlink" title="Sublime text"></a>Sublime text</h4><p>第一位总是要献给神器 Sublime text，最爱，不解释。下载下来之后，各种安装插件配置，跟 Win 区别不大，就是一些操作的快捷键有些变化。另一个就是默认用 Sublime text 打开文件的时候，会弹出一个新窗口打开，而不是一个新标签，面对如此反人类的操作，需要设置一下：</p>
+<p>打开 Sublime text 然后找到 “Preferences” 下面的 “Setting－User” 选项，打开在里面添加如下参数：</p>
+<pre><code>&quot;open_files_in_new_window&quot;: false,
+</code></pre><p>即可。一般还会加上：</p>
+<pre><code>&quot;word_separators&quot;: &quot;./\\()\&quot;&apos;:,.;&amp;lt;&amp;gt;~!@#$%^&amp;amp;*|+=[]{}`~?&quot;
+</code></pre><p>这样双击的时候，就可以把“带有中横线的类名”一块选中了。</p>
+<p>除此之外，唯一感觉不太好的就是 Sublime text 代码区域最下面没有 Win 平台下面的空白了，最后一行代码位于最下面，这样编辑的时候不得不在下面回车好几行使最后一部分不要太靠下。不知道有没有对应设置可以调整一下。如果你知道还望告知。</p>
+<h4 id="Brackets"><a href="#Brackets" class="headerlink" title="Brackets"></a>Brackets</h4><p>Adobe 公司出品的专为前端开发做的免费开源编辑器，附带 实时预览 等等前端常用的功能，还在不断的快速开发之中，功能已经比较强大了，也有很多插件，有兴趣也可以多尝试一下。</p>
+<p>简单用了一下，只能说界面和交互真心不错。</p>
+<h4 id="Node-js-等等"><a href="#Node-js-等等" class="headerlink" title="Node.js 等等"></a>Node.js 等等</h4><p>Mac 的 OS X 系统基于 Unix，带有终端执行命令行命令，对于 Node.js 这类的工具，支持性和实用性完爆 Window，了解有些简单命令，有助于提高你的效率。</p>
+<h4 id="本地搭建-AMP-环境"><a href="#本地搭建-AMP-环境" class="headerlink" title="本地搭建 AMP 环境"></a>本地搭建 AMP 环境</h4><p>Mac 已经内置了 Apache 和 PHP 环境，你只需要开启和配置一下即可，至于 MySQL 就需要自己安装了。</p>
+<p>具体操作不再赘述，详情请看：<a href="http://www.guomii.com/posts/30136" target="_blank" rel="noopener">OS X Mountain Lion 系统配置 Apache+Mysql+PHP 详细教程</a> 。</p>
+<p>中间还是会遇到一些坑的，如果之前没有配置过 Linux 服务器，可能会比较吃力。但是不吃力怎么能进步？</p>
+<h4 id="浏览器们"><a href="#浏览器们" class="headerlink" title="浏览器们"></a>浏览器们</h4><p>Chrome 、Chrome Canary、Firefox、Safari 这些家伙们肯定少不了，漏了 IE ？一会就把它找过来。</p>
+<h3 id="前端辅助工具"><a href="#前端辅助工具" class="headerlink" title="前端辅助工具"></a>前端辅助工具</h3><h4 id="马克鳗尺寸测量工具"><a href="#马克鳗尺寸测量工具" class="headerlink" title="马克鳗尺寸测量工具"></a>马克鳗尺寸测量工具</h4><p><a href="http://www.getmarkman.com/" target="_blank" rel="noopener">Mark Man</a> 这个工具真是相见恨晚，帮你标注 PSD 或者设计稿图片的尺寸、颜色，还可以写注释。而且基于 Adobe 的 AIR ，跨平台兼容。Mac 配合触摸板也超级方便，对 @2x 文件名的图片尺寸还会自动减半，好用我的都快流泪了，我之前都是用 QQ 截图量尺寸 T_T</p>
+<h4 id="PhotoShop"><a href="#PhotoShop" class="headerlink" title="PhotoShop"></a>PhotoShop</h4><p>必备，正版授权要是 300 或许会考虑买个正版的，但是 3K 有点难承受。</p>
+<p>Mac 上的 Photoshop 超好用，跟 Win 的没什么区别，本来以为用触摸板操作会比较蛋碎，完全不是这样。</p>
+<h4 id="Charles"><a href="#Charles" class="headerlink" title="Charles"></a>Charles</h4><p>Mac 下的抓包工具，类似 fiddler ，更多解决方案推荐：<a href="https://www.imququ.com/post/user-fiddler-on-macos.html" target="_blank" rel="noopener">如何在 Mac 下使用 Fiddler</a>。</p>
+<h4 id="Koala"><a href="#Koala" class="headerlink" title="Koala"></a>Koala</h4><p><a href="http://koala-app.com/index-zh.html" target="_blank" rel="noopener">Koala</a> 主要用来编译 Sass 文件等等，感觉要比 codekit 好用的多，用我自己总结的 <a href="https://github.com/yujiangshui/ysass" target="_blank" rel="noopener">ysass</a> 重构模版，直接拖动进去监听自动编译输出，再配合 browser-sync 工具自动同步刷新，一气呵成。</p>
+<h4 id="Dash"><a href="#Dash" class="headerlink" title="Dash"></a>Dash</h4><p><a href="http://kapeli.com/dash" target="_blank" rel="noopener">Dash</a> 是开发文档集合应用。安装常用文档之后，遇到什么 API 或者 CSS 属性忘记了，直接在里面搜索即可。与传统的使用 google 搜索相比，用这个定位更加快速，文档也采用比较权威的官方文档，比较精准，此外也附带了 google 搜索结果。</p>
+<p>有了它，查询文档效率和准确度至少提升 30%。</p>
+<h3 id="前端测试工具"><a href="#前端测试工具" class="headerlink" title="前端测试工具"></a>前端测试工具</h3><h4 id="BrowserSync"><a href="#BrowserSync" class="headerlink" title="BrowserSync"></a>BrowserSync</h4><p><a href="http://browsersync.io/" target="_blank" rel="noopener">BrowserSync</a> 是必备的前端测试工具，使用它可以跨平台的同步测试。安装之后，通过命令行监听项目目录，会自动建立一个本地服务器，根据你局域网的 IP 加上端口生成 URL，当文件产生变动，它会自动刷新到浏览器中，实现类似 livereload 的功能。</p>
+<p>当然，更主要的是它的同步测试功能，它生成的局域网 URL 地址，只要设备位于同一个局域网内，都可以访问。这样，利用电脑做 Wifi 或者设备都连接到无线路由器上，就可以测试本地的项目页面。于是你就可以开着虚拟机、iPhone 手机、Android 手机以及平板设备和别的同学的电脑，同时测试看到具体的效果，而且修改一次，自动刷新所有设备浏览器。</p>
+<p>至于同步，简单的说，你的操作也会同步到其他设备上，比如你在手机上滚动页面，它会在电脑上也同步滚动桌面版的页面等等。</p>
+<p>具体的用法，我还会单独写文章介绍，这里不再赘述。</p>
+<h4 id="Parallels-Destop-虚拟机"><a href="#Parallels-Destop-虚拟机" class="headerlink" title="Parallels Destop 虚拟机"></a>Parallels Destop 虚拟机</h4><p>一开始我用的还是 Win 下面用的免费虚拟机 virtualbox，跟 Win 下面一样，安装系统等等。但是发现网络连不上，局域网都连不上，这还测试个毛线。</p>
+<p>于是看到很多推荐 Parallels 虚拟机的，就安装试了一下，瞬间被强大的功能惊到了，居然还有一种模式，让你直接打开某个 windows 下面的应用程序，仿佛就是 Mac 本地应用一样。网络和与宿主的文件传递等，就更不用说了，解决的相当漂亮。总之不多赘述，具体还是留给你自己体验体验吧。</p>
+<p>一般装个 XP 系统和 Win7 系统就可以，Win7 我用的精简版的 Tiny 7，用这个比较精简节约空间和资源，毕竟只需要用它的 IE。</p>
+<h2 id="更多资源"><a href="#更多资源" class="headerlink" title="更多资源"></a>更多资源</h2><p>本人目前安装配置的差不多就是这样子，网上还有更多关于 Mac 的使用技巧和应用推荐，后面我也会继续分享一些与前端开发有关的技巧。推荐阅读：</p>
+<ul>
+<li><a href="http://www.zhihu.com/question/20873070" target="_blank" rel="noopener">程序员如何优雅地使用 Mac？</a></li>
+<li><a href="http://www.zhihu.com/question/20520972" target="_blank" rel="noopener">如何更优雅地使用 OS X？</a></li>
+<li><a href="https://github.com/hzlzh/Best-App" target="_blank" rel="noopener">Best-App</a></li>
+</ul>
+
+  </div>
+  <div class="post-share">
+	<ul class="share-list">
+		<li><a class="icon icon-weibo" href="javascript:share.weibo();"><span>weibo</span></a></li>
+		<li><a class="icon icon-twitter" href="javascript:share.twitter();"><span>twitter</span></a></li>
+		<li><a class="icon icon-douban" href="javascript:share.douban();"><span>douban</span></a></li>
+		<li><a class="icon icon-qzone" href="javascript:share.qzone();"><span>qzone</span></a></li>
+	</ul>
+</div>
+</div>
+		</div>
+		<div class="footer">
+	<p class="left">&copy; Jiangshui 一个努力坚持中低质量原创的<a class="color-egg" href="/images/meinanzi.png">美男子</a>。生活不易，<a href="#">包养本人</a>。</p>
+	<p class="right">Base on <a href="https://github.com/yujiangshui/jiangshui-simple">Github</a> and <a href="http://hexo.io/">Hexo</a> .</p>
+</div>
+	</div>
+</div>
+
+</body>
+</html>

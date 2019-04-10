@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta name="renderer" content="webkit">
+    
+    <title>KISSY 的 loader 机制学习 | 于江水</title>
+    <meta name="description" content="有必要先来看一下为什么会出现模块化加载开发。 传统简单的前端项目中 JS 的开发非常简单随意，就是一堆函数和调用函数代码的罗列，一个人就可以搞定。之后，页面变得越来越大，前端交互和功能越来越多，这个文件就越来越大，一个人也搞不定了，于是需要招聘好几个人来共同开发。 多人协作开发，就需要制定一些规范和协议，不然就会产生一些冲突。包括变量、功能等等，于是就会用闭包等 JS 特性来分割模块防止出现冲突，">
+<meta name="keywords" content="KISSY">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KISSY 的 loader 机制学习">
+<meta property="og:url" content="http://yujiangshui.com/kissy-loader-basic/index.html">
+<meta property="og:site_name" content="于江水">
+<meta property="og:description" content="有必要先来看一下为什么会出现模块化加载开发。 传统简单的前端项目中 JS 的开发非常简单随意，就是一堆函数和调用函数代码的罗列，一个人就可以搞定。之后，页面变得越来越大，前端交互和功能越来越多，这个文件就越来越大，一个人也搞不定了，于是需要招聘好几个人来共同开发。 多人协作开发，就需要制定一些规范和协议，不然就会产生一些冲突。包括变量、功能等等，于是就会用闭包等 JS 特性来分割模块防止出现冲突，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-10T00:17:52.181Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="KISSY 的 loader 机制学习">
+<meta name="twitter:description" content="有必要先来看一下为什么会出现模块化加载开发。 传统简单的前端项目中 JS 的开发非常简单随意，就是一堆函数和调用函数代码的罗列，一个人就可以搞定。之后，页面变得越来越大，前端交互和功能越来越多，这个文件就越来越大，一个人也搞不定了，于是需要招聘好几个人来共同开发。 多人协作开发，就需要制定一些规范和协议，不然就会产生一些冲突。包括变量、功能等等，于是就会用闭包等 JS 特性来分割模块防止出现冲突，">
+<meta name="twitter:creator" content="@yujiangshui">
+<meta property="fb:admins" content="yujiangshui"> 
+    <link rel="alternate" href="/atom.xml" title="于江水" type="application/rss+xml">
+    
+
+    <link rel="stylesheet" href="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/css/style.css">
+    <script data-main="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/js/build" src="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/js/require.js"></script>
+    <!--[if lt IE 7]>
+      <style>
+        .section {
+          width: 780px;
+        }
+        .post-content img {
+          width: 100%;
+        }
+        .jupe pre {
+          width: 100%;
+        }
+      </style>
+    <![endif]-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-57557739-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-57557739-5');
+    </script>
+  </head>
+</html>
+
+<body>
+
+<div class="section-wrap section-main">
+	<div class="section">
+		<div class="header">
+	<h1 class="logo">
+		<a href="/">于江水</a>
+	</h1>
+	<p class="social-links">
+		<a href="http://www.weibo.com/yujiangshui">Weibo</a>
+		\
+		<a href="https://twitter.com/yujiangshui">Twitter</a>
+		\
+		<a href="https://github.com/yujiangshui">Github</a>
+		\
+		<a href="/atom.xml">RSS</a>
+	</p>
+</div>
+		<div class="main">
+			<div class="jupe main-body">
+  <div class="post-content">
+    <h1 class="post-title">KISSY 的 loader 机制学习</h1>
+    <div class="post-meta">
+      <span class="post-time">2014.07.09</span>
+      <div class="post-cats">
+        <a class="post-cats-item-link" href="/category/JavaScript/">JavaScript</a>
+      </div>
+    </div>
+    <div class="post-toc">
+      <div class="toc-title">TOC</div>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#KISSY-的加载器-seed-js"><span class="toc-number">1.</span> <span class="toc-text">KISSY 的加载器 seed.js</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#KISSY-模块规范"><span class="toc-number">2.</span> <span class="toc-text">KISSY 模块规范</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#add-函数注册模块"><span class="toc-number">2.1.</span> <span class="toc-text">add() 函数注册模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#use-函数调用模块"><span class="toc-number">2.2.</span> <span class="toc-text">use() 函数调用模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#add-与-use-的区别"><span class="toc-number">2.3.</span> <span class="toc-text">add 与 use 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#config-函数配置信息"><span class="toc-number">2.4.</span> <span class="toc-text">config 函数配置信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#接下来"><span class="toc-number">3.</span> <span class="toc-text">接下来</span></a></li></ol>
+    </div>
+    <p>有必要先来看一下为什么会出现模块化加载开发。</p>
+<p>传统简单的前端项目中 JS 的开发非常简单随意，就是一堆函数和调用函数代码的罗列，一个人就可以搞定。之后，页面变得越来越大，前端交互和功能越来越多，这个文件就越来越大，一个人也搞不定了，于是需要招聘好几个人来共同开发。</p>
+<p>多人协作开发，就需要制定一些规范和协议，不然就会产生一些冲突。包括变量、功能等等，于是就会用闭包等 JS 特性来分割模块防止出现冲突，每个人负责一个页面等。与此同时，有好多代码是功能重复的，而且是很多页面都需要的，于是就有高手出来将这部分代码抽象出来，做成组件，让大家复用。</p>
+<a id="more"></a>
+<p>这样的前端开发就比很早之前的愉快的多，遇到什么功能，找一下组件，生成个对象就可以开始在自己的闭包里放心的调用，然后编写一些细节功能代码。最后产品上线的时候，把所有人的代码合并到一起就可以了。</p>
+<p>人是不会满足的，到了这个时候，就开始考虑 JS 性能问题。一整个大型网站需要的 JS 功能是非常多的，事无巨细的全部打包起来，尺寸就会非常大。而不同的页面类型需要的 JS 却是不相同的。比如 list 页面可能需要排序功能，但是不会需要 page 页面中的图片放大和标签页切换功能。那如何在 list 页面只需要 list 需要的 JS 代码，而不会加载无用的代码？</p>
+<p>很简单，分别打包，把 list 页面之外的页面 JS 都去掉，专门打包合并一个用于 list 页面的 JS。这样就分成了好几个 JS 文件，对应不同的页面或者适用场景。这样并不太利于维护，还需要有人来编写（哪怕是粘贴复制），此外还发现，这虽然是不同的两个页面，但是里面还有有一部分 JS 功能和组件是相同的，而每个页面都要加载这些相同的代码，这样没法缓存一部分公用的内容，无疑也是一种浪费。</p>
+<p>这一点尤其体现在淘宝这种超大型网站上，于是就开发了 KISSY，应用了模块化的开发方式。下面就是他们大体的解决思路：</p>
+<p>首先 KISSY 抽象封装了常用的一些组件，例如事件有关的、DOM 操作方法等，每个组件都分割成模块，模块之间是分离的也是相关的，例如所有模块都依赖于 core 这个核心基础模块，那么当项目中应用 DOM 模块的时候，就会先加载 core 这个模块，如果没有加载 DOM 模块，也就不需要加载多余的 core 模块了。</p>
+<p>页面中的每个小功能按照一定规范写成一个小模块，在小模块中，往往需要调用一些组件，比如 DOM 操作的时候，就需要把 DOM 组件传递进去。然后在小模块中就可以使用 DOM 模块来进行一些操作。此外，每个小模块都是独立的，类似闭包，不会产生冲突。</p>
+<p>当编写 list 页面的时候，就可以把需要的小模块调用链接起来，编写 page 的时候，也把需要的小模块调用链接起来，这两个页面中重复的小模块也是可以复用的，修改一次，两个页面都会生效，维护简单方便。然后模块细小分化，就可以按需加载，在 list 页面中小模块没有调用 DOM 组件的，这个页面就不会加载 DOM 组件有关的代码。page 页面中，有好多小模块调用了 DOM 组件方法，也不会重复下载多次 DOM 组件代码，下载一份代码就可以了。</p>
+<p>于是，这个页面加载器就非常重要了。一个项目（或页面），首先加载这个加载器 JS，然后制定一个入口文件，编写好的小模块，在入口文件中链接调用。加载器就会读取入口文件的 JS 代码，计算模块之间的相互依赖以及需要的组件模块，然后将相关模块插入到项目页面 html 中让浏览器加载执行。</p>
+<p>这种方式，避免无用代码加载，提高了前端性能，方便了多人协作开发，提高了代码复用程度提高可维护性。下面来看一下 KISSY 中是如何实现的。</p>
+<h2 id="KISSY-的加载器-seed-js"><a href="#KISSY-的加载器-seed-js" class="headerlink" title="KISSY 的加载器 seed.js"></a>KISSY 的加载器 seed.js</h2><p>seed.js，如其名这就是 KISSY 的智能加载器。seed.js 文件里面包含了：lang，features，loader，ua 这几个部分，简单得讲就是一堆实用函数和加载器，例如 features 部分用来检测客户端环境功能支持，lang 是一套 underscore 风格的工具集提供一些常用的工具函数，ua 是检测判断各种客户端用得，loader 就是组合加载器。</p>
+<p>seed.js 文件压缩之后大约 44kb，不算小但是比 jQuery 之类得小多了，更重要的是，你可以免费使用淘宝的 CDN 服务器，KISSY 的组件和常用模块都已经部署在淘宝 CDN 服务器上面了，你只需要在页面中引入下面代码，即可使用：</p>
+<p><code>&lt;script src=&quot;http://g.tbcdn.cn/kissy/k/1.4.4/seed.js&quot;&gt;&lt;/script&gt;</code></p>
+<p>加载之后，就可以开始在下面编写功能代码了。为了让 seed.js 可以识别，显然就需要按照一定语法规则来编写小模块，并设置模块之间的依赖关系。这就是 <a href="http://docs.kissyui.com/1.4/docs/html/guideline/kmd.html" target="_blank" rel="noopener">KISSY 模块规范</a>。</p>
+<h2 id="KISSY-模块规范"><a href="#KISSY-模块规范" class="headerlink" title="KISSY 模块规范"></a>KISSY 模块规范</h2><p>就是一种规范，可以被 seed.js 识别计算等。在前面已经介绍了为什么要用模块化的方法开发，那么可以想到一个完整的模块必须要包含下面属性：</p>
+<ul>
+<li>模块名</li>
+<li>模块功能和逻辑</li>
+<li>模块处理功能后的返回值</li>
+<li>模块的依赖关系</li>
+</ul>
+<h3 id="add-函数注册模块"><a href="#add-函数注册模块" class="headerlink" title="add() 函数注册模块"></a>add() 函数注册模块</h3><p>KISSY 中使用 add 函数来定义一个模块。</p>
+<pre><code>add(name?,factory?,deps)
+</code></pre><p>有三个参数，分别是模块名、模块功能和模块的依赖性，其中在模块功能中编写模块功能并返回处理后的结构。</p>
+<p>add 函数有几种用法，分别对应不同的开发场景，这里的 Demo 和介绍在 <a href="http://docs.kissyui.com/1.4/docs/html/guideline/kmd.html" target="_blank" rel="noopener">KISSY 模块规范</a> 以及 <a href="http://docs.kissyui.com/1.4/docs/html/guideline/loader.html" target="_blank" rel="noopener">LOADER 文档</a> 里以及很详细了，又不是英文文档，所以在此不再赘述。</p>
+<p>这里需要理解的是，使用 add 函数之后，会为 KISSY 对象挂载上这块你编写的代码，从而可以被其他地方调用，所以你通常需要在逻辑中返回对象。</p>
+<p>对 seed.js 的源代码稀里糊涂的大体略过，这里想谈一下自己对 KISSY 的实现方式的理解，可能会不对，还望指出。在 seed.js 中创建了一个名为 KISSY 的全局对象，然后每几个功能都作为模块出现，然后暴露返回一个对象，这时候在 seed.js 中内建了一个合并对象的方法（mix），将这几个功能合并到 KISSY 这个全局对象中扩充了 KISSY 对象。而在新模块的编写中，都会默认向模块函数中传递一个 S 参数，这个 S 其实就是 KISSY 这个全局对象，因此在模块中就可以调用 KISSY 的各种方法。</p>
+<p>add 这个函数，除了注册模块外，也是向 KISSY 这个全局对象扩充新方法和属性，用 KISSY 这个全局变量作为各个闭包模块沟通的桥梁。</p>
+<h3 id="use-函数调用模块"><a href="#use-函数调用模块" class="headerlink" title="use() 函数调用模块"></a>use() 函数调用模块</h3><p>既然声明创建好了模块，下一步就是调用这个模块并实现某些功能。use 函数就是来调用模块，编写功能代码。</p>
+<pre><code>use(name,sandbox)
+</code></pre><p>官方文档的通病就是写的高大上，必须要严谨，官方文档上面说 use 是：<strong>use函数挂载在全局对象KISSY上，用来异步调用模块，并在模块加载完成后运行沙箱逻辑。</strong>但实际上，use 函数挂在上 KISSY 这点在上面说过了，不需要解释，用来异步调用模块理解成会调用模块就可以，然后明显要先等调用的模块加载完成了，再执行函数，由于函数会产生块级作用域，所以成为沙箱。</p>
+<p>例如下面代码：</p>
+<pre><code>use(&apos;mod-a, mod-b&apos;,function(S,ModA,ModB){
+    // 沙箱逻辑
+});
+</code></pre><p>表示这个功能需要 mod-a 和 mod-b 这两个使用 add 函数注册的模块或者 KISSY 官方提供的模块，之后这些模块会以参数的形式按照顺序传递进去后面的回调函数（也就是所谓的沙箱）。use 中的这个函数，首先会传递进去 S 变量，这是 KISSY 对象，这样就可以通过 S 来调用 KISSY 上面的方法，之后的两个参数对应的是前面两个模块的引用，这样就可以在回调函数中调用这两个引入的模块，举个例子：</p>
+<pre><code>use(&apos;node&apos;,function(S,Node){
+    Node.one(&apos;#foo&apos;);
+});
+</code></pre><p>这就表示引入了 node 模块，并在回调函数中，使用 node 模块提供的 one 方法选择了一个 DOM 对象。回调函数中传递的 Node 参数名是自定义的，只需要跟函数内部的调用对应即可，但是看了一些 KISSY 的 demo 代码，貌似有个潜规则就是这个参数名与引入模块名类似改造成了首字母大写的驼峰命名，比如：</p>
+<ul>
+<li>mod-a -&gt; ModA</li>
+<li>node -&gt; Node</li>
+</ul>
+<p>总之就是一点点规范而已，这样写虽然多敲了一些代码，但是可读性显然要高的太多。</p>
+<p>use 更多 demo 请看 <a href="http://docs.kissyui.com/1.4/docs/html/guideline/loader.html" target="_blank" rel="noopener">LOADER 文档</a>。</p>
+<h3 id="add-与-use-的区别"><a href="#add-与-use-的区别" class="headerlink" title="add 与 use 的区别"></a>add 与 use 的区别</h3><p>第一次看到它俩的规范和使用方法时，确实感觉挺像的，都是有名字，传递函数“执行”。当然，它们完全是不同的两个东西。</p>
+<p>add 函数是定义模块，就像定义 function 一样，只是定义，在没有调用之前不会执行里面的 function 代码（节约资源）。add 函数往往还声明了模块名方便 use 调用这个模块，还声明了重要的模块依赖关系，比如当前模块工作需要依赖 node 模块或者其他模块，例如：</p>
+<pre><code>KISSY.add(&apos;package/a&apos;,function(S){
+    // 该模块要实现的功能和逻辑
+    // ......
+    return ObjA; //返回该模块处理后的数据或者新增的方法对象
+},{
+    // 表示该模块需要依赖的其他模块，即在调用该模块的时候需要先加载这些模块。
+    requires:[&apos;package/b&apos;,&apos;node&apos;,&apos;./mod.css&apos;]
+});
+</code></pre><p>而 use 就是调用执行这个模块，比如：</p>
+<pre><code>KISSY.use(&apos;package/a&apos;,function(S,ObjA){
+    // 可引用ObjA
+});
+</code></pre><p>就调用了上面定义的模块，将模块的返回对象以 ObjA 的参数名传递进回调函数里面进行功能调用开发，然后这时候才会真正的执行 add 定义的模块，当然先查找该模块依赖的其他模块，先加载进来再执行这个模块并将返回值传递进 use 定义的回调函数。</p>
+<h3 id="config-函数配置信息"><a href="#config-函数配置信息" class="headerlink" title="config 函数配置信息"></a>config 函数配置信息</h3><p>除了定义模块、调用模块之外，项目在开发中往往需要配置一些其他信息。比如在加载的时候是否动态合并（即将多个模块请求合并成一个以提升性能）、是否开启 debug 模式（关闭会使用 min 版本）、预注册模块之间的依赖关系以及配置包的信息等等。</p>
+<p>因此，config 函数就是来配置这些信息的。比较完整的例子：</p>
+<pre><code>KISSY.config({
+    // 开启自动 combo 模式
+    combine:true,
+    // kissy 库内置模块的时间戳
+    tag:&apos;2012&apos;,
+    // kissy 的基准路径
+    base:&apos;http://x.com/a&apos;,
+    packages:{
+        x:{
+            // x 包的基准路径
+            base:&apos;http://x.com/biz/&apos;,
+            // x 包的时间戳
+            tag:&apos;x&apos;,
+            // 开启 x 包 debug 模式
+            debug:true
+        },
+        y:{
+           // y 包的基准路径
+           base:&apos;http://x.com/biz/&apos;,
+           // y 包不开启自动 combo
+           combine:false
+           // 不配置 tag，则取 kissy 内置模块的时间戳
+        }
+    },
+    modules:{
+        &quot;x/b1&quot;:{
+            // &quot;x/b1&quot; 模块的依赖信息
+            requires:[&quot;x/b2&quot;,&quot;x/b3&quot;]
+        },
+        &quot;y/b2&quot;:{
+            // y/b2 模块单独的时间戳
+            tag:&apos;234&apos;
+        }
+    }
+});
+</code></pre><p>这里面最重要的就是 base、packages 和 modules 参数。</p>
+<ul>
+<li><strong>base</strong> 指定了一个基地址，默认的情况下这个地址是淘宝的 CDN 服务器，但是有时候我们可能需要放在自己的服务器上或者在本地加载测试，就需要用到这个配置。</li>
+<li><strong>packages</strong> 用来配置模块有关的信息，配置某一个模块的 base 地址或者是否开启 debug 等等。</li>
+<li><strong>modules</strong> 用来配置模块之间的依赖关系，虽然在其他地方已经用 add 函数等进行过定义，但是在 config 中进行预定义会提高搜索计算效率。</li>
+</ul>
+<p>在这里 packages 和 modules 比较容易混淆，不要从字面上进行猜测，只需要知道一个是配置模块的信息，另一个是配置模块与模块的依赖性。</p>
+<p>更详细的参数列表，你可以看下 <a href="http://docs.kissyui.com/1.4/docs/html/guideline/loader.html" target="_blank" rel="noopener">LOADER 文档</a>，这里不再赘述。</p>
+<h2 id="接下来"><a href="#接下来" class="headerlink" title="接下来"></a>接下来</h2><p>这样就算是简单的了解 KISSY 的 loader 机制，并且可以自己编写小模块以及调用组件进行开发。除此之外，seed.js 里面还有更多的函数和功能，可以详细的看一下有关文档。</p>
+<p>接下来，就应该是学习 KISSY 提供的常用组件库了，看一下文档了解它们有提供了什么方法，怎么来使用。</p>
+
+  </div>
+  <div class="post-share">
+	<ul class="share-list">
+		<li><a class="icon icon-weibo" href="javascript:share.weibo();"><span>weibo</span></a></li>
+		<li><a class="icon icon-twitter" href="javascript:share.twitter();"><span>twitter</span></a></li>
+		<li><a class="icon icon-douban" href="javascript:share.douban();"><span>douban</span></a></li>
+		<li><a class="icon icon-qzone" href="javascript:share.qzone();"><span>qzone</span></a></li>
+	</ul>
+</div>
+</div>
+		</div>
+		<div class="footer">
+	<p class="left">&copy; Jiangshui 一个努力坚持中低质量原创的<a class="color-egg" href="/images/meinanzi.png">美男子</a>。生活不易，<a href="#">包养本人</a>。</p>
+	<p class="right">Base on <a href="https://github.com/yujiangshui/jiangshui-simple">Github</a> and <a href="http://hexo.io/">Hexo</a> .</p>
+</div>
+	</div>
+</div>
+
+</body>
+</html>

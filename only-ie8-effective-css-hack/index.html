@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head><meta name="generator" content="Hexo 3.8.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta name="renderer" content="webkit">
+    
+    <title>仅仅 IE8 有效的 CSS hack 写法 | 于江水</title>
+    <meta name="description" content="最近做项目的时候，引用了 Google Font 的在线字体，估计是因为浏览器对字体的渲染方式不同或者是字体格式不一样，结果导致 IE8 中导航是错位的，而 IE9 和 IE10 中是正常的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="仅仅 IE8 有效的 CSS hack 写法">
+<meta property="og:url" content="http://yujiangshui.com/only-ie8-effective-css-hack/index.html">
+<meta property="og:site_name" content="于江水">
+<meta property="og:description" content="最近做项目的时候，引用了 Google Font 的在线字体，估计是因为浏览器对字体的渲染方式不同或者是字体格式不一样，结果导致 IE8 中导航是错位的，而 IE9 和 IE10 中是正常的。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-04-10T00:17:52.183Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="仅仅 IE8 有效的 CSS hack 写法">
+<meta name="twitter:description" content="最近做项目的时候，引用了 Google Font 的在线字体，估计是因为浏览器对字体的渲染方式不同或者是字体格式不一样，结果导致 IE8 中导航是错位的，而 IE9 和 IE10 中是正常的。">
+<meta name="twitter:creator" content="@yujiangshui">
+<meta property="fb:admins" content="yujiangshui"> 
+    <link rel="alternate" href="/atom.xml" title="于江水" type="application/rss+xml">
+    
+
+    <link rel="stylesheet" href="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/css/style.css">
+    <script data-main="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/js/build" src="//static.zhjan.com/blog/yujiangshui/assets/jiangshui-simple/0.0.1/js/require.js"></script>
+    <!--[if lt IE 7]>
+      <style>
+        .section {
+          width: 780px;
+        }
+        .post-content img {
+          width: 100%;
+        }
+        .jupe pre {
+          width: 100%;
+        }
+      </style>
+    <![endif]-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-57557739-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'UA-57557739-5');
+    </script>
+  </head>
+</html>
+
+<body>
+
+<div class="section-wrap section-main">
+	<div class="section">
+		<div class="header">
+	<h1 class="logo">
+		<a href="/">于江水</a>
+	</h1>
+	<p class="social-links">
+		<a href="http://www.weibo.com/yujiangshui">Weibo</a>
+		\
+		<a href="https://twitter.com/yujiangshui">Twitter</a>
+		\
+		<a href="https://github.com/yujiangshui">Github</a>
+		\
+		<a href="/atom.xml">RSS</a>
+	</p>
+</div>
+		<div class="main">
+			<div class="jupe main-body">
+  <div class="post-content">
+    <h1 class="post-title">仅仅 IE8 有效的 CSS hack 写法</h1>
+    <div class="post-meta">
+      <span class="post-time">2014.01.18</span>
+      <div class="post-cats">
+        <a class="post-cats-item-link" href="/category/CSS/">CSS</a>
+      </div>
+    </div>
+    <div class="post-toc">
+      <div class="toc-title">TOC</div>
+      
+    </div>
+    <p>最近做项目的时候，引用了 Google Font 的在线字体，估计是因为浏览器对字体的渲染方式不同或者是字体格式不一样，结果导致 IE8 中导航是错位的，而 IE9 和 IE10 中是正常的。</p>
+<a id="more"></a>
+<p>那么就需要单独为 IE8 进行一些调整，于是就需要 IE8 的 CSS hack。一看到这里，足够容易了吧？网上流传已久的 IE8 CSS hack 就是在属性后面加上 <code>\9</code> 或者 <code>\0</code>，代码如下：</p>
+<pre><code>color:#FFF\0;                    /* IE8 */
+color:#FFF\9;                    /* 所有IE浏览器(ie6+) */
+</code></pre><p>加上之后，发现 IE8 确实是没有问题了，但是 IE9 和 IE10 却出现了问题，上面的 hack 同样对 IE9 和 IE10 起作用。</p>
+<p>好吧，这个 CSS hack 不是 IE8 特有的。那怎么做才能只针对 IE8 做 hack 呢？</p>
+<p>这里的思路需要稍稍转换一下：可以先应用 IE8 的 hack ，与非 IE 浏览器分开，然后再应用一些 CSS3 之类的 IE8 不支持的选择器来重新覆盖一遍，让支持新选择器的 IE9、IE10 正常显示。符合条件的常用选择器有 <code>:root</code>，于是就可以写出下面代码：</p>
+<pre><code>.section-nav li a {
+  display: block;
+  padding: 10px 13px;
+  padding: 10px 7px  10px 7px \9;
+  border-right: 1px solid #d7d7d7;
+}
+:root .section-nav li a {
+  padding: 10px 13px 10px 13px;
+}
+</code></pre><p>这样就做到了只对 IE8 浏览器起作用的 CSS hack，这种方法后来搜索了一下，早就有人提到了，写本文主要是介绍一下这个解决浏览器兼容性问题的思路吧。</p>
+
+  </div>
+  <div class="post-share">
+	<ul class="share-list">
+		<li><a class="icon icon-weibo" href="javascript:share.weibo();"><span>weibo</span></a></li>
+		<li><a class="icon icon-twitter" href="javascript:share.twitter();"><span>twitter</span></a></li>
+		<li><a class="icon icon-douban" href="javascript:share.douban();"><span>douban</span></a></li>
+		<li><a class="icon icon-qzone" href="javascript:share.qzone();"><span>qzone</span></a></li>
+	</ul>
+</div>
+</div>
+		</div>
+		<div class="footer">
+	<p class="left">&copy; Jiangshui 一个努力坚持中低质量原创的<a class="color-egg" href="/images/meinanzi.png">美男子</a>。生活不易，<a href="#">包养本人</a>。</p>
+	<p class="right">Base on <a href="https://github.com/yujiangshui/jiangshui-simple">Github</a> and <a href="http://hexo.io/">Hexo</a> .</p>
+</div>
+	</div>
+</div>
+
+</body>
+</html>
