@@ -1,22 +1,18 @@
-			<div class="jupe main-body">
-				<div class="post-content">
-					<h1 class="post-title"><%= page.title %></h1>
-					<div class="post-meta">
-						<span class="post-time"><%= date(page.date, 'YYYY.MM.DD') %></span>
-						<div class="post-cats">
-							<%- list_categories(page.categories, {
-							  show_count: false,
-							  class: 'post-cats-item',
-							  style: 'none'
-							}) %>
-						</div>
-					</div>
-					<div class="post-toc">
-						<div class="toc-title">TOC</div>
-						<%- toc(page.content) %>
-					</div>
-					<%- page.content %>
-				</div>
-				<%- partial('_partial/share') %>
-				<%- partial('_partial/duoshuo-comments') %>
-			</div>
+<div class="jupe main-body">
+  <div class="post-content">
+    <h1 class="post-title"><%= page.title %></h1>
+    <div class="post-meta">
+      <span class="post-time"><%= date(page.date, 'YYYY.MM.DD') %></span>
+      <div class="post-cats">
+        <%- list_categories(page.categories, { show_count: false, class:
+        'post-cats-item', style: 'none' }) %>
+      </div>
+    </div>
+    <div class="post-toc">
+      <div class="toc-title">TOC</div>
+      <%- toc(page.content) %>
+    </div>
+    <%- page.content %>
+  </div>
+  <%- partial('_partial/share') %>
+</div>
