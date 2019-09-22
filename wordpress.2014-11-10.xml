@@ -439,56 +439,56 @@ CSS 的媒体查询通常使用宽度作为断点来进行设备判断从而改�
 <h3>判断 iPad 的媒体查询语句</h3>
 感谢苹果公司为用户体验所做的一切，同时对开发者来说也很友好。所有的5种 iPad 型号（iPad 1-5 和 iPad mini）都可以使用对应的 CSS 媒体查询语句判断出来。
 <h4>判断 iPad 包括横放和竖放</h4>
-<pre>@media only screen 
-and (min-device-width : 768px) 
+<pre>@media only screen
+and (min-device-width : 768px)
 and (max-device-width : 1024px)  { /* STYLES GO HERE */}</pre>
 <h4>判断 iPad 横放</h4>
-<pre>@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
+<pre>@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
 and (orientation : landscape) { /* STYLES GO HERE */}</pre>
 <h4>判断 iPad 竖放</h4>
-<pre>@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
+<pre>@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
 and (orientation : portrait) { /* STYLES GO HERE */ }</pre>
 <h3>iPad 3 &amp; 4 的查询语句</h3>
 因为 iPad 第三代和第四代使用了 Retina 屏幕，如果你想针对这两种设备使用 @2x 的高清图片，可以使用下面的查询语句。
 <h4>判断 Retina iPad 包括横放和竖放</h4>
-<pre>@media only screen 
-and (min-device-width : 768px) 
+<pre>@media only screen
+and (min-device-width : 768px)
 and (max-device-width : 1024px)
 and (-webkit-min-device-pixel-ratio: 2) { /* STYLES GO HERE */}</pre>
 <h4>判断 Retina iPad 横放</h4>
-<pre>@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
+<pre>@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
 and (orientation : landscape)
 and (-webkit-min-device-pixel-ratio: 2) { /* STYLES GO HERE */}</pre>
 <h4>判断 Retina iPad 竖放</h4>
-<pre>@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
+<pre>@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
 and (orientation : portrait)
 and (-webkit-min-device-pixel-ratio: 2) { /* STYLES GO HERE */ }</pre>
 <h3>iPad 1 &amp; 2 的媒体查询语句</h3>
 如果你想针对普通屏幕的 iPad 应用对应的图标，可以使用下面查询语句。
 <h4>判断 iPad 1 和 2 包括横放和竖放</h4>
-<pre>@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
+<pre>@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
 and (-webkit-min-device-pixel-ratio: 1){ /* STYLES GO HERE */}</pre>
 <h4>判断 iPad 1 和 2 横放</h4>
-<pre>@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
+<pre>@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
 and (orientation : landscape)
 and (-webkit-min-device-pixel-ratio: 1)  { /* STYLES GO HERE */}</pre>
 <h4>判断 iPad 1 和 2 竖放</h4>
-<pre>@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
-and (orientation : portrait) 
+<pre>@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : portrait)
 and (-webkit-min-device-pixel-ratio: 1) { /* STYLES GO HERE */ }</pre>
 <span style="color: #c0c0c0;">此部分最新更新日期：2012.10.28</span>
 <h2>iPad mini 媒体查询</h2>
@@ -498,20 +498,20 @@ and (-webkit-min-device-pixel-ratio: 1) { /* STYLES GO HERE */ }</pre>
 
 因此，开发者很容易就判断出 iPad mini 来，但是单纯的用 CSS 精准的判断 iPad mini 就不可能了。
 <h3>判断 iPad mini 包括横放和竖放</h3>
-<pre>@media only screen 
-and (min-device-width : 768px) 
+<pre>@media only screen
+and (min-device-width : 768px)
 and (max-device-width : 1024px)
 and (-webkit-min-device-pixel-ratio: 1)  { /* STYLES GO HERE */}</pre>
 <h3>判断 iPad mini 横放</h3>
-<pre>@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
+<pre>@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
 and (orientation : landscape)
 and (-webkit-min-device-pixel-ratio: 1)  { /* STYLES GO HERE */}</pre>
 <h3>判断 iPad mini 竖放</h3>
-<pre>@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px) 
+<pre>@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
 and (orientation : portrait)
 and (-webkit-min-device-pixel-ratio: 1)  { /* STYLES GO HERE */ }</pre>
 <h3>iPad mini 的分辨率</h3>
@@ -526,34 +526,34 @@ Device-pixel-ratio: 1</pre>
 <h2>iPhone 媒体查询</h2>
 <h3>iPhone5 媒体查询</h3>
 <h4>判断 iPhone5 包括横放和竖放</h4>
-<pre>@media only screen 
-and (min-device-width : 320px) 
+<pre>@media only screen
+and (min-device-width : 320px)
 and (max-device-width : 568px) { /* STYLES GO HERE */}</pre>
 <h4>判断 iPhone5 横放</h4>
-<pre>@media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 568px) 
+<pre>@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 568px)
 and (orientation : landscape) { /* STYLES GO HERE */}</pre>
 <h4>判断 iPhoen5 竖放</h4>
-<pre>@media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 568px) 
+<pre>@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 568px)
 and (orientation : portrait) { /* STYLES GO HERE */ }</pre>
 <h3>iPhone 2G，3G，4，4S 媒体查询</h3>
 下面的这些媒体查询判断条件同样适用于 iPod Touch 1-4。
 <h4>判断 iPhone 2G-4S 包括横放和竖放</h4>
-<pre>@media only screen 
-and (min-device-width : 320px) 
+<pre>@media only screen
+and (min-device-width : 320px)
 and (max-device-width : 480px) { /* STYLES GO HERE */}</pre>
 <h4>判断 iPhone 2G-4S 横放</h4>
-<pre>@media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 480px) 
+<pre>@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px)
 and (orientation : landscape) { /* STYLES GO HERE */}</pre>
 <h4>判断 iPhone 2G-4S 竖放</h4>
-<pre>@media only screen 
-and (min-device-width : 320px) 
-and (max-device-width : 480px) 
+<pre>@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px)
 and (orientation : portrait) { /* STYLES GO HERE */ }</pre>
 <h4>iPhone 5 的分辨率</h4>
 <pre>Screen Width = 320px (CSS 中的像素值)
@@ -987,7 +987,7 @@ flash 层
 
 opacity 对 z-index 的影响
 
-z-index hack 
+z-index hack
 
 z-index IE8 下的覆盖问题]]></content:encoded>
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
@@ -5240,10 +5240,10 @@ Auto Equity Loans Bbb]]></wp:comment_content>
 <h3>声明表格的 header</h3>
 <p>前面第一部分提到的 th、td 的几个属性，其中 scope 和 abbr 就是两个有关可访问性和可用性的属性。</p>
 <p>例如下面这段来自 W3C 文档的示例代码：</p>
-<pre><code>&lt;TABLE border=&quot;1&quot; 
+<pre><code>&lt;TABLE border=&quot;1&quot;
        summary=&quot;This table charts the number of cups
-                of coffee consumed by each senator, the type 
-                of coffee (decaf or regular), and whether 
+                of coffee consumed by each senator, the type
+                of coffee (decaf or regular), and whether
                 taken with sugar.&quot;&gt;
 &lt;CAPTION&gt;Cups of coffee consumed by each senator&lt;/CAPTION&gt;
 &lt;TR&gt;
@@ -5568,8 +5568,8 @@ Auto Equity Loans Bbb]]></wp:comment_content>
 <p>开学的返校路上，听了郝培强前辈的 <a href="https://itunes.apple.com/cn/podcast/hai-long-yi-sheng-hou/id603056780?mt=2">海龙一声吼 Podcast</a> 里面最新一集《我也不原谅》。里面讲述了他早些年的一些上学经历，受到的来自中国式教育的迫害。</p>
 <p>本来我想不听了，感觉就是一些牢骚，居然一两个小时，还不如听听英语的 Podcast，不过后面已经停不下来了。大概是有同感吧，我也因为教育压抑了很多年。当然，我没有他那么悲惨，甚至被体罚等。我这一路走来，算是非常幸运和比较轻松吧。</p>
 <p>我有一个被迫式开明的老妈。虽然她觉得有些事情不对，但是还是会在我强烈的要求之下满足我。例如电脑。小学三年级开始接触电脑，于是“逼迫”弄了个二手台式机，结果开始“沉迷”单机游戏。初三才上网，开始玩网络游戏，兼带着自学 VB 编个小玩意什么的。中考居然还考上了县重点高中，结果入学成绩是高中三年最好的成绩。随后由于网友号被盗了，开始学习一点黑客技术，走走技术路线。高一、二，一半时间拿来看计算机相关的书，做做网站之类的，老妈觉得不太好，不过也拗不过我。偶尔也学学习听听课吧，实在是不愿意听讲，寒暑假作业从来没做完过。偶尔恨铁不成钢吧。高三实在没办法，就不看计算机了，多学习复习，偶尔在家玩玩游戏放松一下。</p>
-<p>高三下学期，我觉得没戏，还去打算走摄影艺考的道路，第一次直接坐车独自远行，去济南艺考。显然，第一次遇到如此的压力，考了三个学校，400 取 1 个，别的地区的学校都有专门艺术班，拿的都是单反，我这自学了两三个月的半路出家拿着傻瓜卡片机的就呵呵了。更主要的就是，后面高考体检，居然是色盲，他妹的，直接无望。也算是一段特殊的回忆吧，住在济南地下的旅馆，找学校排队考试，也不知道当时的自理能力这么好，之前从来没独自出过远门的。</p>
-<p>于是高三下学期的寒假和开学几天的重要日子里，连复习都没复习，日子过得到是很轻松，也不用去上课。但是觉得无望之后，压力就来了。就还最后三个月了，好吧，拼一把吧。于是高考成绩居然正好是二本线，就第一志愿直接来这破烂本科学校了。</p>
+<p>高三下学期，我觉得没戏，还去打算走摄影艺考的道路，第一次直接坐车独自远行，去济南艺考。显然，第一次遇到如此的压力，考了三个学校，400 取 1 个，别的地区的学校都有专门艺术班，拿的都是单反，我这自学了两三个月的半路出家拿着傻瓜卡片机的就呵呵了。更主要的就是，后面高考体检，居然是色觉异常有点色弱，他妹的，直接无望。也算是一段特殊的回忆吧，住在济南地下的旅馆，找学校排队考试，也不知道当时的自理能力这么好，之前从来没独自出过远门的。</p>
+<p>于是高三下学期的寒假和开学几天的重要日子里，连复习都没复习，日子过得到是很轻松，也不用去上课。但是觉得无望之后，压力就来了。就还最后三个月了，好吧，拼一把吧。于是高考成绩居然正好是二本线，就第一志愿直接来了一个普通本科院校。</p>
 <p>但是这个过程还是比较顺利的，没出很大力学习，也没因为择校之类的，额外花家里很多钱，也没给父母造成很多意外麻烦。其实学校也是很好的，背靠泰山，面朝水库，风水好。在市郊空气好，但是又有方便公交直达市里。学校烂，管理松，考试一两周前复习一下就能过，大部分时间可以自学有兴趣的东西。泰安小城市，物价低，有名山，也能出去玩玩，还是不错的。同学朋友也都很友善，没有很特殊的。对于我现在的状态来说，还是很满意的。</p>
 <p>由此看来，或许真就是安排好的。</p>
 <p>但是我还是不原谅中国教育，我本来是想当个艺术家的好吧，只想做自己喜欢的事情，然后学校天天就是学习学习学习，搞得身体也不好了。我很羡慕现在的一些技术很不错的 00 后，当时要是更开明一些，早点上网，而且不被学习压迫，或许现在又是完全不同的景象了吧。学生时代，实在是回忆不起来什么东西了，因为人总是会忘掉不愉快的事情，由此可见过去的经历多么操蛋。</p>
@@ -5595,12 +5595,12 @@ Auto Equity Loans Bbb]]></wp:comment_content>
 <p>最后让 <a href="http://fatesinger.com/">大发</a> 做了个坏人推掉了，加价也不做。如果真想合作，请提前安排，毕竟我们也有自己的事情。如果实在紧急，请自觉加价。</p>
 <h2>拖延症</h2>
 <p>在网上逛越久，就会发现越来越多的资料，但精力毕竟是有限的，于是收藏夹和 RSS 里面的内容已经爆棚了。</p>
-<p>再加上拖延症，trello 里面计划做的项目也都没启动。为此思考了一下如何战拖，想出了下面的几个策略，正在缓慢改善实施过段时间再写效果总结：</p>
+<p>再加上拖延症，Trello 里面计划做的项目也都没启动。为此思考了一下如何战拖，想出了下面的几个策略，正在缓慢改善实施过段时间再写效果总结：</p>
 <ul>
 <li>番茄管理法来进行时间管理，分块来工作。一定要严格执行番茄管理法的要求，和休息。</li>
-<li>用 trello 等 GTD 工具来管理任务，用笔记本把每天的必做任务列出来。</li>
+<li>用 Trello 等 GTD 工具来管理任务，用笔记本把每天的必做任务列出来。</li>
 <li>处理 RSS 时，将与当前前端行业无关的信息都勾掉，全都勾掉。</li>
-<li>打开文章的时候，大体略一遍，与当前技术水平相近的，认真看一遍，用 有道云笔记 做一下记录，用 jsfiddle 做一下 demo 亦或者用 gist 做一下代码笔记。对于需要分两三个时间再看数遍的干货，扔进 Pocket 里面。与当前技术水平差距太大看不下来的，但是保证未来会用到的，扔进归类好的收藏夹。</li>
+<li>打开文章的时候，大体略一遍，与当前技术水平相近的，认真看一遍，用 有道云笔记 做一下记录，用 JSFiddle 做一下 demo 亦或者用 gist 做一下代码笔记。对于需要分两三个时间再看数遍的干货，扔进 Pocket 里面。与当前技术水平差距太大看不下来的，但是保证未来会用到的，扔进归类好的收藏夹。</li>
 <li>每隔固定的时间，整理一下收藏夹，删掉无用或者已经掌握的内容。</li>
 <li>用好工具提高效率，社交网络尽量不看与有关技术不太相关的情感肉麻励志鸡汤类的东西，以便节约时间。</li>
 <li>每天拿出1小时多，累计走1万步。这是身体和高效率的必要保证，不是浪费时间。</li>
@@ -7038,7 +7038,7 @@ Auto Equity Loans Bbb]]></wp:comment_content>
 <p>这里对性能的优化还是没有太多经验，同页面打算做一个左右切换整页效果，用了各种高性能动画技巧，不过还是出现闪烁错位等不和谐的效果。最后去掉了，直接使用 z-index 和 opacity 的方式来隐藏显示。估计是 DOM 太过于复杂，同时应用了 flexslider 幻灯片插件的缘故。</p>
 <p>这块还需要好好学习多做点测试。</p>
 <h4>还是上传剪裁缩略图功能</h4>
-<p>这个设计师，mobile 上的功能也设计成这样，还好 dropzone 也支持手机端，但是剪裁缩略图插件出问题了。最后还是搜索到了 
+<p>这个设计师，mobile 上的功能也设计成这样，还好 dropzone 也支持手机端，但是剪裁缩略图插件出问题了。最后还是搜索到了
  <a href="http://www.marinkrmpotic.com/simpleimagecrop/">Simple Image Crop Plugin</a> 配合 <a href="https://github.com/danielglyde/TouchIt">TouchIt</a> 插件可以实现触摸选择截取区域的功能。</p>
 <h4>overflow hidden 失效</h4>
 <p>一直以为 overflow hidden 是万能隐藏，啥也会切断，如果问你什么情况下 overflow hidden 会失效你能想出来吗？</p>
@@ -9350,8 +9350,8 @@ p:before {
 
 <p>会编译输出：</p>
 
-<pre><code>#context a .notice, 
-#context a .title .notice2, 
+<pre><code>#context a .notice,
+#context a .title .notice2,
 #context .title a .notice2 {
   color: blue;
   font-weight: bold;
@@ -9545,9 +9545,9 @@ $value-map: (text: #00ff00, background: #0000ff, border: #ff0000);
 <p>对于 Media Queries 开发就非常方便了，我们可以定义下面这样的代码：</p>
 
 <pre><code>@mixin apply-to-iphone5 {
-    @media only screen 
-    and (min-device-width : 320px) 
-    and (max-device-width : 568px) { 
+    @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 568px) {
         @content;
     }
 }
@@ -12189,7 +12189,7 @@ Object.prototype.toString.call(a);
 
 <p>再来一个统计字符串每个字母出现次数的函数：</p>
 
-<pre><code>function count (string) {  
+<pre><code>function count (string) {
   var count = {};
   string.split('').forEach(function(s) {
      count[s] ? count[s]++ : count[s] = 1;
